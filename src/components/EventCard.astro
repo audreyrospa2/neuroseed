@@ -1,0 +1,16 @@
+---
+interface Props { title: string; date: string; label: string; href?: string; status: 'past' | 'upcoming'; tag: string }
+const { title, date, label, href = '#', status, tag } = Astro.props;
+---
+<div class:list={['event card', status]}>
+  <span class="pill">{tag}</span>
+  <h3>{title}</h3>
+  <p>{date}</p>
+  <a class:list={['btn btn--sm', { 'btn--primary': status === 'upcoming' }]} href={href}>{label}</a>
+</div>
+<style>
+  .event { display: flex; flex-direction: column; align-items: flex-start; gap: 0.7rem; }
+  .event.upcoming { border-color: var(--brand); }
+  h3 { font-size: 1.25rem; }
+  p { color: var(--muted); font-size: var(--fs-sm); margin: 0; }
+</style>

@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { t, type Lang } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  const pages = ['about', 'service', 'impact', 'news', 'book-a-training'];
+  return ['zh', 'en'].flatMap((lang) => pages.map((page) => ({ params: { lang, page } })));
+}
+const { lang, page } = Astro.params as { lang: Lang; page: string };
+const title = page === 'book-a-training' ? t(lang, 'cta.book') : t(lang, `nav.${page}`);
+---
+<Layout lang={lang} title={title}>
+  <section class="section container">
+    <h1>{title}</h1>
+  </section>
+</Layout>

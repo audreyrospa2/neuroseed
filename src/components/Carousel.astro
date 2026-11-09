@@ -1,0 +1,23 @@
+---
+// Wrap any cards in <Carousel>. Children need class="carousel__item".
+interface Props { label?: string }
+const { label = 'Carousel' } = Astro.props;
+---
+<div class="carousel" data-carousel role="region" aria-label={label} tabindex="0"><slot /></div>
+<style is:global>
+  .carousel { display: flex; gap: 1.25rem; overflow-x: auto; padding: 0.5rem 0.25rem 1.25rem; scroll-snap-type: x proximity; scrollbar-width: thin; }
+  .carousel__item { flex: 0 0 min(320px, 80vw); scroll-snap-align: start; }
+</style>
+<script is:inline>
+  document.querySelectorAll('[data-carousel]').forEach(function (el) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var paused = false;
+    ['mouseenter', 'focusin', 'touchstart'].forEach(function (e) { el.addEventListener(e, function () { paused = true; }); });
+    ['mouseleave', 'focusout'].forEach(function (e) { el.addEventListener(e, function () { paused = false; }); });
+    setInterval(function () {
+      if (paused) return;
+      el.scrollLeft += 1;
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 2) el.scrollLeft = 0;
+    }, 30);
+  });
+</script>
