@@ -1,23 +1,42 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/tokens.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, type Lang } from '../i18n/utils';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props { title: string; description?: string; lang?: Lang }
+const { title, description = '', lang = 'zh' } = Astro.props;
+const fullTitle = `${title} | ${t(lang, 'site.name')}`;
+
+import { switchLangPath } from '../i18n/utils';
+const other = lang === 'zh' ? 'en' : 'zh';
+const here = new URL(Astro.url.pathname, Astro.site).href;
+const there = new URL(switchLangPath(Astro.url.pathname, lang), Astro.site).href;
+---
+<!doctype html>
+<html lang={lang === 'zh' ? 'zh-Hant' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Noto+Sans+TC:wght@400;700&display=swap"
+    />
+
+	<link rel="alternate" hreflang={lang === 'zh' ? 'zh-Hant' : 'en'} href={here} />
+	<link rel="alternate" hreflang={other === 'zh' ? 'zh-Hant' : 'en'} href={there} />
+
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t(lang, 'ui.skip')}</a>
+    <Header lang={lang} />
+    <main id="main"><slot /></main>
+    <Footer lang={lang} />
+  </body>
+</html>

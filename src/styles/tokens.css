@@ -1,0 +1,59 @@
+/* Brainy design tokens: colours, type, spacing, radius. Change values here only. */
+:root {
+  /* Colour */
+  --bg: #F3EEE3;
+  --surface: #FFFFFF;
+  --ink: #1B1B18;
+  --muted: #57534A;
+  --line: #E0D8C8;
+  --brand: #1F4A3A;      /* buttons, links, key accents */
+  --on-brand: #FFFFFF;
+  --sun: #E9B949;        /* highlight, secondary button */
+  --coral: #E4572E;
+  --lilac: #B9A5E8;
+  --mint: #8FD0B0;
+
+  /* Type */
+  --font-display: 'Fraunces', 'Noto Sans TC', Georgia, serif;
+  --font-body: 'DM Sans', 'Noto Sans TC', system-ui, sans-serif;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-lg: 1.25rem;
+  --fs-h3: clamp(1.375rem, 2vw, 1.625rem);
+  --fs-h2: clamp(1.875rem, 4vw, 2.875rem);
+  --fs-h1: clamp(2.5rem, 5.4vw, 4.25rem);
+
+  /* Space and shape */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4.5rem;
+  --radius-sm: 12px;
+  --radius-md: 24px;
+  --radius-lg: 40px;
+  --radius-pill: 999px;
+  --container: 1180px;
+  --header-h: 68px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #14150F;
+    --surface: #1F211A;
+    --ink: #F3EEE3;
+    --muted: #B9B4A5;
+    --line: #33362C;
+    --brand: #7FC8A2;
+    --on-brand: #10231B;
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #14150F;
+  --surface: #1F211A;
+  --ink: #F3EEE3;
+  --muted: #B9B4A5;
+  --line: #33362C;
+  --brand: #7FC8A2;
+  --on-brand: #10231B;
+}

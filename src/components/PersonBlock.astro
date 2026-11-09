@@ -1,0 +1,23 @@
+---
+import Photo from './Photo.astro';
+interface Props { name: string; role?: string; msg: string; icon?: string; img?: string; color?: string; featured?: boolean }
+const { name, role = '', msg, icon = '', img = '', color = '#B9A5E8', featured = false } = Astro.props;
+---
+<article class:list={['person card', { featured }]}>
+  <div class="avatar"><Photo label={name} color={color} icon={icon} src={img} ratio="1 / 1" /></div>
+  <h3>{name}</h3>
+  {role && <p class="role">{role}</p>}
+  <p class="msg">{msg}</p>
+</article>
+<style>
+  .person { text-align: center; }
+  .avatar { width: 96px; margin: 0 auto 0.8rem; }
+  .avatar :global(.photo) { border-radius: 50%; }
+  h3 { font-size: 1.3rem; }
+  .role { color: var(--muted); font-size: var(--fs-sm); margin: 0.2rem 0 0.8rem; }
+  .msg { color: var(--muted); font-size: var(--fs-sm); margin: 0; }
+  .featured { padding: 2.5rem 2rem; border-color: var(--brand); }
+  .featured .avatar { width: 120px; }
+  .person:not(.featured) { animation: float 6s ease-in-out infinite; }
+  @keyframes float { 50% { transform: translateY(-10px); } }
+</style>

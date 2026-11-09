@@ -1,0 +1,13 @@
+{
+  "site": { "name": "Brainy In-Charge", "tagline": "School-based teacher training programme" },
+  "nav": { "home": "Home", "about": "About", "service": "Service", "impact": "Impact", "news": "News" },
+  "cta": { "book": "Book a training" },
+  "ui": { "skip": "Skip to content", "menu": "Menu", "switch": "中文" },
+  "footer": {
+    "about": "A school-based teacher training programme by Neuroseed.",
+    "pages": "Pages",
+    "contact": "Contact",
+    "email": "[email]",
+    "whatsapp": "[WhatsApp]"
+  }
+}

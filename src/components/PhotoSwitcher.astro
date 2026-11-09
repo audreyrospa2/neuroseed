@@ -1,0 +1,35 @@
+---
+import Photo from './Photo.astro';
+interface Slide { label: string; color?: string; icon?: string; img?: string }
+interface Props { slides: Slide[]; ratio?: string }
+const { slides, ratio = '4 / 3.4' } = Astro.props;
+---
+<div class="switcher" data-switcher>
+  {slides.map((s, i) => (
+    <div class:list={['slide', { on: i === 0 }]}>
+      <Photo label={s.label} color={s.color} icon={s.icon} src={s.img} ratio={ratio} />
+    </div>
+  ))}
+  <div class="dots" aria-hidden="true">{slides.map((_, i) => <span class:list={{ on: i === 0 }}></span>)}</div>
+</div>
+<style>
+  .switcher { position: relative; }
+  .slide { position: absolute; inset: 0 0 auto 0; opacity: 0; transition: opacity 0.7s; }
+  .slide.on { position: relative; opacity: 1; }
+  .dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+  .dots span { width: 10px; height: 10px; border-radius: 99px; background: var(--line); transition: width 0.3s, background 0.3s; }
+  .dots span.on { width: 30px; background: var(--ink); }
+</style>
+<script is:inline>
+  document.querySelectorAll('[data-switcher]').forEach(function (el) {
+    var slides = el.querySelectorAll('.slide'), dots = el.querySelectorAll('.dots span'), i = 0;
+    if (slides.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    setInterval(function () {
+      slides[i].classList.remove('on'); dots[i].classList.remove('on');
+      slides[i].style.position = 'absolute';
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('on'); dots[i].classList.add('on');
+      slides[i].style.position = 'relative';
+    }, 3500);
+  });
+</script>

@@ -1,0 +1,104 @@
+{
+  "zh": {
+    "title": "關於我們",
+    "h": "兩個團隊，一顆種子",
+    "lead": "腦細話事源於一個簡單的信念：當老師得到支持，孩子就能茁壯成長。",
+    "story": {
+      "h": "Neuroseed 的由來",
+      "p": "Brown Rice 與 Ecorazón 多年來各自與孩子、家庭和學校同行。兩個團隊攜手，種下了 Neuroseed。點開每個資料夾看看。",
+      "folders": [
+        { "h": "Brown Rice", "p": "[請補充 Brown Rice 與學校合作的簡介。]" },
+        { "h": "Ecorazón", "p": "[請補充 Ecorazón 的理念與工作簡介。]" }
+      ],
+      "merged": { "h": "Neuroseed", "p": "兩個團隊結合力量，把以腦科學為本、以心為先的培訓帶進每所有需要的學校。" }
+    },
+    "milestone": {
+      "h": "十個月的建構歷程",
+      "items": [
+        { "m": "第 1 個月", "t": "需求檢視" }, { "m": "第 2 個月", "t": "共同設計" },
+        { "m": "第 3 個月", "t": "導師準備" }, { "m": "第 4 個月", "t": "教師啟動" },
+        { "m": "第 5 個月", "t": "首輪工作坊" }, { "m": "第 6 個月", "t": "課堂教練" },
+        { "m": "第 7 個月", "t": "中期檢討" }, { "m": "第 8 個月", "t": "研究數據" },
+        { "m": "第 9 個月", "t": "優化計劃" }, { "m": "第 10 個月", "t": "數據發布" }
+      ],
+      "note": "以上為草稿階段，請與團隊確認實際里程碑。"
+    },
+    "speeches": {
+      "h": "領袖寄語",
+      "items": [
+        { "name": "Bonnie", "role": "[職稱]", "icon": "🌼", "img": "", "msg": "[草稿：關於教師福祉為何重要的寄語，請換成 Bonnie 的原話。]" },
+        { "name": "Karis", "role": "[職稱]", "icon": "🌟", "img": "", "msg": "[草稿：關於計劃願景的主要寄語，請換成 Karis 的原話。]" },
+        { "name": "Patrick", "role": "[職稱]", "icon": "🍀", "img": "", "msg": "[草稿：關於實證與成效的寄語，請換成 Patrick 的原話。]" }
+      ]
+    },
+    "team": {
+      "h": "培訓導師，與我們同行",
+      "p": "我們的「導師培訓」計劃讓老師成為校內學習的帶領者。認識團隊、閱讀過往活動回顧，並報名參加下一場活動。",
+      "past": [
+        { "title": "過往活動一", "date": "[日期]", "label": "閱讀回顧", "href": "#" },
+        { "title": "過往活動二", "date": "[日期]", "label": "閱讀回顧", "href": "#" }
+      ],
+      "upcoming": [
+        { "title": "即將舉行的活動", "date": "[日期] · [地點]", "label": "立即報名", "href": "#" }
+      ],
+      "sharingH": "參加者分享",
+      "sharing": [
+        { "quote": "我終於有了語言和工具，面對以前讓我不知所措的時刻。（草稿）", "who": "小學老師" },
+        { "quote": "教員室平靜了，學生也感受得到。（草稿）", "who": "學校校長" }
+      ]
+    },
+    "pastTag": "已舉行",
+    "upcomingTag": "即將舉行"
+  },
+  "en": {
+    "title": "About",
+    "h": "Two organisations, one seed",
+    "lead": "Brainy In-Charge grew from a simple belief: when teachers are supported, children flourish.",
+    "story": {
+      "h": "How Neuroseed began",
+      "p": "Brown Rice and Ecorazón each worked for years with children, families and schools. Together they planted Neuroseed. Open each folder to read more.",
+      "folders": [
+        { "h": "Brown Rice", "p": "[One or two lines about Brown Rice and its work with schools.]" },
+        { "h": "Ecorazón", "p": "[One or two lines about Ecorazón and its approach to wellbeing.]" }
+      ],
+      "merged": { "h": "Neuroseed", "p": "The two teams joined forces to bring brain-based, heart-led training into every school that wants it." }
+    },
+    "milestone": {
+      "h": "Ten months of building",
+      "items": [
+        { "m": "Month 1", "t": "Needs review" }, { "m": "Month 2", "t": "Co-design" },
+        { "m": "Month 3", "t": "Trainer preparation" }, { "m": "Month 4", "t": "Teacher onboarding" },
+        { "m": "Month 5", "t": "First workshops" }, { "m": "Month 6", "t": "Classroom coaching" },
+        { "m": "Month 7", "t": "Mid-point review" }, { "m": "Month 8", "t": "Research data" },
+        { "m": "Month 9", "t": "Refinement" }, { "m": "Month 10", "t": "Data release" }
+      ],
+      "note": "Draft stages. Confirm the real milestones with the team."
+    },
+    "speeches": {
+      "h": "Words from our leaders",
+      "items": [
+        { "name": "Bonnie", "role": "[Title]", "icon": "🌼", "img": "", "msg": "[Draft message about why teacher wellbeing matters. Replace with Bonnie’s own words.]" },
+        { "name": "Karis", "role": "[Title]", "icon": "🌟", "img": "", "msg": "[Draft main message about the programme’s vision. Replace with Karis’s own words.]" },
+        { "name": "Patrick", "role": "[Title]", "icon": "🍀", "img": "", "msg": "[Draft message about evidence and impact. Replace with Patrick’s own words.]" }
+      ]
+    },
+    "team": {
+      "h": "Train-the-Trainer, and join us",
+      "p": "Our Train-the-Trainer programme prepares teachers to lead the learning in their own schools. Meet the team, read about past events and join the next one.",
+      "past": [
+        { "title": "Past event one", "date": "[Date]", "label": "Read recap", "href": "#" },
+        { "title": "Past event two", "date": "[Date]", "label": "Read recap", "href": "#" }
+      ],
+      "upcoming": [
+        { "title": "Upcoming event", "date": "[Date] · [Venue]", "label": "Register", "href": "#" }
+      ],
+      "sharingH": "Participants’ sharing",
+      "sharing": [
+        { "quote": "I finally have words and tools for the moments that used to overwhelm me. (draft)", "who": "Primary school teacher" },
+        { "quote": "Our staff room feels calmer, and our students can feel it. (draft)", "who": "School principal" }
+      ]
+    },
+    "pastTag": "Past",
+    "upcomingTag": "Upcoming"
+  }
+}

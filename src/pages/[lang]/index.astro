@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Photo from '../../components/Photo.astro';
+import PhotoSwitcher from '../../components/PhotoSwitcher.astro';
+import Carousel from '../../components/Carousel.astro';
+import { t, type Lang } from '../../i18n/utils';
+import home from '../../content/pages/home.json';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+const lang = Astro.params.lang as Lang;
+const c = home[lang];
+---
+<Layout lang={lang} title={t(lang, 'nav.home')} description={c.lead}>
+  <section class="container hero">
+    <div>
+      <span class="pill">{c.badge}</span>
+      <h1>{c.title}<br /><span class="accent typewriter" data-words={JSON.stringify(c.accents)}>{c.accents[0]}</span></h1>
+      <p class="sub">{c.sub}</p>
+      <p class="lead">{c.lead}</p>
+      <div class="actions">
+        <a class="btn btn--primary" href={`/${lang}/book-a-training/`}>{t(lang, 'cta.book')}</a>
+        <a class="btn" href="#video">▶ {c.watch}</a>
+      </div>
+      <p class="proof muted">{c.proof}</p>
+    </div>
+    <div class="tiles">
+      {c.tiles.map((x) => <Photo label={x.label} color={x.color} icon={x.icon} src={x.img} />)}
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="container two">
+      <div class="card bubble">
+        <h2>{c.intro.h}</h2>
+        <p class="muted">{c.intro.p1}</p>
+        <p class="muted">{c.intro.p2}</p>
+        <a class="btn" href={`/${lang}/about/`}>{c.intro.link}</a>
+      </div>
+      <PhotoSwitcher slides={c.intro.slides} />
+    </div>
+  </section>
+
+  <section class="section container" id="video">
+    <h2>{c.video.h}</h2>
+    <div class="video">
+      {c.video.src ? (
+        <video controls playsinline preload="metadata" poster={c.video.poster || undefined} src={c.video.src}></video>
+      ) : (
+        <div class="video-ph"><span class="play" aria-hidden="true">▶</span><small>{c.video.note}</small></div>
+      )}
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="container">
+      <h2>{c.takeaways.h}</h2>
+      <Carousel label={c.takeaways.h}>
+        {c.takeaways.items.map((x, i) => (
+          <div class="carousel__item card take">
+            <span class="num">{i + 1}</span>
+            <h3>{x.h}</h3>
+            <p class="muted">{x.p}</p>
+          </div>
+        ))}
+      </Carousel>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="band">
+      <h2>{c.band}</h2>
+      <a class="btn btn--sun" href={`/${lang}/book-a-training/`}>{t(lang, 'cta.book')}</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 3rem; align-items: center; padding-block: 4.5rem 4rem; }
+  h1 { margin: 1.2rem 0 0.8rem; }
+  .sub { font-weight: 700; color: var(--muted); margin-bottom: 0.8rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin: 1.8rem 0 1.4rem; }
+  .proof { font-size: var(--fs-sm); }
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .tiles > :global(*:nth-child(even)) { transform: translateY(1.6rem); }
+  .typewriter::after { content: '|'; margin-left: 2px; color: var(--sun); animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  .bubble { padding: 2.8rem; border-radius: var(--radius-lg); }
+  .bubble h2 { margin-bottom: 1rem; }
+  .video { margin-top: 1.6rem; }
+  video, .video-ph { width: 100%; aspect-ratio: 16 / 9; border-radius: var(--radius-lg); background: #1F4A3A; }
+  .video-ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; color: #fff; text-align: center; padding: 1.5rem; }
+  .play { width: 84px; height: 84px; border-radius: 50%; background: var(--sun); color: #1B1B18; display: grid; place-items: center; font-size: 1.8rem; }
+  .take { padding: 1.8rem; }
+  .num { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--sun); color: #1B1B18; font-weight: 700; margin-bottom: 1rem; }
+  .take h3 { margin-bottom: 0.5rem; }
+  .band { background: var(--brand); color: var(--on-brand); border-radius: var(--radius-lg); padding: 4.5rem 2rem; text-align: center; margin-block: 1.5rem 4.5rem; }
+  .band h2 { max-width: 20ch; margin: 0 auto 1.6rem; }
+  @media (max-width: 860px) { .hero, .two { grid-template-columns: 1fr; } .tiles > :global(*:nth-child(even)) { transform: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var el = document.querySelector('.typewriter');
+    if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var words = JSON.parse(el.dataset.words), w = 0, n = 0, dir = 1;
+    setInterval(function () {
+      var word = words[w];
+      n += dir;
+      el.textContent = word.slice(0, n);
+      if (n >= word.length + 8) dir = -1;
+      if (n <= 0) { dir = 1; w = (w + 1) % words.length; }
+    }, 90);
+  })();
+</script>

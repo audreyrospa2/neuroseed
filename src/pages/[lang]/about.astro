@@ -1,0 +1,97 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Timeline from '../../components/Timeline.astro';
+import PersonBlock from '../../components/PersonBlock.astro';
+import EventCard from '../../components/EventCard.astro';
+import { t, type Lang } from '../../i18n/utils';
+import about from '../../content/pages/about.json';
+import home from '../../content/pages/home.json';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+const lang = Astro.params.lang as Lang;
+const c = about[lang];
+const band = home[lang].band;
+const colors = ['#B9A5E8', '#E9B949', '#8FD0B0'];
+---
+<Layout lang={lang} title={c.title} description={c.lead}>
+  <section class="container page-head">
+    <span class="pill">{c.title}</span>
+    <h1>{c.h}</h1>
+    <p class="lead">{c.lead}</p>
+  </section>
+
+  <section class="section container">
+    <h2>{c.story.h}</h2>
+    <p class="lead">{c.story.p}</p>
+    <div class="folders">
+      {c.story.folders.map((f) => (
+        <details class="card"><summary>📁 {f.h}</summary><p class="muted">{f.p}</p></details>
+      ))}
+      <details class="card merged"><summary>✨ {c.story.merged.h}</summary><p>{c.story.merged.p}</p></details>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="container">
+      <h2>{c.milestone.h}</h2>
+      <Timeline items={c.milestone.items} />
+      <p class="muted note">{c.milestone.note}</p>
+    </div>
+  </section>
+
+  <section class="section container">
+    <h2>{c.speeches.h}</h2>
+    <div class="speakers">
+      {[0, 1, 2].map((i) => {
+        const p = c.speeches.items[i];
+        return <PersonBlock name={p.name} role={p.role} msg={p.msg} icon={p.icon} img={p.img} color={colors[i]} featured={i === 1} />;
+      })}
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="container">
+      <h2>{c.team.h}</h2>
+      <p class="lead">{c.team.p}</p>
+      <div class="events">
+        {c.team.past.map((e) => <EventCard status="past" tag={c.pastTag} {...e} />)}
+        {c.team.upcoming.map((e) => <EventCard status="upcoming" tag={c.upcomingTag} {...e} />)}
+      </div>
+      <h3 class="sub-h">{c.team.sharingH}</h3>
+      <div class="events">
+        {c.team.sharing.map((q) => (
+          <figure class="card quote"><blockquote>{q.quote}</blockquote><figcaption class="muted">{q.who}</figcaption></figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="band">
+      <h2>{band}</h2>
+      <a class="btn btn--sun" href={`/${lang}/book-a-training/`}>{t(lang, 'cta.book')}</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-head { padding-block: 4rem 1rem; }
+  .page-head h1 { margin: 1rem 0; }
+  .folders { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.8rem; align-items: flex-start; }
+  details { flex: 1 1 220px; }
+  summary { cursor: pointer; font: 600 1.35rem var(--font-display); min-height: 44px; display: flex; align-items: center; }
+  details p { margin: 0.6rem 0 0; }
+  .merged { background: var(--sun); border-color: var(--sun); color: #1B1B18; }
+  .note { font-size: var(--fs-sm); margin-top: 0.8rem; }
+  .speakers { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 1.4rem; align-items: center; margin-top: 2rem; }
+  .events { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin-top: 1.8rem; }
+  .sub-h { margin-top: 3.2rem; font-size: 1.8rem; }
+  .quote { margin: 0; }
+  blockquote { margin: 0 0 0.8rem; color: var(--muted); }
+  figcaption { font-weight: 700; font-size: var(--fs-sm); }
+  .band { background: var(--brand); color: var(--on-brand); border-radius: var(--radius-lg); padding: 4.5rem 2rem; text-align: center; margin-block: 1.5rem 4.5rem; }
+  .band h2 { max-width: 20ch; margin: 0 auto 1.6rem; }
+  @media (max-width: 860px) { .speakers { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,19 @@
+---
+// Shows an <img> when src is set, otherwise a labelled colour placeholder.
+interface Props { label: string; color?: string; icon?: string; src?: string; ratio?: string; round?: boolean }
+const { label, color = '#C9CEF2', icon = '', src = '', ratio = '1 / 1.1', round = false } = Astro.props;
+---
+{src ? (
+  <img class="photo" src={src} alt={label} loading="lazy" style={`aspect-ratio:${ratio}`} />
+) : (
+  <div class="photo ph" role="img" aria-label={label} style={`background:${color};aspect-ratio:${ratio}`}>
+    <span class="ico" aria-hidden="true">{icon}</span>
+    <small>{label}</small>
+  </div>
+)}
+<style>
+  .photo { width: 100%; border-radius: var(--radius-md); object-fit: cover; display: block; }
+  .ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: #1B1B18; text-align: center; padding: 0.8rem; }
+  .ico { font-size: 3.2rem; line-height: 1; }
+  small { font-size: 0.8rem; }
+</style>
