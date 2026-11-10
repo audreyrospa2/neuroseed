@@ -1,28 +1,44 @@
-name: Deploy
+name: Build and Deploy to Scicube
+
+# Runs on every push to main, including commits made by the CMS later on.
 on:
   push:
     branches: [main]
-  workflow_dispatch:
+  workflow_dispatch: {}   # lets you also run it manually from the Actions tab
+
+# If two pushes arrive close together, finish one deploy before starting the next.
 concurrency:
   group: deploy
   cancel-in-progress: false
+
 permissions:
   contents: read
+
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      - uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Deploy over FTP to Scicube
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: /domains/neuroseed.ecorazon.co/public_html/
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+          dangerous-clean-slate: false
