@@ -1,27 +1,32 @@
-/* Brainy design tokens: colours, type, spacing, radius. Change values here only. */
+/* Brainy design tokens, matched to the Neuroseed x Brown Rice brochures. Change values here only. */
 :root {
   /* Colour */
-  --bg: #F3EEE3;
+  --bg: #F7F6FA;
   --surface: #FFFFFF;
-  --ink: #1B1B18;
-  --muted: #57534A;
-  --line: #E0D8C8;
-  --brand: #1F4A3A;      /* buttons, links, key accents */
+  --ink: #2B2A33;
+  --muted: #5B5967;
+  --line: #E1DEEC;
+  --brand: #6B62B5;       /* purple panels, buttons, links */
   --on-brand: #FFFFFF;
-  --sun: #E9B949;        /* highlight, secondary button */
-  --coral: #E4572E;
-  --lilac: #B9A5E8;
-  --mint: #8FD0B0;
+  --coral: #C9463F;       /* tag strips, stat bubbles */
+  --on-coral: #FFFFFF;
+  --sky: #A8D1E7;         /* method + contact bands */
+  --on-sky: #1F2A44;
+  --leaf: #2A7D4F;        /* quote bubbles */
+  --on-leaf: #FFFFFF;
+  --rose: #F3C9C9;        /* step 3 bubble */
+  --sun: #F2C14E;         /* highlight, secondary button */
 
-  /* Type */
-  --font-display: 'Fraunces', 'Noto Sans TC', Georgia, serif;
+  /* Type: serif Ming-style headings like the brochures, clean sans body */
+  --font-display: 'Noto Serif TC', 'Source Serif 4', Georgia, serif;
   --font-body: 'DM Sans', 'Noto Sans TC', system-ui, sans-serif;
   --fs-sm: 0.9375rem;
   --fs-base: 1.0625rem;
   --fs-lg: 1.25rem;
-  --fs-h3: clamp(1.375rem, 2vw, 1.625rem);
-  --fs-h2: clamp(1.875rem, 4vw, 2.875rem);
-  --fs-h1: clamp(2.5rem, 5.4vw, 4.25rem);
+  --fs-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --fs-h2: clamp(1.75rem, 3.6vw, 2.625rem);
+  --fs-h1: clamp(2.25rem, 5vw, 4rem);
+  --fs-stat: clamp(3rem, 7vw, 5rem);
 
   /* Space and shape */
   --space-1: 0.5rem;
@@ -35,25 +40,22 @@
   --radius-pill: 999px;
   --container: 1180px;
   --header-h: 68px;
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --bg: #14150F;
-    --surface: #1F211A;
-    --ink: #F3EEE3;
-    --muted: #B9B4A5;
-    --line: #33362C;
-    --brand: #7FC8A2;
-    --on-brand: #10231B;
-  }
-}
 :root[data-theme='dark'] {
-  --bg: #14150F;
-  --surface: #1F211A;
-  --ink: #F3EEE3;
-  --muted: #B9B4A5;
-  --line: #33362C;
-  --brand: #7FC8A2;
-  --on-brand: #10231B;
+  color-scheme: dark;
+  --bg: #14131B;
+  --surface: #1E1D28;
+  --ink: #F1EFF8;
+  --muted: #B7B4C6;
+  --line: #34324A;
+  --brand: #A79FEA;
+  --on-brand: #17142E;
+  --coral: #E4716A;
+  --on-coral: #2A0E0C;
+  --sky: #2B4A5E;
+  --on-sky: #EAF4FA;
+  --leaf: #5DBB8A;
+  --on-leaf: #0C2418;
 }

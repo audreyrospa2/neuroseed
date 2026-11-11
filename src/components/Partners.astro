@@ -1,0 +1,52 @@
+---
+import type { Lang } from '../i18n/utils';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+
+// Bilingual labels, as on the brochure
+const groups = [
+  {
+    zh: '聯合呈獻', en: 'Jointly presented by',
+    logos: [
+      { src: '/images/neuroseed-logo.png', alt: 'Neuroseed 腦力試', h: 72 },
+      { src: '/images/brown-rice-logo.png', alt: 'Brown Rice 活米', h: 44 },
+      { src: '/images/ecorazon-logo.png', alt: 'Ecorazón 自然敘語', h: 52 }
+    ]
+  },
+  {
+    zh: '研究機構', en: 'Research institute',
+    logos: [
+      { src: '/images/hk-poly-logo.png', alt: 'The Hong Kong Polytechnic University 香港理工大學', h: 56 },
+      { src: '/images/school-of-nursing-logo.png', alt: 'PolyU School of Nursing 護理學院', h: 56 }
+    ]
+  }
+];
+---
+<section class="partners" aria-label={lang === 'zh' ? '合作夥伴' : 'Partners'}>
+  <div class="container partners__grid">
+    {groups.map((g) => (
+      <div class="group">
+        <p class="label"><strong>{g.zh}</strong><span class="bar" aria-hidden="true"></span><span>{g.en}</span></p>
+        <ul class="logos">
+          {g.logos.map((l) => (
+            <li><img src={l.src} alt={l.alt} height={l.h} loading="lazy" style={`height:${l.h}px`} /></li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .partners { background: var(--surface); border-top: 1px solid var(--line); padding-block: 3rem; }
+  .partners__grid { display: grid; grid-template-columns: 3fr 2fr; gap: 3rem; align-items: start; }
+  .group { display: flex; flex-direction: column; align-items: center; gap: 1.6rem; }
+  .label { display: flex; align-items: center; gap: 0.9rem; margin: 0; color: var(--brand); font-size: var(--fs-sm); letter-spacing: 0.04em; }
+  .label strong { font: 700 1.05rem var(--font-body); letter-spacing: 0.18em; }
+  .bar { width: 1px; height: 1.2em; background: currentColor; opacity: 0.6; }
+  .logos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.4rem 2.6rem; }
+  .logos img { width: auto; max-width: 100%; object-fit: contain; }
+  @media (max-width: 860px) {
+    .partners__grid { grid-template-columns: 1fr; gap: 2.6rem; }
+  }
+</style>
