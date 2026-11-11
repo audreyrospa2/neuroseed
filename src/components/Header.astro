@@ -6,53 +6,52 @@ const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.p
 const isActive = (p: string) => (p === 'home' ? path === `/${lang}/` : path.startsWith(pagePath(lang, p)));
 ---
 <header class="site-header">
-  <div class="container bar">
-    <a class="brand" href={`/${lang}/`} aria-label={t(lang, 'site.name')}>
-      <span class="mark" aria-hidden="true">B</span>
-      <span class="name">{t(lang, 'site.name')}</span>
-    </a>
+<div class="container bar">
+<a class="brand" href={`/${lang}/`} aria-label={t(lang, 'site.name')}>
+<img src="/images/brainy-logo.png" alt="" height="44" />
+</a>
 
-    <button class="menu-btn" aria-expanded="false" aria-controls="main-nav">{t(lang, 'ui.menu')}</button>
+<button class="menu-btn" aria-expanded="false" aria-controls="main-nav">{t(lang, 'ui.menu')}</button>
 
-    <nav id="main-nav" aria-label="Main">
-      <ul>
-        {pages.map((p) => (
-          <li><a href={pagePath(lang, p)} aria-current={isActive(p) ? 'page' : undefined}>{t(lang, `nav.${p}`)}</a></li>
+<nav id="main-nav" aria-label="Main">
+<ul>
+{pages.map((p) => (
+<li><a href={pagePath(lang, p)} aria-current={isActive(p) ? 'page' : undefined}>{t(lang, `nav.${p}`)}</a></li>
         ))}
-      </ul>
-      <a class="btn btn--primary btn--sm" href={`/${lang}/book-a-training/`}>{t(lang, 'cta.book')}</a>
-      <a class="btn btn--sm lang" href={switchLangPath(path, lang)} hreflang={lang === 'zh' ? 'en' : 'zh-Hant'}>{t(lang, 'ui.switch')}</a>
-    </nav>
-  </div>
+</ul>
+<a class="btn btn--primary btn--sm" href={`/${lang}/book-a-training/`}>{t(lang, 'cta.book')}</a>
+<a class="btn btn--sm lang" href={switchLangPath(path, lang)} hreflang={lang === 'zh' ? 'en' : 'zh-Hant'}>{t(lang, 'ui.switch')}</a>
+</nav>
+</div>
 </header>
 
 <style>
-  .site-header { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1px solid var(--line); }
-  .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--header-h); }
-  .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; }
-  .mark { width: 38px; height: 38px; border-radius: 10px; background: var(--brand); color: var(--on-brand); display: grid; place-items: center; font-size: 1.1rem; }
-  nav { display: flex; align-items: center; gap: 1.6rem; }
-  ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
-  nav ul a { text-decoration: none; color: var(--muted); font-size: var(--fs-sm); padding: 0.6rem 0; border-bottom: 2px solid transparent; }
-  nav ul a:hover, nav ul a[aria-current='page'] { color: var(--ink); border-bottom-color: var(--sun); }
-  .menu-btn { display: none; }
-  @media (max-width: 860px) {
-    .menu-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.1rem; border: 1px solid var(--line); border-radius: var(--radius-pill); background: var(--surface); color: var(--ink); font: 500 var(--fs-sm) var(--font-body); cursor: pointer; }
-    nav { display: none; position: absolute; top: var(--header-h); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 1rem; padding: 1.5rem; background: var(--bg); border-bottom: 1px solid var(--line); }
-    nav.open { display: flex; }
-    ul { flex-direction: column; gap: 0.2rem; }
-    nav ul a { display: block; padding: 0.8rem 0; font-size: var(--fs-base); }
+.site-header { position: sticky; top: 0; z-index: 50; background: var(--surface); border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--header-h); }
+.brand { display: flex; align-items: center; text-decoration: none; }
+.brand img { width: auto; height: 44px; }
+nav { display: flex; align-items: center; gap: 1.6rem; }
+ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
+nav ul a { text-decoration: none; color: var(--muted); font-size: var(--fs-sm); padding: 0.6rem 0; border-bottom: 2px solid transparent; }
+nav ul a:hover, nav ul a[aria-current='page'] { color: var(--ink); border-bottom-color: var(--coral); }
+.menu-btn { display: none; }
+@media (max-width: 860px) {
+.menu-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.1rem; border: 1px solid var(--line); border-radius: var(--radius-pill); background: var(--surface); color: var(--ink); font: 500 var(--fs-sm) var(--font-body); cursor: pointer; }
+nav { display: none; position: absolute; top: var(--header-h); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 1rem; padding: 1.5rem; background: var(--surface); border-bottom: 1px solid var(--line); }
+nav.open { display: flex; }
+ul { flex-direction: column; gap: 0.2rem; }
+nav ul a { display: block; padding: 0.8rem 0; font-size: var(--fs-base); }
   }
 </style>
 
 <script is:inline>
   (function () {
-    var btn = document.querySelector('.menu-btn');
-    var nav = document.getElementById('main-nav');
-    if (!btn || !nav) return;
-    btn.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+var btn = document.querySelector('.menu-btn');
+var nav = document.getElementById('main-nav');
+if (!btn || !nav) return;
+btn.addEventListener('click', function () {
+var open = nav.classList.toggle('open');
+btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   })();
 </script>

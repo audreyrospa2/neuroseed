@@ -1,80 +1,192 @@
 {
   "zh": {
-    "badge": "香港校本教師培訓",
-    "title": "懂腦的老師，",
-    "accents": ["讓課室茁壯", "讓課室平靜", "改變學生人生"],
-    "sub": "腦細話事 · 校本教師培訓計劃",
-    "lead": "一個實用、以腦科學與創傷知情為本的培訓計劃，陪伴學校團隊在每間課室裡，一步一步支持每位孩子學習。",
+    "badge": "到校教師培訓計劃",
+    "title": "讓老師的理解，",
+    "accents": [
+      "成為孩子的力量",
+      "親身體驗",
+      "練習回應",
+      "帶回校園"
+    ],
+    "sub": "孩子需要支持，老師也需要方法",
+    "lead": "支持教育工作者，在有限資源下成為學生的一雙手。",
     "learn": "了解腦細話事",
     "watch": "觀看影片",
-    "proof": "附有香港理工大學護理學院的研究數據",
+    "proof": "100+ 教育工作者參與，97.7% 對工作坊感到滿意。研究機構：香港理工大學",
     "tiles": [
-      { "label": "老師工作坊", "color": "#E4572E", "icon": "🧠", "img": "" },
-      { "label": "課堂時刻", "color": "#B9A5E8", "icon": "📚", "img": "" },
-      { "label": "團隊學習", "color": "#E9B949", "icon": "🤝", "img": "" },
-      { "label": "學生笑容", "color": "#8FD0B0", "icon": "🌱", "img": "" }
+      {
+        "label": "老師工作坊",
+        "color": "#6B62B5",
+        "icon": "🧠",
+        "img": "/images/7.jpg"
+      },
+      {
+        "label": "搭建大腦",
+        "color": "#C9463F",
+        "icon": "🧩",
+        "img": "/images/2.jpg"
+      },
+      {
+        "label": "團隊學習",
+        "color": "#A8D1E7",
+        "icon": "🤝",
+        "img": "/images/9.jpg"
+      },
+      {
+        "label": "練習回應",
+        "color": "#2A7D4F",
+        "icon": "💬",
+        "img": "/images/4.jpg"
+      }
     ],
     "intro": {
-      "h": "培訓，留在課室裡",
-      "p1": "我們走進學校，而不是把老師請出校門。導師從老師的真實日常出發，圍繞課堂上真正發生的時刻設計培訓。",
-      "p2": "透過腦科學與創傷知情的實踐，老師學會讀懂行為、在壓力下保持穩定，並讓每位孩子感到安全，才能安心學習。",
+      "h": "培訓，從親身體驗開始",
+      "p1": "由引導師帶領反思與交流，從角色體驗與合作搭建，讓抽象概念變成親身體驗。",
+      "p2": "工作坊經教育工作者反覆試玩，並按真實課室情況優化；完成後以多次評估追蹤變化。",
       "link": "閱讀我們的故事",
       "slides": [
-        { "label": "老師工作坊", "color": "#B9A5E8", "icon": "🧠", "img": "" },
-        { "label": "平靜的課室", "color": "#8FD0B0", "icon": "🌿", "img": "" },
-        { "label": "老師互相分享", "color": "#E9B949", "icon": "💬", "img": "" }
+        {
+          "label": "老師工作坊",
+          "color": "#6B62B5",
+          "icon": "🧠",
+          "img": "/images/1.jpg"
+        },
+        {
+          "label": "合作搭建",
+          "color": "#A8D1E7",
+          "icon": "🧩",
+          "img": "/images/5.jpg"
+        },
+        {
+          "label": "老師互相分享",
+          "color": "#2A7D4F",
+          "icon": "💬",
+          "img": "/images/10.jpg"
+        }
       ]
     },
-    "video": { "h": "計劃實況", "src": "", "poster": "", "note": "影片位置：請在 CMS 填入影片網址（video.src）。" },
+    "video": {
+      "h": "計劃實況",
+      "src": "",
+      "poster": "/images/6.jpg",
+      "note": "影片位置：請在 CMS 填入影片網址（video.src）。"
+    },
     "takeaways": {
-      "h": "計劃重點",
+      "h": "老師 4 份教學收穫",
       "items": [
-        { "h": "Lorem ipsum dolor", "p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore." },
-        { "h": "Sit amet consectetur", "p": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo." },
-        { "h": "Adipiscing elit", "p": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla." },
-        { "h": "Sed do eiusmod", "p": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit." },
-        { "h": "Tempor incididunt", "p": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia." }
+        {
+          "h": "看見行為背後需要",
+          "p": "學會從行為出發，讀懂孩子未說出口的需要。"
+        },
+        {
+          "h": "練習具體支持說話",
+          "p": "在工作坊中反覆演練，找到能讓學生感到被理解的回應。"
+        },
+        {
+          "h": "建立同事共同語言",
+          "p": "全校團隊用同一套說法談情緒與支援，協作更順暢。"
+        },
+        {
+          "h": "實踐指南延續反思",
+          "p": "把工作坊所學帶回校園，並透過指南持續反思。"
+        }
       ]
     },
-    "band": "投資老師，改變學生人生！"
+    "band": "更理解孩子，更有信心支援"
   },
   "en": {
-    "badge": "School-based teacher training · Hong Kong",
-    "title": "Teachers who understand brains,",
-    "accents": ["grow classrooms", "calm classrooms", "change lives"],
-    "sub": "Brainy In-Charge · School-Based Teacher Training Programme",
-    "lead": "A hands-on, trauma-informed programme that gives school teams practical tools to support every child’s learning, one classroom at a time.",
+    "badge": "On-Site Teacher Training Programme",
+    "title": "Let teachers’ understanding",
+    "accents": [
+      "become children’s strength",
+      "Experience it",
+      "Practise it",
+      "Apply it"
+    ],
+    "sub": "Children need support. Teachers need tools too.",
+    "lead": "Support teachers to become students’ “supporting hand” under limited resources.",
     "learn": "Learn about the programme",
     "watch": "Watch the video",
-    "proof": "Backed by research data from PolyU Nursing",
+    "proof": "100+ educators participated, 97.7% satisfied with the workshop. Research institute: The Hong Kong Polytechnic University",
     "tiles": [
-      { "label": "Teacher workshop", "color": "#E4572E", "icon": "🧠", "img": "" },
-      { "label": "Classroom moment", "color": "#B9A5E8", "icon": "📚", "img": "" },
-      { "label": "Team learning", "color": "#E9B949", "icon": "🤝", "img": "" },
-      { "label": "Student smiles", "color": "#8FD0B0", "icon": "🌱", "img": "" }
+      {
+        "label": "Teacher workshop",
+        "color": "#6B62B5",
+        "icon": "🧠",
+        "img": "/images/7.jpg"
+      },
+      {
+        "label": "Build the brain",
+        "color": "#C9463F",
+        "icon": "🧩",
+        "img": "/images/2.jpg"
+      },
+      {
+        "label": "Team learning",
+        "color": "#A8D1E7",
+        "icon": "🤝",
+        "img": "/images/9.jpg"
+      },
+      {
+        "label": "Practise responses",
+        "color": "#2A7D4F",
+        "icon": "💬",
+        "img": "/images/4.jpg"
+      }
     ],
     "intro": {
-      "h": "Training that stays in the classroom",
-      "p1": "We work inside your school, not outside it. Our trainers meet your teachers where they are and build skills around the real moments of your school day.",
-      "p2": "Through brain-based and trauma-informed practice, teachers learn to read behaviour, stay steady under pressure and help every child feel safe enough to learn.",
+      "h": "Training that starts with lived experience",
+      "p1": "Facilitator-guided reflection and exchange, with role experience and collaborative building, turn abstract concepts into lived experience.",
+      "p2": "The workshop was repeatedly play-tested with educators and refined for real classrooms, then tracked through multiple assessments.",
       "link": "Read our story",
       "slides": [
-        { "label": "Teachers in a workshop", "color": "#B9A5E8", "icon": "🧠", "img": "" },
-        { "label": "A calm classroom", "color": "#8FD0B0", "icon": "🌿", "img": "" },
-        { "label": "Teachers sharing ideas", "color": "#E9B949", "icon": "💬", "img": "" }
+        {
+          "label": "Teachers in a workshop",
+          "color": "#6B62B5",
+          "icon": "🧠",
+          "img": "/images/1.jpg"
+        },
+        {
+          "label": "Building together",
+          "color": "#A8D1E7",
+          "icon": "🧩",
+          "img": "/images/5.jpg"
+        },
+        {
+          "label": "Teachers sharing ideas",
+          "color": "#2A7D4F",
+          "icon": "💬",
+          "img": "/images/10.jpg"
+        }
       ]
     },
-    "video": { "h": "See the programme in action", "src": "", "poster": "", "note": "Video placeholder: add the video URL in the CMS (video.src)." },
+    "video": {
+      "h": "See the programme in action",
+      "src": "",
+      "poster": "/images/6.jpg",
+      "note": "Video placeholder: add the video URL in the CMS (video.src)."
+    },
     "takeaways": {
-      "h": "Programme key takeaways",
+      "h": "Teacher’s 4 key takeaways",
       "items": [
-        { "h": "Lorem ipsum dolor", "p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore." },
-        { "h": "Sit amet consectetur", "p": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo." },
-        { "h": "Adipiscing elit", "p": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla." },
-        { "h": "Sed do eiusmod", "p": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit." },
-        { "h": "Tempor incididunt", "p": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia." }
+        {
+          "h": "See needs behind behaviours",
+          "p": "Learn to start from behaviour and read the needs a child hasn’t put into words."
+        },
+        {
+          "h": "Practise supportive responses",
+          "p": "Rehearse in the workshop to find replies that help a student feel understood."
+        },
+        {
+          "h": "Build colleagues’ shared language",
+          "p": "A whole-school team that talks about emotions and support in the same way works together more easily."
+        },
+        {
+          "h": "Continue reflections",
+          "p": "Take what you practised back to campus and keep reflecting with the practice guide."
+        }
       ]
     },
-    "band": "Invest in teachers to change students’ lives!"
+    "band": "Better understanding of children. Greater confidence in providing support."
   }
 }

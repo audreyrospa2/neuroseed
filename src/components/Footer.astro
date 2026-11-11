@@ -4,34 +4,35 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 ---
 <footer class="site-footer">
-  <div class="container grid">
-    <div class="about">
-      <div class="brand"><span class="mark" aria-hidden="true">B</span>{t(lang, 'site.name')}</div>
-      <p class="muted">{t(lang, 'footer.about')}</p>
-    </div>
-    <div>
-      <h3>{t(lang, 'footer.pages')}</h3>
-      <ul>
-        {pages.map((p) => <li><a href={pagePath(lang, p)}>{t(lang, `nav.${p}`)}</a></li>)}
-      </ul>
-    </div>
-    <div>
-      <h3>{t(lang, 'footer.contact')}</h3>
-      <ul>
-        <li>{t(lang, 'footer.email')}</li>
-        <li>{t(lang, 'footer.whatsapp')}</li>
-      </ul>
-    </div>
-  </div>
+<div class="container grid">
+<div class="about">
+<img class="logo" src="/images/brainy-logo.png" alt={t(lang, 'site.name')} height="48" />
+<p class="muted">{t(lang, 'footer.about')}</p>
+<img class="logo logo--partner" src="/images/neuroseed-logo.png" alt="Neuroseed 腦力試" height="36" />
+</div>
+<div>
+<h3>{t(lang, 'footer.pages')}</h3>
+<ul>
+{pages.map((p) => <li><a href={pagePath(lang, p)}>{t(lang, `nav.${p}`)}</a></li>)}
+</ul>
+</div>
+<div>
+<h3>{t(lang, 'footer.contact')}</h3>
+<ul>
+<li>{t(lang, 'footer.email')}</li>
+<li>{t(lang, 'footer.whatsapp')}</li>
+</ul>
+</div>
+</div>
 </footer>
 
 <style>
-  .site-footer { border-top: 1px solid var(--line); padding-block: var(--space-4); font-size: var(--fs-sm); }
-  .grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--space-4); }
-  .brand { display: flex; align-items: center; gap: 0.7rem; font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.8rem; }
-  .mark { width: 34px; height: 34px; border-radius: 10px; background: var(--brand); color: var(--on-brand); display: grid; place-items: center; }
-  h3 { font-size: 1.05rem; margin-bottom: 0.8rem; }
-  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; color: var(--muted); }
-  a { text-decoration: none; } a:hover { color: var(--ink); text-decoration: underline; }
-  @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+.site-footer { border-top: 4px solid var(--brand); padding-block: var(--space-4); font-size: var(--fs-sm); }
+.grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--space-4); }
+.logo { width: auto; height: 48px; margin-bottom: 0.8rem; }
+.logo--partner { height: 36px; margin: 0.4rem 0 0; }
+h3 { font-size: 1.05rem; margin-bottom: 0.8rem; color: var(--brand); }
+ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; color: var(--muted); }
+a { text-decoration: none; } a:hover { color: var(--ink); text-decoration: underline; }
+@media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
 </style>

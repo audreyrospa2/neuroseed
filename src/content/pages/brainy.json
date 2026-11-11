@@ -1,0 +1,126 @@
+{
+  "zh": {
+    "pain": {
+      "bubble": "我不想上學！",
+      "h": "孩子需要支持，老師也需要方法",
+      "tags": ["沒有空間傾談？", "難以評估學生情緒？", "欠缺處理情緒技巧？"],
+      "q": "當學生表達心理困擾，我們如何讓他感到被理解？"
+    },
+    "method": {
+      "h": "從角色體驗與合作搭建，讓抽象概念變成親身體驗",
+      "brand": "從腦科學出發的心理健康覺察之旅",
+      "note": "培訓特色｜由引導師帶領反思與交流",
+      "steps": [
+        { "h": "扮演角色", "color": "#6B62B5" },
+        { "h": "搭建大腦", "color": "#C9463F" },
+        { "h": "經歷事件", "color": "#F3C9C9", "dark": true },
+        { "h": "練習回應", "color": "#2A7D4F" }
+      ]
+    },
+    "voices": {
+      "h": "走進兩間特殊學校，與全校教師齊體驗！",
+      "sub": "經課堂場景反覆試玩，並按實際情況優化",
+      "items": [
+        {
+          "school": "明愛樂恩學校",
+          "who": "校長 Sharon Cheung",
+          "quote": "每個學生都不同，根據他們的需要提供幫助，而非揠苗助長",
+          "count": "30+",
+          "label": "校長及教師參與"
+        },
+        {
+          "school": "香港西區扶輪社匡智晨輝學校",
+          "who": "校長 Dr. Flora Yau",
+          "quote": "只要我們能幫助孩子連結大腦中的神經連結，他們便能成長得更快樂",
+          "count": "60+",
+          "label": "校長及教師參與"
+        }
+      ],
+      "foot": "從香港中小學出發，持續檢視培訓成效"
+    },
+    "impact": {
+      "h": "早期 100+ 人先導研究，以多次評估檢視變化",
+      "sub": "完成評估者自評回饋",
+      "stats": [
+        { "n": "100%", "l": "更理解學生精神健康需要" },
+        { "n": "97.7%", "l": "對工作坊感到滿意" },
+        { "n": "100+", "l": "教育工作者參與" },
+        { "n": "2", "l": "個月跨時間追蹤" },
+        { "n": "4", "l": "次工作坊前後評估" }
+      ],
+      "close": "更理解孩子，更有信心支援"
+    },
+    "contact": {
+      "h": "讓老師的理解，成為孩子的力量",
+      "steps": ["親身體驗", "練習回應", "帶回校園"],
+      "ask": "提供培訓日期與教師人數，商議到校安排",
+      "label": "聯絡我們",
+      "email": "enquiry@brownrice.org",
+      "site": "www.neuroseed.org",
+      "partners": "聯合呈獻",
+      "research": "研究機構"
+    }
+  },
+  "en": {
+    "pain": {
+      "bubble": "I don't want to go to school!",
+      "h": "Children need support. Teachers need tools too.",
+      "tags": ["No time or space to talk?", "Hard to assess students' emotional status?", "Lack of students' emotional handling skills?"],
+      "q": "When a student expresses mental distress, how can we help them feel understood?"
+    },
+    "method": {
+      "h": "Role experience and collaborative building turn concepts into lived experience",
+      "brand": "Mental health journey starting with brain science",
+      "note": "Training highlight: facilitator-guided reflection and application",
+      "steps": [
+        { "h": "Role-play", "color": "#6B62B5" },
+        { "h": "Build the brain", "color": "#C9463F" },
+        { "h": "Experience events", "color": "#F3C9C9", "dark": true },
+        { "h": "Practise responses", "color": "#2A7D4F" }
+      ]
+    },
+    "voices": {
+      "h": "Inside two special schools, with whole-school teams",
+      "sub": "Repeatedly play-tested with educators and refined for real classroom settings",
+      "items": [
+        {
+          "school": "Caritas Mother Teresa School",
+          "who": "Principal, Sharon Cheung",
+          "quote": "Every student is unique. We should support them according to their needs.",
+          "count": "30+",
+          "label": "principal and teachers participated"
+        },
+        {
+          "school": "Rotary Club of Hong Kong Island West Hong Chi Morninghope School",
+          "who": "Principal, Dr. Flora Yau",
+          "quote": "Building their neural connections helps children grow and thrive.",
+          "count": "60+",
+          "label": "principal and teachers participated"
+        }
+      ],
+      "foot": "Starting with Hong Kong primary and secondary schools, we continue to evaluate the impact of our training."
+    },
+    "impact": {
+      "h": "Early pilot study with 100+ participants, tracking change through multiple assessments",
+      "sub": "Self-reported feedback from participants who completed the assessments",
+      "stats": [
+        { "n": "100%", "l": "better understanding students' mental health needs" },
+        { "n": "97.7%", "l": "were satisfied with the workshop" },
+        { "n": "100+", "l": "educators participated" },
+        { "n": "2", "l": "months longitudinal follow-up" },
+        { "n": "4", "l": "Pre- and post-workshop assessments" }
+      ],
+      "close": "Better understanding of children. Greater confidence in providing support."
+    },
+    "contact": {
+      "h": "Let teachers' understanding become children's strength",
+      "steps": ["Experience it", "Practise it", "Apply it"],
+      "ask": "Provide preferred date and number of teachers to discuss on-site arrangements.",
+      "label": "Contact us",
+      "email": "enquiry@brownrice.org",
+      "site": "www.neuroseed.org",
+      "partners": "Jointly presented by",
+      "research": "Research institute"
+    }
+  }
+}

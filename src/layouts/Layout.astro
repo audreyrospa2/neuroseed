@@ -3,40 +3,69 @@ import '../styles/tokens.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { t, type Lang } from '../i18n/utils';
+import { t, switchLangPath, type Lang } from '../i18n/utils';
 
 interface Props { title: string; description?: string; lang?: Lang }
 const { title, description = '', lang = 'zh' } = Astro.props;
 const fullTitle = `${title} | ${t(lang, 'site.name')}`;
 
-import { switchLangPath } from '../i18n/utils';
 const other = lang === 'zh' ? 'en' : 'zh';
 const here = new URL(Astro.url.pathname, Astro.site).href;
 const there = new URL(switchLangPath(Astro.url.pathname, lang), Astro.site).href;
 ---
 <!doctype html>
 <html lang={lang === 'zh' ? 'zh-Hant' : 'en'}>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{fullTitle}</title>
-    <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Noto+Sans+TC:wght@400;700&display=swap"
-    />
+<head>
+<meta charset="utf-8" />
+<script is:inline>document.documentElement.classList.add('js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+TC:wght@600;700&display=swap"
+/>
 
-	<link rel="alternate" hreflang={lang === 'zh' ? 'zh-Hant' : 'en'} href={here} />
-	<link rel="alternate" hreflang={other === 'zh' ? 'zh-Hant' : 'en'} href={there} />
-
-  </head>
-  <body>
-    <a class="skip-link" href="#main">{t(lang, 'ui.skip')}</a>
-    <Header lang={lang} />
-    <main id="main"><slot /></main>
-    <Footer lang={lang} />
-  </body>
+<link rel="alternate" hreflang={lang === 'zh' ? 'zh-Hant' : 'en'} href={here} />
+<link rel="alternate" hreflang={other === 'zh' ? 'zh-Hant' : 'en'} href={there} />
+</head>
+<body>
+<a class="skip-link" href="#main">{t(lang, 'ui.skip')}</a>
+<Header lang={lang} />
+<main id="main"><slot /></main>
+<Footer lang={lang} />
+<script is:inline>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // [selector, effect]: what animates, and how. Add a selector here to animate more.
+  var rules = [
+    ['.hero__text > *', 'up'], ['.tiles > *', 'zoom'],
+    ['.head > *', 'up'], ['.grid > *', 'up'], ['.stats > *', 'up'],
+    ['.two__text > *', 'left'], ['[data-switcher]', 'right'],
+    ['.closing', 'up'], ['.video', 'zoom'], ['.ribbon > *', 'zoom'],
+    ['.contact .container > :not(.head)', 'up'],
+    ['.page-head > *', 'up'], ['.section > h2', 'up']
+  ];
+  var items = [], parents = new Map();
+  rules.forEach(function (r) {
+    document.querySelectorAll('main ' + r[0]).forEach(function (el) {
+      if (el.hasAttribute('data-reveal')) return;
+      el.setAttribute('data-reveal', r[1]);
+      var n = parents.get(el.parentNode) || 0;       // stagger siblings
+      el.style.setProperty('--d', Math.min(n, 5) * 90 + 'ms');
+      parents.set(el.parentNode, n + 1);
+      items.push(el);
+    });
+  });
+  if (reduce || !('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('is-in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+  items.forEach(function (el) { io.observe(el); });
+})();
+</script>
+</body>
 </html>
