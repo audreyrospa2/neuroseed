@@ -46,7 +46,7 @@ jobs:
           dangerous-clean-slate: false
           log-level: verbose
 
-        - name: Deploy over FTPS with lftp
+      - name: Deploy over FTPS with lftp
         env:
           FTP_HOST: ${{ secrets.FTP_SERVER }}
           FTP_USER: ${{ secrets.FTP_USERNAME }}
