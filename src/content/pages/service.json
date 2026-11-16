@@ -1,0 +1,270 @@
+{
+  "zh": {
+    "eyebrow": "到校教師培訓計劃",
+    "title": "服務",
+    "lead": "為老師提供專業支援，結合科學實證方法與實踐工具，幫助他們更好地理解和回應有特殊學習需要的學生，讓每個孩子發掘潛能。",
+    "challenge": {
+      "h": "許多孩子正面對困難，而老師需要支援",
+      "belief": "我們相信，每個孩子都值得被理解。",
+      "prev": "上一個",
+      "next": "下一個",
+      "items": [
+        {
+          "icon": "🧠",
+          "h": "情緒與行為挑戰",
+          "sub": "Emotional & behavioural challenges",
+          "color": "#1E4FA3"
+        },
+        {
+          "icon": "📖",
+          "h": "學習困難",
+          "sub": "Learning difficulties",
+          "color": "#F7C948"
+        },
+        {
+          "icon": "🤝",
+          "h": "社交融入困難",
+          "sub": "Social integration challenges",
+          "color": "#C9463F"
+        },
+        {
+          "icon": "🌱",
+          "h": "自信心不足",
+          "sub": "Low self-confidence",
+          "color": "#2A7D4F"
+        }
+      ]
+    },
+    "steps": {
+      "kicker": "培訓特色｜由引導師帶領同事間的反思與交流",
+      "h": "從角色體驗與合作搭建，讓抽象概念變成親身體驗",
+      "next": "下一步",
+      "restart": "重新開始",
+      "items": [
+        {
+          "icon": "🎭",
+          "h": "扮演角色",
+          "sub": "Role-play",
+          "color": "#2F6FD0",
+          "img": "/images/5.jpg",
+          "p": "設身處地，從學生或同事的角度感受一個情景。"
+        },
+        {
+          "icon": "🧩",
+          "h": "搭建大腦",
+          "sub": "Build the brain",
+          "color": "#C9463F",
+          "img": "/images/2.jpg",
+          "p": "與同事合作搭建大腦模型，把抽象的腦科學概念變成看得見、摸得到的東西。"
+        },
+        {
+          "icon": "🃏",
+          "h": "經歷事件",
+          "sub": "Experience events",
+          "color": "#F3C9C9",
+          "dark": true,
+          "img": "/images/9.jpg",
+          "p": "抽出事件卡，一起走進真實課室裡可能發生的時刻。"
+        },
+        {
+          "icon": "💬",
+          "h": "練習回應",
+          "sub": "Practise responses",
+          "color": "#2A7D4F",
+          "img": "/images/6.jpg",
+          "p": "練習具體的支持說話，再與引導師一起反思哪些回應最有幫助。"
+        }
+      ]
+    },
+    "theory": {
+      "h": "理論基礎",
+      "tabs": [
+        "創傷知情照顧",
+        "安全圓圈"
+      ],
+      "tic": {
+        "h": "創傷知情照顧",
+        "p": "一種先問「發生了什麼事」而不是「你有什麼問題」的取向。它讓學校成為令學生和教職員都感到安全的地方。",
+        "list": [
+          {
+            "h": "安全",
+            "p": "學生和教職員在身體和情緒上都感到安全。"
+          },
+          {
+            "h": "信任與透明",
+            "p": "清楚、一致地說明將會發生什麼，以及原因。"
+          },
+          {
+            "h": "同儕支持",
+            "p": "同事彼此學習，互相支持。"
+          },
+          {
+            "h": "合作與共同決定",
+            "p": "決定是共同作出的，而不是單方面施加。"
+          },
+          {
+            "h": "賦權、聲音與選擇",
+            "p": "學生的聲音被聽見，也有真正的選擇。"
+          },
+          {
+            "h": "尊重文化與背景",
+            "p": "尊重每個孩子的背景與身份。"
+          }
+        ]
+      },
+      "cos": {
+        "h": "安全圓圈",
+        "p": "「安全圓圈」框架已融入遊戲設計及引導師培訓。",
+        "list": [
+          {
+            "h": "安全基地",
+            "p": "孩子知道有可信任的成人在身邊，就更敢去探索。"
+          },
+          {
+            "h": "安全避風港",
+            "p": "當孩子感到不安，可以回到成人身邊得到安慰。"
+          }
+        ]
+      }
+    },
+    "cta": {
+      "h": "投資老師，改變學生人生！",
+      "p": "提供培訓日期與教師人數，商議到校安排。",
+      "email": "enquiry@brownrice.org"
+    }
+  },
+  "en": {
+    "eyebrow": "On-Site Teacher Training Programme",
+    "title": "Service",
+    "lead": "We give teachers professional support, combining evidence-based methods with practical tools, to better understand and respond to students with special learning needs, so every child can discover their potential.",
+    "challenge": {
+      "h": "Many children are struggling, and teachers need support",
+      "belief": "We believe every child deserves to be understood.",
+      "prev": "Previous",
+      "next": "Next",
+      "items": [
+        {
+          "icon": "🧠",
+          "h": "Emotional & behavioural challenges",
+          "sub": "情緒與行為挑戰",
+          "color": "#1E4FA3"
+        },
+        {
+          "icon": "📖",
+          "h": "Learning difficulties",
+          "sub": "學習困難",
+          "color": "#F7C948"
+        },
+        {
+          "icon": "🤝",
+          "h": "Social integration challenges",
+          "sub": "社交融入困難",
+          "color": "#C9463F"
+        },
+        {
+          "icon": "🌱",
+          "h": "Low self-confidence",
+          "sub": "自信心不足",
+          "color": "#2A7D4F"
+        }
+      ]
+    },
+    "steps": {
+      "kicker": "Training highlight: facilitator-guided reflection and exchange among colleagues",
+      "h": "From role experience and collaborative building, abstract concepts become lived experience",
+      "next": "Next step",
+      "restart": "Start again",
+      "items": [
+        {
+          "icon": "🎭",
+          "h": "Role-play",
+          "sub": "扮演角色",
+          "color": "#2F6FD0",
+          "img": "/images/5.jpg",
+          "p": "Step into a student’s or colleague’s shoes and feel a situation from the inside."
+        },
+        {
+          "icon": "🧩",
+          "h": "Build the brain",
+          "sub": "搭建大腦",
+          "color": "#C9463F",
+          "img": "/images/2.jpg",
+          "p": "Build a brain model together, so abstract brain science becomes something you can see and touch."
+        },
+        {
+          "icon": "🃏",
+          "h": "Experience events",
+          "sub": "經歷事件",
+          "color": "#F3C9C9",
+          "dark": true,
+          "img": "/images/9.jpg",
+          "p": "Draw an event card and walk through a moment that could really happen in a classroom."
+        },
+        {
+          "icon": "💬",
+          "h": "Practise responses",
+          "sub": "練習回應",
+          "color": "#2A7D4F",
+          "img": "/images/6.jpg",
+          "p": "Practise supportive things to say, then reflect with the facilitator on which responses help most."
+        }
+      ]
+    },
+    "theory": {
+      "h": "Theoretical foundation",
+      "tabs": [
+        "Trauma-Informed Care",
+        "Circle of Security"
+      ],
+      "tic": {
+        "h": "Trauma-Informed Care",
+        "p": "An approach that asks “what happened to you?” before “what is wrong with you?”. It helps a school feel safe for students and staff alike.",
+        "list": [
+          {
+            "h": "Safety",
+            "p": "Students and staff feel physically and emotionally safe."
+          },
+          {
+            "h": "Trust and transparency",
+            "p": "Be clear and consistent about what will happen and why."
+          },
+          {
+            "h": "Peer support",
+            "p": "Colleagues learn from and support each other."
+          },
+          {
+            "h": "Collaboration",
+            "p": "Decisions are shared, not imposed."
+          },
+          {
+            "h": "Empowerment, voice and choice",
+            "p": "Students are heard and have real choices."
+          },
+          {
+            "h": "Cultural awareness",
+            "p": "Respect each child’s background and identity."
+          }
+        ]
+      },
+      "cos": {
+        "h": "Circle of Security",
+        "p": "The Circle of Security framework has been integrated into both the game design and facilitator training.",
+        "list": [
+          {
+            "h": "Secure base",
+            "p": "Children explore more confidently when they know a trusted adult is there."
+          },
+          {
+            "h": "Safe haven",
+            "p": "When a child feels upset, they can return to an adult for comfort."
+          }
+        ]
+      }
+    },
+    "cta": {
+      "h": "Invest in teachers to change students’ lives!",
+      "p": "Send us your preferred date and number of teachers to discuss on-site arrangements.",
+      "email": "enquiry@brownrice.org"
+    }
+  }
+}

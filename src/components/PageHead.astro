@@ -1,0 +1,35 @@
+---
+// Blue page-header band used by Service, About, Impact, News and Book a Training.
+interface Props { eyebrow?: string; title: string; lead?: string }
+const { eyebrow = '', title, lead = '' } = Astro.props;
+---
+<section class="phead">
+  <div class="phead__curves" aria-hidden="true">
+    <svg class="c c1" viewBox="0 0 120 120" fill="none"><path d="M12 88 C4 36 58 4 92 28 C122 50 84 100 52 76" stroke="#B9A5E8" stroke-width="12" stroke-linecap="round"/></svg>
+    <svg class="c c2" viewBox="0 0 120 120" fill="none"><path d="M14 60 C30 8 92 8 106 52 C116 84 70 112 44 94" stroke="#F7C948" stroke-width="12" stroke-linecap="round"/></svg>
+    <svg class="c c3" viewBox="0 0 120 120" fill="none"><path d="M10 96 C30 30 70 20 108 34" stroke="#F08A84" stroke-width="12" stroke-linecap="round"/></svg>
+    <svg class="c c4" viewBox="0 0 120 120" fill="none"><path d="M12 88 C4 36 58 4 92 28 C122 50 84 100 52 76" stroke="#8FB8F0" stroke-width="12" stroke-linecap="round"/></svg>
+  </div>
+  <div class="container page-head">
+    {eyebrow && <span class="pill">{eyebrow}</span>}
+    <h1>{title}</h1>
+    {lead && <p class="lead">{lead}</p>}
+  </div>
+</section>
+
+<style>
+  .phead { position: relative; overflow: hidden; isolation: isolate; color: #fff;
+    background: radial-gradient(120% 140% at 15% 0%, #2A63C2 0%, var(--brand) 50%, var(--brand-deep) 100%); }
+  .page-head { position: relative; z-index: 2; padding-block: 4.5rem 4.5rem; max-width: 52rem; margin-inline: auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.1rem; }
+  .page-head h1 { color: #fff; text-wrap: balance; }
+  .page-head .pill { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); color: #fff; }
+  .page-head .lead { color: rgba(255,255,255,0.9); margin: 0; }
+  .phead__curves { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .c { position: absolute; width: var(--s, 90px); height: var(--s, 90px); rotate: var(--r, 0deg); opacity: 0.9; animation: bob var(--t, 7s) ease-in-out var(--d, 0s) infinite; }
+  .c1 { --s: 90px;  --r: -20deg; --t: 7s;   top: 12%;  left: 6%; }
+  .c2 { --s: 100px; --r: 25deg;  --t: 8.5s; --d: -2s; bottom: 6%; left: 18%; }
+  .c3 { --s: 120px; --r: 0deg;   --t: 6.5s; --d: -1s; top: 10%;  right: 8%; }
+  .c4 { --s: 110px; --r: 200deg; --t: 9s;   --d: -3s; bottom: 8%; right: 20%; }
+  @keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -14px; } }
+  @media (max-width: 700px) { .c2, .c4 { display: none; } .page-head { padding-block: 3.2rem; } }
+</style>

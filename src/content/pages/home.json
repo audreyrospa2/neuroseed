@@ -2,190 +2,100 @@
   "zh": {
     "badge": "到校教師培訓計劃",
     "title": "讓老師的理解，",
-    "accents": [
-      "成為孩子的力量",
-      "親身體驗",
-      "練習回應",
-      "帶回校園"
-    ],
+    "accents": ["成為孩子的力量", "親身體驗", "練習回應", "帶回校園"],
     "sub": "孩子需要支持，老師也需要方法",
     "lead": "支持教育工作者，在有限資源下成為學生的一雙手。",
     "learn": "了解腦細話事",
     "watch": "觀看影片",
     "proof": "100+ 教育工作者參與，97.7% 對工作坊感到滿意。研究機構：香港理工大學",
     "tiles": [
-      {
-        "label": "老師工作坊",
-        "color": "#6B62B5",
-        "icon": "🧠",
-        "img": "/images/7.jpg"
-      },
-      {
-        "label": "搭建大腦",
-        "color": "#C9463F",
-        "icon": "🧩",
-        "img": "/images/2.jpg"
-      },
-      {
-        "label": "團隊學習",
-        "color": "#A8D1E7",
-        "icon": "🤝",
-        "img": "/images/9.jpg"
-      },
-      {
-        "label": "練習回應",
-        "color": "#2A7D4F",
-        "icon": "💬",
-        "img": "/images/4.jpg"
-      }
+      { "label": "老師工作坊", "color": "#6B62B5", "icon": "🧠", "img": "/images/7.jpg" },
+      { "label": "搭建大腦", "color": "#C9463F", "icon": "🧩", "img": "/images/2.jpg" },
+      { "label": "團隊學習", "color": "#2F7FC4", "icon": "🤝", "img": "/images/9.jpg" },
+      { "label": "練習回應", "color": "#2A7D4F", "icon": "💬", "img": "/images/4.jpg" }
     ],
     "intro": {
-      "h": "培訓，從親身體驗開始",
-      "p1": "由引導師帶領反思與交流，從角色體驗與合作搭建，讓抽象概念變成親身體驗。",
-      "p2": "工作坊經教育工作者反覆試玩，並按真實課室情況優化；完成後以多次評估追蹤變化。",
-      "link": "閱讀我們的故事",
+      "h": "專業培訓 × 實踐工具 × 持續支援",
+      "p1": "我們的培訓由資深專家設計，透過互動工作坊，把抽象概念變成親身體驗，幫助老師掌握實用策略，應用在日常教學中。",
+      "support": "學以致用，在教學中看見改變",
+      "link": "閱讀更多",
       "slides": [
-        {
-          "label": "老師工作坊",
-          "color": "#6B62B5",
-          "icon": "🧠",
-          "img": "/images/1.jpg"
-        },
-        {
-          "label": "合作搭建",
-          "color": "#A8D1E7",
-          "icon": "🧩",
-          "img": "/images/5.jpg"
-        },
-        {
-          "label": "老師互相分享",
-          "color": "#2A7D4F",
-          "icon": "💬",
-          "img": "/images/10.jpg"
-        }
+        { "label": "老師工作坊", "color": "#6B62B5", "img": "/images/1.jpg" },
+        { "label": "合作搭建", "color": "#2F7FC4", "img": "/images/5.jpg" },
+        { "label": "老師互相分享", "color": "#2A7D4F", "img": "/images/10.jpg" }
       ]
     },
     "video": {
       "h": "計劃實況",
       "src": "",
       "poster": "/images/6.jpg",
-      "note": "影片位置：請在 CMS 填入影片網址（video.src）。"
+      "note": "影片位置：請在 CMS 填入影片網址（video.src）。",
+      "strips": ["角色體驗", "實用工具", "支持有需要的學生", "共同態度"]
     },
     "takeaways": {
-      "h": "老師 4 份教學收穫",
+      "h": "老師帶走的 4 份教學收穫",
       "items": [
-        {
-          "h": "看見行為背後需要",
-          "p": "學會從行為出發，讀懂孩子未說出口的需要。"
-        },
-        {
-          "h": "練習具體支持說話",
-          "p": "在工作坊中反覆演練，找到能讓學生感到被理解的回應。"
-        },
-        {
-          "h": "建立同事共同語言",
-          "p": "全校團隊用同一套說法談情緒與支援，協作更順暢。"
-        },
-        {
-          "h": "實踐指南延續反思",
-          "p": "把工作坊所學帶回校園，並透過指南持續反思。"
-        }
-      ]
+        { "h": "看見行為背後需要", "p": "學會從行為出發，讀懂孩子未說出口的需要。" },
+        { "h": "練習具體支持說話", "p": "在工作坊中反覆演練，找到能讓學生感到被理解的回應。" },
+        { "h": "建立同事共同語言", "p": "全校團隊用同一套說法談情緒與支援，協作更順暢。" },
+        { "h": "實踐指南延續反思", "p": "把工作坊所學帶回校園，並透過指南持續反思。" }
+      ],
+      "quote": { "q": "學生更願意分享自己的感受，也更主動關心同學。", "school": "中學老師", "img": "/images/9.jpg" }
+    },
+    "cta": {
+      "h1": "投資老師，",
+      "h2": "改變學生人生！",
+      "hint": "點擊卡片，翻看每份收穫"
     },
     "band": "更理解孩子，更有信心支援"
   },
   "en": {
     "badge": "On-Site Teacher Training Programme",
     "title": "Let teachers’ understanding",
-    "accents": [
-      "become children’s strength",
-      "Experience it",
-      "Practise it",
-      "Apply it"
-    ],
+    "accents": ["become children’s strength", "Experience it", "Practise it", "Apply it"],
     "sub": "Children need support. Teachers need tools too.",
     "lead": "Support teachers to become students’ “supporting hand” under limited resources.",
     "learn": "Learn about the programme",
     "watch": "Watch the video",
     "proof": "100+ educators participated, 97.7% satisfied with the workshop. Research institute: The Hong Kong Polytechnic University",
     "tiles": [
-      {
-        "label": "Teacher workshop",
-        "color": "#6B62B5",
-        "icon": "🧠",
-        "img": "/images/7.jpg"
-      },
-      {
-        "label": "Build the brain",
-        "color": "#C9463F",
-        "icon": "🧩",
-        "img": "/images/2.jpg"
-      },
-      {
-        "label": "Team learning",
-        "color": "#A8D1E7",
-        "icon": "🤝",
-        "img": "/images/9.jpg"
-      },
-      {
-        "label": "Practise responses",
-        "color": "#2A7D4F",
-        "icon": "💬",
-        "img": "/images/4.jpg"
-      }
+      { "label": "Teacher workshop", "color": "#6B62B5", "icon": "🧠", "img": "/images/7.jpg" },
+      { "label": "Build the brain", "color": "#C9463F", "icon": "🧩", "img": "/images/2.jpg" },
+      { "label": "Team learning", "color": "#2F7FC4", "icon": "🤝", "img": "/images/9.jpg" },
+      { "label": "Practise responses", "color": "#2A7D4F", "icon": "💬", "img": "/images/4.jpg" }
     ],
     "intro": {
-      "h": "Training that starts with lived experience",
-      "p1": "Facilitator-guided reflection and exchange, with role experience and collaborative building, turn abstract concepts into lived experience.",
-      "p2": "The workshop was repeatedly play-tested with educators and refined for real classrooms, then tracked through multiple assessments.",
-      "link": "Read our story",
+      "h": "Professional training × Practical tools × Ongoing support",
+      "p1": "Our training is designed by experienced experts. Through interactive workshops, abstract ideas become lived experience, so teachers leave with practical strategies for everyday teaching.",
+      "support": "Learn it, use it, and see the change in your classroom.",
+      "link": "Read more",
       "slides": [
-        {
-          "label": "Teachers in a workshop",
-          "color": "#6B62B5",
-          "icon": "🧠",
-          "img": "/images/1.jpg"
-        },
-        {
-          "label": "Building together",
-          "color": "#A8D1E7",
-          "icon": "🧩",
-          "img": "/images/5.jpg"
-        },
-        {
-          "label": "Teachers sharing ideas",
-          "color": "#2A7D4F",
-          "icon": "💬",
-          "img": "/images/10.jpg"
-        }
+        { "label": "Teachers in a workshop", "color": "#6B62B5", "img": "/images/1.jpg" },
+        { "label": "Building together", "color": "#2F7FC4", "img": "/images/5.jpg" },
+        { "label": "Teachers sharing ideas", "color": "#2A7D4F", "img": "/images/10.jpg" }
       ]
     },
     "video": {
       "h": "See the programme in action",
       "src": "",
       "poster": "/images/6.jpg",
-      "note": "Video placeholder: add the video URL in the CMS (video.src)."
+      "note": "Video placeholder: add the video URL in the CMS (video.src).",
+      "strips": ["Role experience", "Practical tools", "Supporting students in need", "Shared attitudes"]
     },
     "takeaways": {
-      "h": "Teacher’s 4 key takeaways",
+      "h": "Four Key Takeaways for Teachers",
       "items": [
-        {
-          "h": "See needs behind behaviours",
-          "p": "Learn to start from behaviour and read the needs a child hasn’t put into words."
-        },
-        {
-          "h": "Practise supportive responses",
-          "p": "Rehearse in the workshop to find replies that help a student feel understood."
-        },
-        {
-          "h": "Build colleagues’ shared language",
-          "p": "A whole-school team that talks about emotions and support in the same way works together more easily."
-        },
-        {
-          "h": "Continue reflections",
-          "p": "Take what you practised back to campus and keep reflecting with the practice guide."
-        }
-      ]
+        { "h": "See needs behind behaviours", "p": "Learn to start from behaviour and read the needs a child hasn’t put into words." },
+        { "h": "Practise supportive responses", "p": "Rehearse in the workshop to find replies that help a student feel understood." },
+        { "h": "Build colleagues’ shared language", "p": "A whole-school team that talks about emotions and support in the same way works together more easily." },
+        { "h": "Continue reflections", "p": "Take what you practised back to campus and keep reflecting with the practice guide." }
+      ],
+      "quote": { "q": "Students are more willing to share their feelings and care about each other.", "school": "Secondary School teacher", "img": "/images/9.jpg" }
+    },
+    "cta": {
+      "h1": "Invest in Teachers",
+      "h2": "to change students’ lives!",
+      "hint": "Tap a card to flip it"
     },
     "band": "Better understanding of children. Greater confidence in providing support."
   }

@@ -1,0 +1,301 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHead from '../../components/PageHead.astro';
+import Photo from '../../components/Photo.astro';
+import Partners from '../../components/Partners.astro';
+import { t, type Lang } from '../../i18n/utils';
+import service from '../../content/pages/service.json';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'zh' } }, { params: { lang: 'en' } }];
+}
+const lang = Astro.params.lang as Lang;
+const c = service[lang];
+const theories = [
+  { key: 'tic', icon: '🛡️', color: '#2F6FD0', data: c.theory.tic },
+  { key: 'cos', icon: '⭕', color: '#2A7D4F', data: c.theory.cos }
+];
+---
+<Layout lang={lang} title={t(lang, 'nav.service')} description={c.lead}>
+  <PageHead eyebrow={c.eyebrow} title={c.title} lead={c.lead} />
+
+  <!-- 1. THE CHALLENGE: carousel, 3 at a time -->
+  <section class="section section--tint">
+    <div class="container">
+      <header class="head">
+        <h2>{c.challenge.h}</h2>
+        <p class="lead">{c.challenge.belief}</p>
+      </header>
+
+      <div class="cx" data-cx>
+        <button class="cx__nav" type="button" data-prev aria-label={c.challenge.prev}>‹</button>
+        <div class="cx__track" tabindex="0" role="region" aria-label={c.challenge.h}>
+          {c.challenge.items.map((x, i) => (
+            <article class="cx__item" style={`--c:${x.color}; --tilt:${i % 2 ? 1.2 : -1.2}deg`}>
+              <span class="cx__icon" aria-hidden="true">{x.icon}</span>
+              <h3>{x.h}</h3>
+              <p>{x.sub}</p>
+            </article>
+          ))}
+        </div>
+        <button class="cx__nav" type="button" data-next aria-label={c.challenge.next}>›</button>
+      </div>
+      <div class="cx__dots" data-dots aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- 2. FOUR STEPS: click a step to see it -->
+  <section class="section section--deep">
+    <div class="container">
+      <header class="head">
+        <p class="kicker">{c.steps.kicker}</p>
+        <h2>{c.steps.h}</h2>
+      </header>
+
+      <div class="stepper" data-stepper>
+        <div class="stepper__tabs" role="tablist" aria-label={c.steps.h}>
+          {c.steps.items.map((s, i) => (
+            <button class={`stab${s.dark ? ' stab--dark' : ''}`} type="button" role="tab" id={`tab-${i}`}
+              aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`panel-${i}`} tabindex={i === 0 ? 0 : -1}
+              style={`--c:${s.color}`}>
+              <span class="stab__n">{i + 1}</span>
+              <span class="stab__icon" aria-hidden="true">{s.icon}</span>
+              <span class="stab__name">{s.h}</span>
+            </button>
+          ))}
+        </div>
+
+        <div class="stepper__bar" aria-hidden="true"><i data-bar></i></div>
+
+        <div class="stepper__panels">
+          {c.steps.items.map((s, i) => (
+            <div class="spanel" role="tabpanel" id={`panel-${i}`} aria-labelledby={`tab-${i}`} hidden={i !== 0}>
+              <div class="spanel__photo"><Photo label={s.h} src={s.img} color={s.color} icon={s.icon} ratio="4 / 3" /></div>
+              <div class="spanel__text">
+                <span class="spanel__badge" style={`--c:${s.color}`}>{i + 1}</span>
+                <h3>{s.h}</h3>
+                <p class="spanel__sub">{s.sub}</p>
+                <p>{s.p}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="stepper__foot">
+          <button class="btn btn--sun" type="button" data-next-step data-next={c.steps.next} data-restart={c.steps.restart}>{c.steps.next} →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. THEORIES: switch between two frameworks -->
+  <section class="section">
+    <div class="container">
+      <header class="head"><h2>{c.theory.h}</h2></header>
+
+      <div class="seg" role="tablist" data-seg aria-label={c.theory.h}>
+        {theories.map((th, i) => (
+          <button type="button" role="tab" class="seg__btn" id={`th-tab-${i}`} aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`th-${i}`} tabindex={i === 0 ? 0 : -1}>{c.theory.tabs[i]}</button>
+        ))}
+      </div>
+
+      {theories.map((th, i) => (
+        <div class="theory" role="tabpanel" id={`th-${i}`} aria-labelledby={`th-tab-${i}`} hidden={i !== 0}>
+          <div class="theory__art"><Photo label={th.data.h} color={th.color} icon={th.icon} ratio="4 / 3.2" /></div>
+          <div class="theory__body">
+            <h3>{th.data.h}</h3>
+            <p>{th.data.p}</p>
+            <div class="acc">
+              {th.data.list.map((x) => (
+                <details class="acc__item">
+                  <summary>{x.h}</summary>
+                  <p>{x.p}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 4. CTA -->
+  <section class="section section--grad cta">
+    <div class="container">
+      <h2>{c.cta.h}</h2>
+      <p class="cta__p">{c.cta.p}</p>
+      <div class="cta__row">
+        <a class="btn btn--sun" href={`/${lang}/book-a-training/`}>{t(lang, 'cta.book')}</a>
+        <a class="cta__mail" href={`mailto:${c.cta.email}`}>{c.cta.email}</a>
+      </div>
+    </div>
+  </section>
+
+  <Partners lang={lang} />
+</Layout>
+
+<style>
+  .head { text-align: center; max-width: 46rem; margin: 0 auto 2.8rem; }
+  .head h2 { text-wrap: balance; }
+  .head .lead { margin: 1rem auto 0; }
+  .kicker { font-weight: 700; margin-bottom: 0.6rem; color: var(--sun); }
+
+  /* ---- 1 Challenge carousel ---- */
+  .cx { display: flex; align-items: center; gap: 0.8rem; }
+  .cx__track { --gap: 1.5rem; flex: 1; display: flex; gap: var(--gap); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 1.4rem 0.4rem 1.8rem; }
+  .cx__track::-webkit-scrollbar { display: none; }
+  .cx__item { flex: 0 0 calc((100% - 2 * var(--gap)) / 3); scroll-snap-align: start; position: relative; overflow: hidden;
+    background: var(--surface); border-radius: var(--radius-md); padding: 2.2rem 1.6rem 2rem; text-align: center;
+    box-shadow: 0 10px 28px rgba(30, 79, 163, 0.12); border-top: 6px solid var(--c);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s; }
+  .cx__item::before { content: ''; position: absolute; width: 150px; height: 150px; border-radius: 50%; background: var(--c); opacity: 0.12; top: -60px; right: -50px; transition: transform 0.5s; }
+  .cx__item:hover { transform: translateY(-8px) rotate(var(--tilt)); box-shadow: 0 18px 38px rgba(30, 79, 163, 0.2); }
+  .cx__item:hover::before { transform: scale(1.6); }
+  .cx__icon { display: grid; place-items: center; width: 84px; height: 84px; margin: 0 auto 1.2rem; font-size: 2.6rem; border-radius: 50%; background: color-mix(in srgb, var(--c) 18%, #fff); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  .cx__item:hover .cx__icon { transform: scale(1.18) rotate(-8deg); }
+  .cx__item h3 { color: var(--brand-deep); margin-bottom: 0.4rem; }
+  .cx__item p { margin: 0; color: var(--muted); font-size: var(--fs-sm); }
+  .cx__nav { flex: none; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--brand); color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer; transition: transform 0.2s, background 0.2s; }
+  .cx__nav:hover { transform: scale(1.1); background: var(--brand-deep); }
+  .cx__dots { display: flex; justify-content: center; gap: 0.5rem; }
+  .cx__dots span { width: 10px; height: 10px; border-radius: 99px; background: color-mix(in srgb, var(--brand) 25%, #fff); transition: width 0.3s, background 0.3s; }
+  .cx__dots span.on { width: 30px; background: var(--brand); }
+
+  /* ---- 2 Stepper ---- */
+  .stepper__tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+  .stab { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; min-height: 150px; padding: 1.2rem 0.8rem;
+    border: 3px solid transparent; border-radius: var(--radius-md); background: var(--c); color: #fff; font: inherit; cursor: pointer;
+    opacity: 0.68; transform: scale(0.96); transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s, border-color 0.25s; }
+  .stab--dark { color: #3A2A2A; }
+  .stab:hover { opacity: 1; transform: translateY(-5px) scale(1); }
+  .stab[aria-selected='true'] { opacity: 1; transform: scale(1.05); border-color: #fff; box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3); }
+  .stab__n { position: absolute; top: -0.7rem; left: 50%; translate: -50% 0; width: 2rem; height: 2rem; border-radius: 50%; background: #fff; color: #1F2A44; font-weight: 700; display: grid; place-items: center; }
+  .stab__icon { font-size: 2.2rem; line-height: 1; }
+  .stab[aria-selected='true'] .stab__icon { animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  .stab__name { font: 700 1.15rem / 1.25 var(--font-display); }
+  @keyframes pop { 0% { transform: scale(0.4) rotate(-20deg); } 100% { transform: scale(1) rotate(0); } }
+
+  .stepper__bar { height: 8px; border-radius: 99px; background: rgba(255, 255, 255, 0.18); margin: 2.2rem 0 2rem; overflow: hidden; }
+  .stepper__bar i { display: block; height: 100%; width: 25%; border-radius: 99px; background: var(--sun); transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+
+  .spanel { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem; align-items: center; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.18); border-radius: var(--radius-lg); padding: 1.6rem; animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+  .spanel[hidden] { display: none; }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px) scale(0.98); } to { opacity: 1; transform: none; } }
+  .spanel__badge { display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--c); color: #fff; font-weight: 700; margin-bottom: 0.8rem; }
+  .spanel h3 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .spanel__sub { color: var(--sun); font-weight: 700; margin: 0.2rem 0 1rem; }
+  .spanel__text p:last-child { color: rgba(255, 255, 255, 0.9); font-size: var(--fs-lg); margin: 0; max-width: 38ch; }
+  .stepper__foot { display: flex; justify-content: center; margin-top: 2rem; }
+
+  /* ---- 3 Theories ---- */
+  .seg { display: flex; justify-content: center; gap: 0.5rem; width: fit-content; margin: 0 auto 2.4rem; padding: 0.4rem; background: var(--tint); border-radius: 999px; }
+  .seg__btn { min-height: 46px; padding: 0 1.6rem; border: 0; border-radius: 999px; background: transparent; color: var(--brand-deep); font: 700 var(--fs-base) var(--font-body); cursor: pointer; transition: background 0.25s, color 0.25s, transform 0.25s; }
+  .seg__btn:hover { transform: translateY(-2px); }
+  .seg__btn[aria-selected='true'] { background: var(--brand); color: #fff; }
+  .theory { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem; align-items: center; animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+  .theory[hidden] { display: none; }
+  .theory__body h3 { color: var(--brand-deep); margin-bottom: 0.6rem; }
+  .theory__body > p { color: var(--muted); }
+  .acc { display: grid; gap: 0.7rem; margin-top: 1.4rem; }
+  .acc__item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 0 1.2rem; transition: box-shadow 0.25s, border-color 0.25s; }
+  .acc__item[open] { border-color: var(--brand); box-shadow: 0 8px 22px rgba(30, 79, 163, 0.12); }
+  .acc__item summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; min-height: 52px; font-weight: 700; color: var(--brand-deep); }
+  .acc__item summary::-webkit-details-marker { display: none; }
+  .acc__item summary::after { content: '+'; font-size: 1.5rem; line-height: 1; color: var(--brand); transition: rotate 0.3s; }
+  .acc__item[open] summary::after { rotate: 135deg; }
+  .acc__item p { margin: 0 0 1rem; color: var(--muted); }
+
+  /* ---- 4 CTA ---- */
+  .cta .container { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.4rem; }
+  .cta h2 { max-width: 20ch; text-wrap: balance; }
+  .cta__p { max-width: 36rem; margin: 0; font-size: var(--fs-lg); color: rgba(255, 255, 255, 0.9); }
+  .cta__row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.4rem; }
+  .cta__mail { color: #fff; font-weight: 700; font-size: var(--fs-lg); }
+
+  @media (max-width: 1000px) {
+    .cx__item { flex-basis: calc((100% - var(--gap)) / 2); }
+    .stepper__tabs { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 760px) {
+    .cx__item { flex-basis: 100%; }
+    .cx__nav { display: none; }
+    .spanel, .theory { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Challenge carousel: arrows, dots, auto-advance one card at a time, pause on hover/focus */
+    document.querySelectorAll('[data-cx]').forEach(function (root) {
+      var track = root.querySelector('.cx__track'), items = track.children, dotsEl = root.parentNode.querySelector('[data-dots]');
+      var idx = 0, paused = false, timer;
+      function metrics() {
+        var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        var step = items[0].offsetWidth + gap;
+        var visible = Math.max(1, Math.round((track.clientWidth + gap) / step));
+        return { step: step, max: Math.max(0, items.length - visible) };
+      }
+      function renderDots() {
+        var m = metrics(); dotsEl.innerHTML = '';
+        for (var i = 0; i <= m.max; i++) { var s = document.createElement('span'); if (i === idx) s.className = 'on'; dotsEl.appendChild(s); }
+      }
+      function go(n) {
+        var m = metrics();
+        idx = n > m.max ? 0 : n < 0 ? m.max : n;
+        track.scrollTo({ left: idx * m.step, behavior: reduce ? 'auto' : 'smooth' });
+        renderDots();
+      }
+      root.querySelector('[data-prev]').addEventListener('click', function () { go(idx - 1); });
+      root.querySelector('[data-next]').addEventListener('click', function () { go(idx + 1); });
+      track.addEventListener('scroll', function () {
+        var m = metrics(), i = Math.round(track.scrollLeft / m.step);
+        if (i !== idx && i >= 0 && i <= m.max) { idx = i; renderDots(); }
+      }, { passive: true });
+      ['mouseenter', 'focusin', 'touchstart'].forEach(function (e) { root.addEventListener(e, function () { paused = true; }); });
+      ['mouseleave', 'focusout'].forEach(function (e) { root.addEventListener(e, function () { paused = false; }); });
+      window.addEventListener('resize', function () { go(Math.min(idx, metrics().max)); });
+      renderDots();
+      if (!reduce) timer = setInterval(function () { if (!paused && metrics().max > 0) go(idx + 1); }, 4200);
+    });
+
+    /* Generic accessible tabs (arrow keys). Used by the stepper and the theory switcher. */
+    function tabs(list, onChange) {
+      var btns = Array.prototype.slice.call(list.querySelectorAll('[role=tab]'));
+      function select(i, focus) {
+        btns.forEach(function (b, j) {
+          b.setAttribute('aria-selected', j === i ? 'true' : 'false');
+          b.tabIndex = j === i ? 0 : -1;
+          var p = document.getElementById(b.getAttribute('aria-controls'));
+          if (p) p.hidden = j !== i;
+        });
+        if (focus) btns[i].focus();
+        if (onChange) onChange(i);
+      }
+      btns.forEach(function (b, i) {
+        b.addEventListener('click', function () { select(i); });
+        b.addEventListener('keydown', function (e) {
+          var k = e.key, n = btns.length;
+          if (k === 'ArrowRight' || k === 'ArrowDown') { e.preventDefault(); select((i + 1) % n, true); }
+          if (k === 'ArrowLeft' || k === 'ArrowUp') { e.preventDefault(); select((i - 1 + n) % n, true); }
+          if (k === 'Home') { e.preventDefault(); select(0, true); }
+          if (k === 'End') { e.preventDefault(); select(n - 1, true); }
+        });
+      });
+      return { select: select, count: btns.length };
+    }
+
+    document.querySelectorAll('[data-stepper]').forEach(function (root) {
+      var bar = root.querySelector('[data-bar]'), btn = root.querySelector('[data-next-step]'), cur = 0;
+      var api = tabs(root.querySelector('[role=tablist]'), function (i) {
+        cur = i;
+        bar.style.width = ((i + 1) / api.count * 100) + '%';
+        btn.textContent = (i === api.count - 1 ? btn.dataset.restart : btn.dataset.next) + ' →';
+      });
+      btn.addEventListener('click', function () { api.select((cur + 1) % api.count); });
+    });
+
+    document.querySelectorAll('[data-seg]').forEach(function (list) { tabs(list); });
+  })();
+</script>
