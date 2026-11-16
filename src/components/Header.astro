@@ -8,7 +8,7 @@ const isActive = (p: string) => (p === 'home' ? path === `/${lang}/` : path.star
 <header class="site-header">
 <div class="container bar">
 <a class="brand" href={`/${lang}/`} aria-label={t(lang, 'site.name')}>
-<img src="/images/brainy-logo.png" alt="" height="44" />
+<img src="/images/brainy-logo-trans.png" alt="" height="64" />
 </a>
 
 <button class="menu-btn" aria-expanded="false" aria-controls="main-nav">{t(lang, 'ui.menu')}</button>
@@ -28,8 +28,8 @@ const isActive = (p: string) => (p === 'home' ? path === `/${lang}/` : path.star
 <style>
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--brand); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,0.12); }
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--header-h); }
-.brand { display: flex; align-items: center; text-decoration: none; background: #fff; border-radius: 14px; padding: 4px 10px; }
-.brand img { width: auto; height: 44px; }
+.brand { display: flex; align-items: center; text-decoration: none; border-radius: 14px; padding: 4px 10px; }
+.brand img { width: auto; height: 64px; }
 nav { display: flex; align-items: center; gap: 1.6rem; }
 ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
 nav ul a { text-decoration: none; color: rgba(255,255,255,0.82); font-size: var(--fs-sm); padding: 0.6rem 0; border-bottom: 2px solid transparent; }

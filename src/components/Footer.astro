@@ -6,9 +6,9 @@ const { lang } = Astro.props;
 <footer class="site-footer">
 <div class="container grid">
 <div class="about">
-<img class="logo" src="/images/brainy-logo.png" alt={t(lang, 'site.name')} height="48" />
+<img class="logo" src="/images/brainy-logo-trans.png" alt={t(lang, 'site.name')} height="98" />
 <p class="foot-about">{t(lang, 'footer.about')}</p>
-<img class="logo logo--partner" src="/images/neuroseed-logo.png" alt="Neuroseed 腦力試" height="36" />
+<img class="logo logo--partner" src="/images/neuroseedlogopackage-03.png" alt="Neuroseed 腦力試" height="66" />
 </div>
 <div>
 <h3>{t(lang, 'footer.pages')}</h3>
@@ -29,8 +29,8 @@ const { lang } = Astro.props;
 <style>
 .site-footer { background: var(--brand-deep); color: #fff; padding-block: var(--space-4); font-size: var(--fs-sm); }
 .grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--space-4); }
-.logo { width: auto; height: 48px; margin-bottom: 0.8rem; background: #fff; border-radius: 12px; padding: 4px 10px; }
-.logo--partner { height: 40px; margin: 0.4rem 0 0; }
+.logo { width: auto; height: 98px; margin-bottom: 0.8rem; border-radius: 12px; padding: 4px; }
+.logo--partner { height: 66px; margin: 0.4rem 0 0; }
 h3 { font-size: 1.05rem; margin-bottom: 0.8rem; color: var(--sun); }
 ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; color: rgba(255,255,255,0.82); }
 .foot-about { color: rgba(255,255,255,0.82); }
