@@ -26,17 +26,21 @@ const isActive = (p: string) => (p === 'home' ? path === `/${lang}/` : path.star
 </header>
 
 <style>
-.site-header { position: sticky; top: 0; z-index: 50; background: var(--surface); border-bottom: 1px solid var(--line); }
+.site-header { position: sticky; top: 0; z-index: 50; background: var(--brand); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,0.12); }
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--header-h); }
-.brand { display: flex; align-items: center; text-decoration: none; }
+.brand { display: flex; align-items: center; text-decoration: none; background: #fff; border-radius: 14px; padding: 4px 10px; }
 .brand img { width: auto; height: 44px; }
 nav { display: flex; align-items: center; gap: 1.6rem; }
 ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
-nav ul a { text-decoration: none; color: var(--muted); font-size: var(--fs-sm); padding: 0.6rem 0; border-bottom: 2px solid transparent; }
-nav ul a:hover, nav ul a[aria-current='page'] { color: var(--ink); border-bottom-color: var(--coral); }
+nav ul a { text-decoration: none; color: rgba(255,255,255,0.82); font-size: var(--fs-sm); padding: 0.6rem 0; border-bottom: 2px solid transparent; }
+nav ul a:hover, nav ul a[aria-current='page'] { color: #fff; border-bottom-color: var(--sun); }
+.site-header .btn--primary { background: var(--sun); color: #1B1B18; border-color: var(--sun); font-weight: 700; }
+.site-header .btn--primary:hover { filter: brightness(1.05); }
+.site-header .lang { background: transparent; color: #fff; border-color: rgba(255,255,255,0.55); }
+.site-header .lang:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
 .menu-btn { display: none; }
 @media (max-width: 860px) {
-.menu-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.1rem; border: 1px solid var(--line); border-radius: var(--radius-pill); background: var(--surface); color: var(--ink); font: 500 var(--fs-sm) var(--font-body); cursor: pointer; }
+.menu-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.1rem; border: 1px solid rgba(255,255,255,0.55); border-radius: var(--radius-pill); background: transparent; color: #fff; font: 500 var(--fs-sm) var(--font-body); cursor: pointer; }
 nav { display: none; position: absolute; top: var(--header-h); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 1rem; padding: 1.5rem; background: var(--surface); border-bottom: 1px solid var(--line); }
 nav.open { display: flex; }
 ul { flex-direction: column; gap: 0.2rem; }

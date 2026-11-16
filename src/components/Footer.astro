@@ -7,7 +7,7 @@ const { lang } = Astro.props;
 <div class="container grid">
 <div class="about">
 <img class="logo" src="/images/brainy-logo.png" alt={t(lang, 'site.name')} height="48" />
-<p class="muted">{t(lang, 'footer.about')}</p>
+<p class="foot-about">{t(lang, 'footer.about')}</p>
 <img class="logo logo--partner" src="/images/neuroseed-logo.png" alt="Neuroseed 腦力試" height="36" />
 </div>
 <div>
@@ -27,12 +27,13 @@ const { lang } = Astro.props;
 </footer>
 
 <style>
-.site-footer { border-top: 4px solid var(--brand); padding-block: var(--space-4); font-size: var(--fs-sm); }
+.site-footer { background: var(--brand-deep); color: #fff; padding-block: var(--space-4); font-size: var(--fs-sm); }
 .grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--space-4); }
-.logo { width: auto; height: 48px; margin-bottom: 0.8rem; }
-.logo--partner { height: 36px; margin: 0.4rem 0 0; }
-h3 { font-size: 1.05rem; margin-bottom: 0.8rem; color: var(--brand); }
-ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; color: var(--muted); }
-a { text-decoration: none; } a:hover { color: var(--ink); text-decoration: underline; }
+.logo { width: auto; height: 48px; margin-bottom: 0.8rem; background: #fff; border-radius: 12px; padding: 4px 10px; }
+.logo--partner { height: 40px; margin: 0.4rem 0 0; }
+h3 { font-size: 1.05rem; margin-bottom: 0.8rem; color: var(--sun); }
+ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; color: rgba(255,255,255,0.82); }
+.foot-about { color: rgba(255,255,255,0.82); }
+a { text-decoration: none; } a:hover { color: #fff; text-decoration: underline; }
 @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
 </style>

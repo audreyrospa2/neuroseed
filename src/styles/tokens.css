@@ -1,12 +1,15 @@
 /* Brainy design tokens, matched to the Neuroseed x Brown Rice brochures. Change values here only. */
 :root {
   /* Colour */
-  --bg: #F7F6FA;
+  --bg: #EAF1FB;       /* page background is light blue, not white */
   --surface: #FFFFFF;
-  --ink: #2B2A33;
-  --muted: #5B5967;
-  --line: #E1DEEC;
-  --brand: #6B62B5;       /* purple panels, buttons, links */
+  --ink: #1B2440;
+  --muted: #4A5470;
+  --line: #C9D9F2;
+  --brand: #1E4FA3;       /* Brainy blue: header, hero, buttons, links */
+  --brand-deep: #123A82;  /* deep bands, footer */
+  --tint: #DAE7F9;        /* slightly deeper blue for alternating sections */
+  --violet: #8B7FD6;      /* Neuroseed purple, accent only */
   --on-brand: #FFFFFF;
   --coral: #C9463F;       /* tag strips, stat bubbles */
   --on-coral: #FFFFFF;
@@ -15,7 +18,7 @@
   --leaf: #2A7D4F;        /* quote bubbles */
   --on-leaf: #FFFFFF;
   --rose: #F3C9C9;        /* step 3 bubble */
-  --sun: #F2C14E;         /* highlight, secondary button */
+  --sun: #F7C948;         /* yellow CTA + highlight */
 
   /* Type: serif Ming-style headings like the brochures, clean sans body */
   --font-display: 'Noto Serif TC', 'Source Serif 4', Georgia, serif;
@@ -39,7 +42,7 @@
   --radius-lg: 40px;
   --radius-pill: 999px;
   --container: 1180px;
-  --header-h: 68px;
+  --header-h: 76px;
   color-scheme: light;
 }
 
