@@ -1,0 +1,70 @@
+{
+  "zh": {
+    "eyebrow": "到校教師培訓計劃",
+    "title": "預約培訓",
+    "lead": "告訴我們您的學校，我們會聯絡您商議培訓日期與到校安排。",
+    "form": {
+      "h": "請填寫您的資料",
+      "fields": {
+        "name": "姓名",
+        "organization": "學校／機構",
+        "position": "職位",
+        "phone": "電話",
+        "email": "電郵",
+        "message": "訊息"
+      },
+      "optional": "（選填）",
+      "placeholderMessage": "例如：希望的培訓日期、參加教師人數。",
+      "submit": "提交",
+      "sending": "提交中…",
+      "ok": "多謝您！我們已收到您的資料，會盡快以電郵或 WhatsApp 與您聯絡。",
+      "fail": "暫時未能提交。請直接電郵至",
+      "invalid": "請檢查標示的欄位。",
+      "again": "再填一份"
+    },
+    "next": {
+      "h": "提交後會怎樣？",
+      "steps": [
+        "我們收到您的資料",
+        "我們聯絡您，商議培訓日期與教師人數",
+        "培訓到校舉行"
+      ],
+      "contact": "或直接聯絡我們",
+      "email": "enquiry@brownrice.org"
+    }
+  },
+  "en": {
+    "eyebrow": "On-Site Teacher Training Programme",
+    "title": "Book a Training",
+    "lead": "Tell us about your school and we’ll get in touch to discuss your training date and on-site arrangements.",
+    "form": {
+      "h": "Tell us about your school",
+      "fields": {
+        "name": "Name",
+        "organization": "School / Organization",
+        "position": "Position",
+        "phone": "Phone",
+        "email": "Email",
+        "message": "Message"
+      },
+      "optional": "(optional)",
+      "placeholderMessage": "For example: preferred dates and the number of teachers.",
+      "submit": "Submit",
+      "sending": "Sending…",
+      "ok": "Thank you! We’ve received your details and will contact you shortly by email or WhatsApp.",
+      "fail": "We couldn’t send this just now. Please email us directly at",
+      "invalid": "Please check the highlighted fields.",
+      "again": "Send another"
+    },
+    "next": {
+      "h": "What happens next?",
+      "steps": [
+        "We receive your details",
+        "We contact you to discuss the date and number of teachers",
+        "The training takes place at your school"
+      ],
+      "contact": "Or contact us directly",
+      "email": "enquiry@brownrice.org"
+    }
+  }
+}

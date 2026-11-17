@@ -6,56 +6,98 @@ const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.p
 const isActive = (p: string) => (p === 'home' ? path === `/${lang}/` : path.startsWith(pagePath(lang, p)));
 ---
 <header class="site-header">
-<div class="container bar">
-<a class="brand" href={`/${lang}/`} aria-label={t(lang, 'site.name')}>
-<img src="/images/brainy-logo-trans.png" alt="" height="64" />
-</a>
+  <div class="container bar">
+    <a class="brand" href={`/${lang}/`} aria-label={t(lang, 'site.name')}>
+      <img src="/images/brainy-logo-trans.png" alt="" height="88" />
+    </a>
 
-<button class="menu-btn" aria-expanded="false" aria-controls="main-nav">{t(lang, 'ui.menu')}</button>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav">
+      <span class="menu-btn__label">{t(lang, 'ui.menu')}</span>
+      <span class="menu-btn__icon" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
 
-<nav id="main-nav" aria-label="Main">
-<ul>
-{pages.map((p) => (
-<li><a href={pagePath(lang, p)} aria-current={isActive(p) ? 'page' : undefined}>{t(lang, `nav.${p}`)}</a></li>
+    <nav id="main-nav" aria-label="Main">
+      <ul>
+        {pages.map((p) => (
+          <li><a href={pagePath(lang, p)} aria-current={isActive(p) ? 'page' : undefined}>{t(lang, `nav.${p}`)}</a></li>
         ))}
-</ul>
-<a class="btn btn--primary btn--sm" href={`/${lang}/book-a-training/`}>{t(lang, 'cta.book')}</a>
-<a class="btn btn--sm lang" href={switchLangPath(path, lang)} hreflang={lang === 'zh' ? 'en' : 'zh-Hant'}>{t(lang, 'ui.switch')}</a>
-</nav>
-</div>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn btn--sm book" href={`/${lang}/book-a-training/`}>{t(lang, 'cta.book')}</a>
+        <a class="btn btn--sm lang" href={switchLangPath(path, lang)} hreflang={lang === 'zh' ? 'en' : 'zh-Hant'}>{t(lang, 'ui.switch')}</a>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <style>
-.site-header { position: sticky; top: 0; z-index: 50; background: var(--brand); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,0.12); }
-.bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--header-h); }
-.brand { display: flex; align-items: center; text-decoration: none; border-radius: 14px; padding: 4px 10px; }
-.brand img { width: auto; height: 64px; }
-nav { display: flex; align-items: center; gap: 1.6rem; }
-ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
-nav ul a { text-decoration: none; color: rgba(255,255,255,0.82); font-size: var(--fs-sm); padding: 0.6rem 0; border-bottom: 2px solid transparent; }
-nav ul a:hover, nav ul a[aria-current='page'] { color: #fff; border-bottom-color: var(--sun); }
-.site-header .btn--primary { background: var(--sun); color: #1B1B18; border-color: var(--sun); font-weight: 700; }
-.site-header .btn--primary:hover { filter: brightness(1.05); }
-.site-header .lang { background: transparent; color: #fff; border-color: rgba(255,255,255,0.55); }
-.site-header .lang:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
-.menu-btn { display: none; }
-@media (max-width: 860px) {
-.menu-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.1rem; border: 1px solid rgba(255,255,255,0.55); border-radius: var(--radius-pill); background: transparent; color: #fff; font: 500 var(--fs-sm) var(--font-body); cursor: pointer; }
-nav { display: none; position: absolute; top: var(--header-h); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 1rem; padding: 1.5rem; background: var(--surface); border-bottom: 1px solid var(--line); }
-nav.open { display: flex; }
-ul { flex-direction: column; gap: 0.2rem; }
-nav ul a { display: block; padding: 0.8rem 0; font-size: var(--fs-base); }
+  .site-header { position: sticky; top: 0; z-index: 50; color: #fff; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12);
+  /* light blue behind the logo, fading into the brand blue where the white nav text sits */
+  background-color: var(--brand);
+  background-image: linear-gradient(90deg, #A9CDF6 5%, #78A9EA 16%, #3B6FCB 38%, var(--brand) 62%, var(--brand) 100%); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--header-h); }
+  .brand { display: flex; align-items: center; text-decoration: none; }
+  .brand img { width: auto; height: 88px; }
+
+  nav { display: flex; align-items: center; gap: 1.6rem; }
+  ul { display: flex; gap: 1.6rem; list-style: none; margin: 0; padding: 0; }
+  nav ul a { text-decoration: none; color: rgba(255, 255, 255, 0.85); font-size: var(--fs-sm); padding: 0.6rem 0; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  nav ul a:hover, nav ul a[aria-current='page'] { color: #fff; border-bottom-color: var(--sun); }
+  .nav-actions { display: flex; align-items: center; gap: 0.8rem; }
+  .book { background: var(--sun); color: #1B1B18; border-color: var(--sun); font-weight: 700; }
+  .book:hover { filter: brightness(1.05); border-color: var(--sun); }
+  .lang { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.55); }
+  .lang:hover { background: rgba(255, 255, 255, 0.14); border-color: #fff; }
+
+  .menu-btn { display: none; }
+
+  /* Tablet + phone: the menu becomes a deep-blue panel under the bar */
+  @media (max-width: 860px) {
+    .menu-btn { display: inline-flex; align-items: center; gap: 0.7rem; min-height: 44px; padding: 0 1.1rem; border: 1px solid rgba(255, 255, 255, 0.6); border-radius: var(--radius-pill); background: transparent; color: #fff; font: 500 var(--fs-sm) var(--font-body); cursor: pointer; }
+    .menu-btn:hover { background: rgba(255, 255, 255, 0.12); }
+    .menu-btn__icon { display: grid; gap: 4px; width: 18px; }
+    .menu-btn__icon i { display: block; height: 2px; border-radius: 2px; background: #fff; transition: transform 0.25s, opacity 0.2s; }
+    .menu-btn[aria-expanded='true'] .menu-btn__icon i:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .menu-btn[aria-expanded='true'] .menu-btn__icon i:nth-child(2) { opacity: 0; }
+    .menu-btn[aria-expanded='true'] .menu-btn__icon i:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    nav {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: 1.2rem;
+      padding: 0.6rem max(1.5rem, calc((100% - var(--container)) / 2)) 1.8rem;
+      background: var(--brand-deep);
+      box-shadow: 0 24px 40px rgba(5, 16, 50, 0.45);
+      max-height: calc(100vh - var(--header-h)); max-height: calc(100dvh - var(--header-h)); overflow-y: auto;
+    }
+    nav.open { display: flex; animation: drop 0.25s ease-out; }
+    @keyframes drop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+    ul { flex-direction: column; gap: 0; }
+    nav ul a { display: block; padding: 1rem 0; font-size: 1.1rem; color: #fff; border-bottom: 1px solid rgba(255, 255, 255, 0.16); }
+    nav ul a:hover, nav ul a[aria-current='page'] { color: var(--sun); border-bottom-color: rgba(255, 255, 255, 0.16); }
+
+    .nav-actions { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+    .nav-actions .btn { width: 100%; min-height: 52px; font-size: 1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    nav.open { animation: none; }
   }
 </style>
 
 <script is:inline>
   (function () {
-var btn = document.querySelector('.menu-btn');
-var nav = document.getElementById('main-nav');
-if (!btn || !nav) return;
-btn.addEventListener('click', function () {
-var open = nav.classList.toggle('open');
-btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+    var btn = document.querySelector('.menu-btn');
+    var nav = document.getElementById('main-nav');
+    if (!btn || !nav) return;
+    function set(open) {
+      nav.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    btn.addEventListener('click', function (e) { e.stopPropagation(); set(!nav.classList.contains('open')); });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+    document.addEventListener('click', function (e) { if (!nav.contains(e.target) && !btn.contains(e.target)) set(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { set(false); btn.focus(); } });
+    matchMedia('(min-width: 861px)').addEventListener('change', function (m) { if (m.matches) set(false); });
   })();
 </script>

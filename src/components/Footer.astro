@@ -1,14 +1,19 @@
 ---
-import { t, pages, pagePath, type Lang } from '../i18n/utils';
+import { t, pages, pagePath, switchLangPath, type Lang } from '../i18n/utils';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
+const langHeading = lang === 'zh' ? '語言' : 'Language';
 ---
 <footer class="site-footer">
 <div class="container grid">
 <div class="about">
+<div class="logos-row">
+<img class="logo" src="/images/neuroseedlogopackage-03.png" alt="Neuroseed 腦力試" height="66" />
+<span class="divider" aria-hidden="true"></span>
 <img class="logo" src="/images/brainy-logo-trans.png" alt={t(lang, 'site.name')} height="98" />
+</div>
 <p class="foot-about">{t(lang, 'footer.about')}</p>
-<img class="logo logo--partner" src="/images/neuroseedlogopackage-03.png" alt="Neuroseed 腦力試" height="66" />
 </div>
 <div>
 <h3>{t(lang, 'footer.pages')}</h3>
@@ -23,17 +28,37 @@ const { lang } = Astro.props;
 <li>{t(lang, 'footer.whatsapp')}</li>
 </ul>
 </div>
+<div class="foot-lang">
+<h3>{langHeading}</h3>
+<a class="btn btn--sm lang" href={switchLangPath(path, lang)} hreflang={lang === 'zh' ? 'en' : 'zh-Hant'}>{t(lang, 'ui.switch')}</a>
+</div>
 </div>
 </footer>
 
 <style>
 .site-footer { background: var(--brand-deep); color: #fff; padding-block: var(--space-4); font-size: var(--fs-sm); }
 .grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--space-4); }
-.logo { width: auto; height: 98px; margin-bottom: 0.8rem; border-radius: 12px; padding: 4px; }
-.logo--partner { height: 66px; margin: 0.4rem 0 0; }
+.logos-row { display: flex; align-items: center; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 0.9rem; }
+.logo { width: auto; height: 98px; max-width: 100%; object-fit: contain; border-radius: 12px; padding: 4px; }
+.logos-row .logo:first-child { height: 66px; }
+.divider { width: 1px; height: 56px; background: rgba(255, 255, 255, 0.35); }
 h3 { font-size: 1.05rem; margin-bottom: 0.8rem; color: var(--sun); }
 ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; color: rgba(255,255,255,0.82); }
 .foot-about { color: rgba(255,255,255,0.82); }
 a { text-decoration: none; } a:hover { color: #fff; text-decoration: underline; }
-@media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+/* Language switch: shown in the footer on tablet + phone only (desktop has it in the header) */
+.foot-lang { display: none; }
+.foot-lang .lang { display: inline-flex; background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.6); text-decoration: none; }
+.foot-lang .lang:hover { background: rgba(255, 255, 255, 0.14); border-color: #fff; text-decoration: none; }
+@media (max-width: 860px) {
+  .foot-lang { display: block; grid-column: 1 / -1; padding-top: 1.4rem; border-top: 1px solid rgba(255, 255, 255, 0.2); }
+}
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  /* keep both logos side by side on phones */
+  .logos-row { flex-wrap: nowrap; gap: 0.8rem; }
+  .logo { height: 72px; flex: 0 1 auto; min-width: 0; }
+  .logos-row .logo:first-child { height: 50px; }
+  .divider { height: 44px; flex: none; }
+}
 </style>

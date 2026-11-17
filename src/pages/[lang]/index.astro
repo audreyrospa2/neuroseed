@@ -11,7 +11,7 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const c = home[lang];
 const b = brainy[lang];
-const heroImg = '/images/hero.jpg';
+const heroImg = '/images/hero photo.png';
 const pillColors = ['#E2655F', '#F7C948', '#6FA6E8', '#5BB487'];
 const voiceImgs = ['/images/3.jpg', '/images/8.jpg'];
 // Quote cards: the new secondary-school quote first, then the existing principal voices
@@ -19,6 +19,19 @@ const quotes = [
   { quote: c.takeaways.quote.q, school: c.takeaways.quote.school, img: c.takeaways.quote.img },
   ...b.voices.items.map((v, i) => ({ quote: v.quote, school: v.school, img: voiceImgs[i] })),
 ];
+
+// CTA photo cards: 4 workshop tiles + the 4 takeaways. Swap the image paths freely.
+const extraImgs = ['/images/3.jpg', '/images/8.jpg', '/images/10.jpg', '/images/7.jpg'];
+const cards = [
+  ...c.tiles.map((x) => ({ label: x.label, img: x.img })),
+  ...c.takeaways.items.map((x, i) => ({ label: x.h, img: extraImgs[i] })),
+];
+const ratios = ['1 / 1.18', '1 / 1', '1 / 1.1', '1 / 1.22'];
+const colA = cards.filter((_, i) => i % 2 === 0).map((x, i) => ({ ...x, r: ratios[i % 4] }));
+const colB = cards.filter((_, i) => i % 2 === 1).map((x, i) => ({ ...x, r: ratios[(i + 2) % 4] }));
+const bookHref = `/${lang}/book-a-training/`;
+const likeLabel = lang === 'zh' ? '收藏' : 'Like';
+const goLabel = lang === 'zh' ? '預約培訓' : 'Book a training';
 ---
 <Layout lang={lang} title={t(lang, 'nav.home')} description={c.lead}>
 
@@ -152,35 +165,49 @@ const quotes = [
     </div>
   </section>
 
-  <!-- 5. CALL TO ACTION: hanging, flippable cards -->
-  <section class="section section--grad cta" id="contact">
+  <!-- 5. PARTNERS -->
+  <Partners lang={lang} />
+
+  <!-- 6. BOOK A TRAINING: last block before the footer -->
+  <section class="section cta2" id="contact">
     <div class="container">
-      <h2 class="cta__h">{c.cta.h1}<br />{c.cta.h2}</h2>
-      <p class="cta__hint">{c.cta.hint}</p>
-      <ul class="hangers" data-hangers>
-        {c.tiles.map((tile, i) => (
-          <li class="hang" style={`--d:${(i * -1.3).toFixed(1)}s; --tc:${tile.color}; --k:${i}`}>
-            <button type="button" class="flip" aria-pressed="false" aria-label={`${tile.label}`}>
-              <span class="flip__in">
-                <span class="face face--front">
-                  <img src={tile.img} alt="" loading="lazy" onerror="this.style.display='none'" />
-                  <span class="face__label"><i aria-hidden="true">{tile.icon}</i>{tile.label}</span>
-                </span>
-                <span class="face face--back">
-                  <strong>{c.takeaways.items[i].h}</strong>
-                  <span>{c.takeaways.items[i].p}</span>
-                </span>
-              </span>
-            </button>
-          </li>
-        ))}
-      </ul>
-      <a class="btn btn--sun" href={`/${lang}/book-a-training/`}>{t(lang, 'cta.book')}</a>
+      <div class="cta2__card">
+        <div class="cta2__text">
+          <div class="cta2__icons" aria-hidden="true"><span>🧠</span><span>🤝</span><span>🌱</span></div>
+          <h2 class="cta2__h">{c.cta.h1}<br />{c.cta.h2}</h2>
+          <p class="cta2__p">{b.contact.ask}</p>
+          <div class="cta2__actions">
+            <a class="btn btn--primary" href={bookHref}>{t(lang, 'cta.book')}</a>
+            <a class="btn ghost" href={`/${lang}/service/`}>{c.learn}</a>
+          </div>
+          <p class="cta2__foot"><a href={`mailto:${b.contact.email}`}>{b.contact.email}</a></p>
+        </div>
+
+        <div class="cols" data-cols>
+          {[colA, colB].map((col, ci) => (
+            <div class={`col col--${ci ? 'b' : 'a'}`}>
+              <div class="col__track">
+                {[0, 1].map((copy) => (
+                  <div class="col__set" aria-hidden={copy === 1 ? 'true' : undefined} inert={copy === 1}>
+                    {col.map((x) => (
+                      <article class="pcard" style={`aspect-ratio:${x.r}`}>
+                        <img src={x.img} alt="" loading="lazy" onerror="this.style.display='none'" />
+                        <div class="pcard__tools">
+                          <button type="button" class="icon-btn heart" aria-pressed="false" aria-label={likeLabel}>♡</button>
+                          <a class="icon-btn" href={bookHref} aria-label={goLabel}>↗</a>
+                        </div>
+                        <span class="pcard__label">{x.label}</span>
+                      </article>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
-
-  <!-- 6. PARTNERS -->
-  <Partners lang={lang} />
 </Layout>
 
 <style>
@@ -252,15 +279,23 @@ const quotes = [
   .dots { position: relative; display: flex; justify-content: center; gap: .6rem; margin-top: 1.1rem; }
   .dot { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 2px solid #fff; background: transparent; cursor: pointer; transition: background .2s, width .2s; }
   .dot.is-on { background: #fff; width: 28px; border-radius: 999px; }
-  .dot:focus-visible, .play:focus-visible, .arrow:focus-visible, .flip:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+  .dot:focus-visible, .play:focus-visible, .arrow:focus-visible, .icon-btn:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
 
   /* 3 Video */
   .stage { position: relative; max-width: 940px; margin-inline: auto; }
-  .strip { position: absolute; z-index: 0; padding: .6rem 1.4rem; font: 700 1.05rem / 1.2 var(--font-display); color: #26301A; background: #D6E36A; border-radius: 6px; box-shadow: 0 6px 16px rgba(0,0,0,.2); white-space: nowrap; }
-  .strip--1 { top: -1.1rem; right: -2.2rem; rotate: 5deg; }
-  .strip--2 { top: 28%; left: -3.4rem; rotate: -6deg; background: var(--sun); }
-  .strip--3 { bottom: -1.2rem; left: 8%; rotate: -3deg; background: #A8D1E7; }
-  .strip--4 { bottom: 14%; right: -3.4rem; rotate: 4deg; }
+  .strip {
+    position: absolute; z-index: 3;
+    padding: .75rem 1.6rem;
+    font: 700 clamp(1rem, 1.6vw, 1.25rem) / 1.2 var(--font-display);
+    color: #1F2A10; background: #D6E36A; border-radius: 10px; white-space: nowrap;
+    box-shadow: 0 12px 28px rgba(5, 16, 50, .45), 0 0 0 3px rgba(255, 255, 255, .85);
+    transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
+  }
+  .strip:hover { transform: translateY(-4px) rotate(0deg); }
+  .strip--1 { top: -1.5rem;  right: 4%;   rotate: 4deg; }
+  .strip--2 { top: 36%;      left: -2.6rem; rotate: -6deg; background: var(--sun); }
+  .strip--3 { bottom: -1.5rem; left: 6%;  rotate: -3deg; background: #A8D1E7; }
+  .strip--4 { bottom: 16%;   right: -2.6rem; rotate: 5deg; }
   .video { position: relative; z-index: 1; aspect-ratio: 16 / 9; border-radius: 2rem; overflow: hidden; background: var(--brand-deep);
     box-shadow: 0 28px 70px rgba(5, 16, 50, .5); display: grid; place-items: center; }
   .video__poster, .video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -294,45 +329,52 @@ const quotes = [
   .qcard blockquote { margin: 0; padding: 1.6rem 1.7rem .9rem; flex: 1; font: 600 1.1rem / 1.5 var(--font-display); color: var(--brand-deep); }
   .qcard figcaption { margin: 0 1.7rem 1.6rem; padding: .55rem 1rem; align-self: flex-start; border-radius: 16px; background: var(--sun); color: #1B1B18; font-size: var(--fs-sm); font-weight: 700; line-height: 1.4; }
 
-  /* 5 CTA with hanging cards */
-  .cta .container { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.2rem; }
-  .cta__h { margin: 0; text-wrap: balance; }
-  .cta__hint { margin: 0; opacity: .85; }
-  .hangers { list-style: none; margin: 2.2rem 0 1.6rem; padding: 3rem 0 0; position: relative; width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5rem; max-width: 1100px; padding-inline: 1rem; }
-  .hangers::before { content: ''; position: absolute; top: 0; left: 2%; right: 2%; height: 22px; border-bottom: 3px solid rgba(255,255,255,.7); border-radius: 0 0 50% 50% / 0 0 100% 100%; }
-  .hang { position: relative; transform-origin: 50% -2.6rem; rotate: calc(var(--a0, 9) * 1deg); }
-  .hang::before { content: ''; position: absolute; z-index: 2; top: -2.6rem; left: 50%; width: 2px; height: 2.6rem; background: rgba(255,255,255,.75); }
-  .hang::after { content: ''; position: absolute; z-index: 2; top: -.35rem; left: 50%; translate: -50% 0; width: 14px; height: 14px; border-radius: 50%; background: var(--sun); box-shadow: 0 2px 6px rgba(0,0,0,.3); }
-  .hangers.in .hang { animation: swing var(--sw, 2.2s) cubic-bezier(.3,.6,.4,1) var(--dl, 0s) both, sway var(--dur, 6s) ease-in-out calc(var(--dl, 0s) + var(--sw, 2.2s)) infinite; rotate: 0deg; }
-  .hang:hover, .hang:has(.is-flipped) { animation-play-state: paused, paused; }
-  @keyframes swing { 0% { rotate: calc(var(--a0, 9) * 1deg); } 22% { rotate: calc(var(--a0, 9) * -.66deg); } 44% { rotate: calc(var(--a0, 9) * .44deg); } 66% { rotate: calc(var(--a0, 9) * -.2deg); } 100% { rotate: 0deg; } }
-  @keyframes sway { 0%, 100% { rotate: 0deg; } 28% { rotate: calc(var(--hi, 1.6) * 1deg); } 72% { rotate: calc(var(--lo, -1.6) * 1deg); } }
+  /* 6 Book a training: split card, text left, two scrolling photo columns right */
+  .cta2__card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center;
+    background: #fff; border-radius: 44px; padding: clamp(1.6rem, 4vw, 3.2rem); box-shadow: 0 24px 60px rgba(30, 79, 163, .16); overflow: hidden; }
+  .cta2__icons { display: flex; gap: .6rem; margin-bottom: 1.6rem; }
+  .cta2__icons span { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--tint); font-size: 1.25rem; }
+  .cta2__h { color: var(--brand-deep); text-wrap: balance; margin: 0 0 1.1rem; font-size: clamp(2rem, 4.2vw, 3.4rem); line-height: 1.12; }
+  .cta2__p { color: var(--muted); max-width: 34ch; margin: 0 0 1.8rem; font-size: var(--fs-lg); }
+  .cta2__actions { display: flex; flex-wrap: wrap; gap: .9rem; }
+  .cta2__actions .btn { min-height: 54px; padding-inline: 1.8rem; font-weight: 700; }
+  .cta2__actions .btn--primary { box-shadow: 0 10px 24px rgba(30, 79, 163, .3); }
+  .ghost { background: transparent; border: 2px solid var(--brand-deep); color: var(--brand-deep); }
+  .ghost:hover { background: var(--brand-deep); color: #fff; border-color: var(--brand-deep); }
+  .cta2__foot { margin: 2.2rem 0 0; font-size: var(--fs-sm); color: var(--muted); }
+  .cta2__foot a { color: var(--brand); font-weight: 700; }
 
-  .flip { display: block; width: 100%; aspect-ratio: 3 / 4; padding: 0; border: 0; background: none; cursor: pointer; perspective: 1000px; color: inherit; font: inherit; }
-  .flip__in { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .8s cubic-bezier(.3,.7,.2,1); }
-  .flip.is-flipped .flip__in { transform: rotateY(180deg); }
-  .face { position: absolute; inset: 0; display: flex; flex-direction: column; border-radius: 24px; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; box-shadow: 0 18px 40px rgba(5, 16, 50, .4); }
-  .face--front { background: var(--tc); }
-  .face--front img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .face__label { position: relative; margin-top: auto; display: flex; align-items: center; gap: .5rem; padding: 2.4rem 1.1rem 1.1rem; text-align: left; font: 700 1.1rem / 1.2 var(--font-display); color: #fff; background: linear-gradient(to top, rgba(8, 20, 60, .85), transparent); }
-  .face--back { transform: rotateY(180deg); justify-content: center; align-items: center; gap: .7rem; padding: 1.6rem 1.3rem; text-align: center; color: #fff;
-    background: linear-gradient(135deg, var(--tc) 0%, #1E4FA3 55%, #7A5CD6 100%); background-size: 160% 160%; }
-  .face--back strong { font: 700 1.25rem / 1.25 var(--font-display); }
-  .face--back span { font-size: var(--fs-sm); line-height: 1.5; opacity: .95; }
-  /* glossy sheen that follows the cursor */
-  .face--back::before { content: ''; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(circle 190px at var(--mx, 30%) var(--my, 20%), rgba(255,255,255,.65), rgba(255,255,255,0) 70%); mix-blend-mode: soft-light; opacity: .9; }
-  .face--back::after { content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
-    background: linear-gradient(115deg, rgba(255,255,255,.35) 0%, rgba(255,255,255,0) 38%, rgba(255,255,255,0) 62%, rgba(255,255,255,.18) 100%);
-    box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.45), inset 0 18px 30px rgba(255,255,255,.18); }
-  .face--back > * { position: relative; z-index: 1; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; height: clamp(440px, 64vh, 640px); overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 9%, #000 91%, transparent); mask-image: linear-gradient(to bottom, transparent 0, #000 9%, #000 91%, transparent); }
+  .col { min-width: 0; overflow: hidden; }
+  .col--b { padding-top: 3.2rem; }               /* staggered, like the reference */
+  .col__track { display: flex; flex-direction: column; animation: colUp 42s linear infinite; will-change: transform; }
+  .col--b .col__track { animation-name: colDown; animation-duration: 50s; }
+  .col__set { display: flex; flex-direction: column; gap: 1rem; padding-bottom: 1rem; }
+  .cols:hover .col__track, .cols:focus-within .col__track { animation-play-state: paused; }
+  @keyframes colUp { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+  @keyframes colDown { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+
+  .pcard { position: relative; overflow: hidden; border-radius: 26px; background: linear-gradient(160deg, #6FA6E8, var(--brand)); isolation: isolate; }
+  .pcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.22, 1, .36, 1); }
+  .pcard:hover img { transform: scale(1.06); }
+  .pcard__tools { position: absolute; z-index: 2; top: .8rem; right: .8rem; display: flex; gap: .45rem; }
+  .icon-btn { width: 38px; height: 38px; border-radius: 50%; border: 0; background: #fff; color: var(--brand-deep); font: 400 1.1rem / 1 var(--font-body);
+    display: grid; place-items: center; cursor: pointer; text-decoration: none; box-shadow: 0 4px 12px rgba(5, 16, 50, .2); transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), background .2s, color .2s; }
+  .icon-btn:hover { transform: scale(1.12); }
+  .heart.is-on { background: var(--coral); color: #fff; animation: beat .4s cubic-bezier(.34, 1.56, .64, 1); }
+  @keyframes beat { 0% { transform: scale(.7); } 100% { transform: scale(1); } }
+  .pcard__label { position: absolute; z-index: 2; left: .8rem; bottom: .8rem; max-width: calc(100% - 1.6rem); padding: .45rem 1rem; border-radius: 999px;
+    font: 600 .9rem / 1.25 var(--font-body); color: #fff; background: rgba(255, 255, 255, .22); border: 1.5px solid rgba(255, 255, 255, .7);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); text-shadow: 0 1px 4px rgba(0, 0, 0, .35); }
 
   @media (max-width: 1279px) {
     .curve--a, .curve--b { display: none; }
   }
   @media (max-width: 1000px) {
-    .hangers { grid-template-columns: repeat(2, 1fr); gap: 4rem 3rem; max-width: 560px; }
-    .strip--2, .strip--4 { display: none; }
+    .cta2__card { grid-template-columns: 1fr; }
+    .cta2__p { max-width: none; }
+    .cols { height: 440px; }
   }
   @media (max-width: 860px) {
     .take-grid { grid-template-columns: 1fr; }
@@ -344,17 +386,23 @@ const quotes = [
     .curve--d, .curve--c { display: none; }
     .curve--e { top: auto; bottom: 250px; right: 3%; }
     .curve--f { bottom: 14px; right: 4%; }
-    .strip--1 { right: -.5rem; }
-    .strip--3 { left: 2%; }
+
+    /* Video label cards: no overlap on tablet/phone, a tidy readable row UNDER the video */
+    .stage { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; }
+    .video { order: 0; flex: 0 0 100%; }
+    .strip { order: 1; position: static; rotate: 0deg; font-size: .95rem; padding: .55rem 1.1rem; box-shadow: 0 6px 16px rgba(5, 16, 50, .35); }
   }
-  @media (max-width: 440px) {
-    .hangers { grid-template-columns: 1fr; max-width: 300px; }
+  @media (max-width: 520px) {
+    .cta2__card { border-radius: 30px; }
+    .cta2__actions .btn { flex: 1 1 100%; }
+    .cols { height: 380px; gap: .7rem; }
+    .col--b { padding-top: 2rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     .fl, .curve { animation: none; }
-    .hang { rotate: 0deg; }
-    .hangers.in .hang { animation: none; }
-    .flip__in, .shot { transition-duration: .01s; }
+    .col__track { animation: none; }
+    .cols { overflow-y: auto; }
+    .shot { transition-duration: .01s; }
   }
 </style>
 
@@ -453,41 +501,17 @@ const quotes = [
 </script>
 
 <script is:inline>
-  // CTA cards: swing in once, flip on click, glossy highlight follows cursor
+  // CTA photo cards: heart toggle
   (function () {
-    var row = document.querySelector('[data-hangers]');
-    if (!row) return;
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (en) {
-        if (en[0].isIntersecting) { row.classList.add('in'); io.disconnect(); }
-      }, { threshold: 0.3 });
-      io.observe(row);
-    } else { row.classList.add('in'); }
-    // every card swings its own way: random start angle, speed, delay and reach
-    function rnd(a, b) { return a + Math.random() * (b - a); }
-    row.querySelectorAll('.hang').forEach(function (h) {
-      var st = h.style;
-      st.setProperty('--a0', ((Math.random() < 0.5 ? -1 : 1) * rnd(6, 15)).toFixed(1));
-      st.setProperty('--sw', rnd(1.6, 3).toFixed(2) + 's');
-      st.setProperty('--dl', rnd(0, 0.9).toFixed(2) + 's');
-      st.setProperty('--dur', rnd(4.2, 8.5).toFixed(2) + 's');
-      st.setProperty('--hi', rnd(0.8, 3.6).toFixed(1));
-      st.setProperty('--lo', (-rnd(0.8, 3.6)).toFixed(1));
-    });
-    row.querySelectorAll('.flip').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var on = btn.classList.toggle('is-flipped');
-        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-      var back = btn.querySelector('.face--back');
-      btn.addEventListener('pointermove', function (e) {
-        var r = back.getBoundingClientRect();
-        // the back face is mirrored, so flip x
-        var x = btn.classList.contains('is-flipped') ? r.right - e.clientX : e.clientX - r.left;
-        back.style.setProperty('--mx', x + 'px');
-        back.style.setProperty('--my', (e.clientY - r.top) + 'px');
-        back.style.backgroundPosition = (x / r.width * 100) + '% ' + ((e.clientY - r.top) / r.height * 100) + '%';
-      });
+    var cols = document.querySelector('[data-cols]');
+    if (!cols) return;
+    cols.addEventListener('click', function (e) {
+      var h = e.target.closest('.heart');
+      if (!h) return;
+      var on = !h.classList.contains('is-on');
+      h.classList.toggle('is-on', on);
+      h.setAttribute('aria-pressed', on ? 'true' : 'false');
+      h.textContent = on ? '♥' : '♡';
     });
   })();
 </script>

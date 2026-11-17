@@ -3,49 +3,70 @@ import type { Lang } from '../i18n/utils';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 
-// Bilingual labels, as on the brochure
-const groups = [
-  {
-    zh: '聯合呈獻', en: 'Jointly presented by',
-    logos: [
-      { src: '/images/neuroseedlogopackage-02.png', alt: 'Neuroseed 腦力試', h: 72 },
-      { src: '/images/BR_B.png', alt: 'Brown Rice 活米', h: 22 },
-      { src: '/images/logo.png', alt: 'Ecorazón 自然敘語', h: 52 }
-    ]
-  },
-  {
-    zh: '研究機構', en: 'Research institute',
-    logos: [
-      { src: '/images/PolyU & SN.png', alt: 'The Hong Kong Polytechnic University 香港理工大學', h: 70 },
-    ]
-  }
-];
+// Bilingual labels, as on the brochure.
+// Mobile order: Neuroseed logo, "Jointly presented by", Brown Rice + Ecorazón (one row), "Research institute", PolyU.
+const neuroseed = { src: '/images/neuroseedlogopackage-02.png', alt: 'Neuroseed 腦力試', h: 72 };
+const presented = {
+  zh: '聯合呈獻', en: 'Jointly presented by',
+  logos: [
+    { src: '/images/BR_B.png', alt: 'Brown Rice 活米', h: 11 },
+    { src: '/images/logo.png', alt: 'Ecorazón 自然敘語', h: 52 }
+  ]
+};
+const research = {
+  zh: '研究機構', en: 'Research institute',
+  logos: [
+    { src: '/images/PolyU & SN.png', alt: 'The Hong Kong Polytechnic University 香港理工大學', h: 70 }
+  ]
+};
 ---
 <section class="partners" aria-label={lang === 'zh' ? '合作夥伴' : 'Partners'}>
   <div class="container partners__grid">
-    {groups.map((g) => (
-      <div class="group">
-        <p class="label"><strong>{g.zh}</strong><span class="bar" aria-hidden="true"></span><span>{g.en}</span></p>
-        <ul class="logos">
-          {g.logos.map((l) => (
-            <li><img src={l.src} alt={l.alt} height={l.h} loading="lazy" style={`height:${l.h}px`} /></li>
-          ))}
-        </ul>
-      </div>
-    ))}
+
+    <div class="group">
+      <!-- mobile only: sits above the label -->
+      <img class="lead m-only" src={neuroseed.src} alt={neuroseed.alt} loading="lazy" style={`height:${neuroseed.h}px`} />
+      <p class="label"><strong>{presented.zh}</strong><span class="bar" aria-hidden="true"></span><span>{presented.en}</span></p>
+      <ul class="logos logos--row">
+        <!-- desktop only: Neuroseed sits in the row with the others -->
+        <li class="d-only"><img src={neuroseed.src} alt={neuroseed.alt} loading="lazy" style={`height:${neuroseed.h}px`} /></li>
+        {presented.logos.map((l) => (
+          <li><img src={l.src} alt={l.alt} loading="lazy" style={`height:${l.h}px`} /></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="group">
+      <p class="label"><strong>{research.zh}</strong><span class="bar" aria-hidden="true"></span><span>{research.en}</span></p>
+      <ul class="logos">
+        {research.logos.map((l) => (
+          <li><img src={l.src} alt={l.alt} loading="lazy" style={`height:${l.h}px`} /></li>
+        ))}
+      </ul>
+    </div>
+
   </div>
 </section>
 
 <style>
   .partners { background: var(--tint); padding-block: 3.5rem; }
   .partners__grid { display: grid; grid-template-columns: 3fr 2fr; gap: 3rem; align-items: start; background: var(--surface); border-radius: var(--radius-lg); padding: 2.6rem 2.4rem; box-shadow: 0 12px 32px rgba(30, 79, 163, 0.10); }
-  .group { display: flex; flex-direction: column; align-items: center; gap: 1.6rem; }
-  .label { display: flex; align-items: center; gap: 0.9rem; margin: 0; color: var(--brand); font-size: var(--fs-sm); letter-spacing: 0.04em; }
+  .group { display: flex; flex-direction: column; align-items: center; gap: 1.6rem; min-width: 0; }
+  .label { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem 0.9rem; margin: 0; color: var(--brand); font-size: var(--fs-sm); letter-spacing: 0.04em; text-align: center; }
   .label strong { font: 700 1.05rem var(--font-body); letter-spacing: 0.18em; }
   .bar { width: 1px; height: 1.2em; background: currentColor; opacity: 0.6; }
   .logos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.4rem 2.6rem; }
-  .logos img { width: auto; max-width: 100%; object-fit: contain; }
+  .logos img, .lead { width: auto; max-width: 100%; object-fit: contain; }
+  .m-only { display: none; }
+
   @media (max-width: 860px) {
     .partners__grid { grid-template-columns: 1fr; gap: 2.6rem; padding: 2rem 1.2rem; }
+    .group { gap: 1.3rem; }
+    .m-only { display: block; }
+    .d-only, .logos--row li.d-only { display: none !important; }
+    /* Brown Rice and Ecorazón stay on ONE row, scaling down to fit */
+    .logos--row { flex-wrap: nowrap; gap: 1.2rem; width: 100%; }
+    .logos--row li { flex: 1 1 0; min-width: 0; display: flex; justify-content: center; }
+    .logos--row img { height: auto !important; max-height: 56px; max-width: 100%; }
   }
 </style>
