@@ -12,13 +12,13 @@ const { c } = Astro.props;
 // img: add a real photo path later, e.g. img: '/img/about/neuroseed.jpg'
 const tiers = [
   [
-    { key: 'neuroseed',  href: '#story',       color: 'red',    x: 6,  r: -4,   rest: 74, img: '' },
-    { key: 'brown-rice', href: '#brown-rice',  color: 'blue-a', x: 38, r: 2.5,  rest: 66, img: '' },
-    { key: 'ecorazon',   href: '#ecorazon',    color: 'blue-b', x: 69, r: -2,   rest: 78, img: '' },
+    { key: 'neuroseed',  href: '#story',       color: 'red',    x: 6,  r: -4,   rest: 80, img: '' },
+    { key: 'brown-rice', href: '#brown-rice',  color: 'blue-a', x: 38, r: 2.5,  rest: 72, img: '' },
+    { key: 'ecorazon',   href: '#ecorazon',    color: 'blue-b', x: 69, r: -2,   rest: 84, img: '' },
   ],
   [
-    { key: 'team',       href: '#team',        color: 'black',  x: 20, r: 3,    rest: 70, img: '' },
-    { key: 'join',       href: '#join',        color: 'gold',   x: 52, r: -3,   rest: 76, img: '' },
+    { key: 'team',       href: '#team',        color: 'black',  x: 20, r: 3,    rest: 76, img: '' },
+    { key: 'join',       href: '#join',        color: 'gold',   x: 52, r: -3,   rest: 62, img: '' },
   ],
 ];
 let n = 0;
@@ -49,7 +49,6 @@ const hrefOf = Object.fromEntries(all.map((k) => [k.key, k.href]));
     <div class="folder">
       <span class="tab">{c.sideTag}</span>
       <div class="back"></div>
-      <div class="paper" aria-hidden="true"></div>
 
       <!-- sleeve 1 photos -->
       <div class="tier tier--1">
@@ -100,7 +99,7 @@ const hrefOf = Object.fromEntries(all.map((k) => [k.key, k.href]));
     display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
     align-items: center; gap: 2rem;
     background: #F6EEDC; color: var(--ink);
-    padding-block: 4rem 3rem;
+    padding-block: 2rem 3rem;
   }
 
   /* ---------- left ---------- */
@@ -126,8 +125,8 @@ const hrefOf = Object.fromEntries(all.map((k) => [k.key, k.href]));
   .desc--black { --c: #1B1B18; } .desc--gold { --c: #E9B949; }
 
   /* ---------- folder ---------- */
-  .right { margin-right: -3vw; padding-left: 36px; }   /* bleeds off the right edge */
-  .folder { position: relative; aspect-ratio: 1.28; }
+  .right { margin-right: -3vw; padding-left: 36px; align-self: start; }
+  .folder { position: relative; aspect-ratio: 1.30; }
 
   .back {
     position: absolute; inset: 0; z-index: 0;
@@ -136,23 +135,13 @@ const hrefOf = Object.fromEntries(all.map((k) => [k.key, k.href]));
     box-shadow: 0 30px 40px -24px rgba(60, 40, 10, .55);
   }
   .tab {
-    position: absolute; left: -34px; top: 11%; z-index: 6;
+    position: absolute; left: -34px; top: 30%; z-index: 6;
     width: 34px; padding: 1.1rem 0;
     writing-mode: vertical-rl; text-align: center;
     background: var(--kraft-dk); color: var(--ink);
     font: 700 .78rem/1 var(--font-display, inherit); letter-spacing: .14em;
     border-radius: 12px 0 0 12px;
     box-shadow: -3px 3px 0 rgba(60, 40, 10, .15);
-  }
-  /* grid paper sticking out behind the photos */
-  .paper {
-    position: absolute; z-index: 1; left: 5%; right: -4%; top: -3.5%; height: 60%;
-    transform: rotate(-1.2deg);
-    background:
-      linear-gradient(rgba(90, 80, 60, .14) 1px, transparent 1px) 0 0 / 100% 14px,
-      linear-gradient(90deg, rgba(90, 80, 60, .14) 1px, transparent 1px) 0 0 / 14px 100%,
-      #EFE8D8;
-    box-shadow: 0 6px 12px -8px rgba(0, 0, 0, .4);
   }
 
   .panel {
@@ -161,13 +150,13 @@ const hrefOf = Object.fromEntries(all.map((k) => [k.key, k.href]));
     box-shadow: 0 -10px 18px -10px rgba(60, 40, 10, .45);
     border-radius: 24px 24px 0 0;
   }
-  .panel--mid   { top: 32%; z-index: 3; }
-  .panel--front { top: 62%; z-index: 5; border-radius: 24px 0 0 0; }
+  .panel--mid   { top: 26%; z-index: 3; }
+  .panel--front { top: 54%; z-index: 5; border-radius: 24px 0 0 0; }
 
   /* ---------- photos ---------- */
   .tier { position: absolute; left: 0; right: 0; pointer-events: none; }
-  .tier--1 { top: 0;   height: 32%; z-index: 2; }
-  .tier--2 { top: 32%; height: 30%; z-index: 4; }
+  .tier--1 { top: 0;   height: 26%; z-index: 2; }
+  .tier--2 { top: 26%; height: 28%; z-index: 4; }
 
   .pc {
     position: absolute; bottom: 0; left: calc(var(--x) * 1%);

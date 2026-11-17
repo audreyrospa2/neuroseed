@@ -13,15 +13,18 @@ const c = home[lang];
 const b = brainy[lang];
 const heroImg = '/images/hero photo.png';
 const pillColors = ['#E2655F', '#F7C948', '#6FA6E8', '#5BB487'];
-const voiceImgs = ['/images/3.jpg', '/images/8.jpg'];
-// Quote cards: the new secondary-school quote first, then the existing principal voices
+
+// Quote cards: teacher card first, then the principal voices.
+// `pos` is the object-position of the photo, so the people stay in the middle of the crop.
+const principalTag = lang === 'zh' ? '參與校長分享' : "Participating Principal's Sharing";
+const voiceImgs = ['/images/5.jpg', '/images/12.jpg'];
 const quotes = [
-  { quote: c.takeaways.quote.q, school: c.takeaways.quote.school, img: c.takeaways.quote.img },
-  ...b.voices.items.map((v, i) => ({ quote: v.quote, school: v.school, img: voiceImgs[i] })),
+  { quote: c.takeaways.quote.q, tag: c.takeaways.quote.school, img: c.takeaways.quote.img, pos: '50% 50%' },
+  ...b.voices.items.map((v, i) => ({ quote: v.quote, tag: principalTag, img: voiceImgs[i], pos: '50% 50%' })),
 ];
 
 // CTA photo cards: 4 workshop tiles + the 4 takeaways. Swap the image paths freely.
-const extraImgs = ['/images/3.jpg', '/images/8.jpg', '/images/10.jpg', '/images/7.jpg'];
+const extraImgs = ['/images/11.jpg', '/images/8.jpg', '/images/10.jpg', '/images/7.jpg'];
 const cards = [
   ...c.tiles.map((x) => ({ label: x.label, img: x.img })),
   ...c.takeaways.items.map((x, i) => ({ label: x.h, img: extraImgs[i] })),
@@ -47,7 +50,7 @@ const goLabel = lang === 'zh' ? '預約培訓' : 'Book a training';
     </div>
     <div class="container hero__grid">
       <div class="hero__text">
-        <span class="pill">{c.badge}</span>
+        <!-- <span class="pill">{c.badge}</span> -->
         <h1>{c.title}<br /><span class="accent typewriter" data-words={JSON.stringify(c.accents)}>{c.accents[0]}</span></h1>
         <p class="sub">{c.sub}</p>
         <p class="lead">{c.lead}</p>
@@ -92,7 +95,7 @@ const goLabel = lang === 'zh' ? '預約培訓' : 'Book a training';
     <section class="section scene__intro">
       <div class="container two">
         <div class="bubble">
-          <h2>{c.intro.h}</h2>
+          <h2 class={`bubble__h bubble__h--${lang}`}>{c.intro.h}</h2>
           <p>{c.intro.p1}</p>
           <p class="bubble__support">{c.intro.support}</p>
           <a class="more" href={`/${lang}/about/`}>{c.intro.link} <span aria-hidden="true">→</span></a>
@@ -153,9 +156,9 @@ const goLabel = lang === 'zh' ? '預約培訓' : 'Book a training';
             <div class="rail__set" aria-hidden={copy === 1 ? 'true' : undefined}>
               {quotes.map((q) => (
                 <figure class="qcard">
-                  <img src={q.img} alt="" loading="lazy" onerror="this.style.display='none'" />
+                  <img src={q.img} alt="" style={`object-position:${q.pos}`} loading="lazy" onerror="this.style.display='none'" />
                   <blockquote>{q.quote}</blockquote>
-                  <figcaption>{q.school}</figcaption>
+                  <figcaption>{q.tag}</figcaption>
                 </figure>
               ))}
             </div>
@@ -260,9 +263,12 @@ const goLabel = lang === 'zh' ? '預約培訓' : 'Book a training';
   /* 2 Intro */
   .two { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
   .bubble { position: relative; background: #fff; color: #1F2A44; padding: clamp(2.4rem, 4vw, 4rem) clamp(2.4rem, 4.6vw, 4.8rem);
-    border-radius: 120px 200px 140px 220px / 160px 140px 200px 150px; box-shadow: 0 24px 60px rgba(8, 24, 70, 0.35); }
+    border-radius: 120px 200px 140px 220px / 160px 140px 200px 150px; box-shadow: 0 24px 60px rgba(8, 24, 70, 0.35);
+    container-type: inline-size; }
   .bubble::before { content: ''; position: absolute; z-index: -1; inset: 1.2rem -1.2rem -1.2rem 1.2rem; border-radius: inherit; background: rgba(255,255,255,.18); rotate: 2deg; }
   .bubble h2 { color: var(--brand-deep); margin: 0 0 1.2rem; font-size: clamp(1.5rem, 2.4vw, 2.1rem); line-height: 1.25; text-wrap: balance; }
+  /* Chinese headline stays on ONE row and scales with the bubble width (cqw = 1% of bubble width) */
+  .bubble .bubble__h--zh { white-space: nowrap; font-size: min(2.1rem, 6cqw); letter-spacing: -0.01em; }
   .bubble p { margin: 0 0 1rem; color: #3A4660; line-height: 1.65; }
   .bubble .bubble__support { font: 700 1.05rem / 1.45 var(--font-display); color: var(--brand); margin-bottom: 1.2rem; }
   .more { display: inline-block; font-weight: 700; color: var(--brand-deep); text-decoration: underline; text-underline-offset: 5px; }
@@ -387,16 +393,31 @@ const goLabel = lang === 'zh' ? '預約培訓' : 'Book a training';
     .curve--e { top: auto; bottom: 250px; right: 3%; }
     .curve--f { bottom: 14px; right: 4%; }
 
+    /* Bigger text inside the 4 key-takeaway pills on mobile */
+    .pill-row { font-size: 1.2rem; padding: .9rem 1.2rem; gap: .9rem; }
+    .pill-row__n { width: 2.5rem; height: 2.5rem; font-size: 1.1rem; }
+
     /* Video label cards: no overlap on tablet/phone, a tidy readable row UNDER the video */
     .stage { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; }
     .video { order: 0; flex: 0 0 100%; }
     .strip { order: 1; position: static; rotate: 0deg; font-size: .95rem; padding: .55rem 1.1rem; box-shadow: 0 6px 16px rgba(5, 16, 50, .35); }
   }
   @media (max-width: 520px) {
-    .cta2__card { border-radius: 30px; }
-    .cta2__actions .btn { flex: 1 1 100%; }
-    .cols { height: 380px; gap: .7rem; }
-    .col--b { padding-top: 2rem; }
+    .cta2 .container { width: min(100% - 1.5rem, var(--container)); }
+    .cta2__card { border-radius: 28px; padding: 1.3rem 1.1rem 1.1rem; gap: 1.6rem; }
+    .cta2__icons { margin-bottom: 1.1rem; }
+    .cta2__h { font-size: 1.9rem; }
+    .cta2__p { font-size: 1.02rem; margin-bottom: 1.3rem; }
+    .cta2__actions { flex-direction: column; gap: .7rem; }
+    .cta2__actions .btn { width: 100%; min-height: 52px; padding-inline: 1rem; font-size: .98rem; text-align: center; white-space: nowrap; }
+    .cta2__foot { margin-top: 1.3rem; }
+    .cols { height: 400px; gap: .6rem; }
+    .col--b { padding-top: 1.6rem; }
+    .col__set { gap: .6rem; padding-bottom: .6rem; }
+    .pcard { border-radius: 18px; }
+    .pcard__tools { top: .45rem; right: .45rem; gap: .3rem; }
+    .icon-btn { width: 28px; height: 28px; font-size: .85rem; }
+    .pcard__label { left: .45rem; bottom: .45rem; max-width: calc(100% - .9rem); padding: .28rem .6rem; border-radius: 12px; font-size: .72rem; line-height: 1.2; }
   }
   @media (prefers-reduced-motion: reduce) {
     .fl, .curve { animation: none; }

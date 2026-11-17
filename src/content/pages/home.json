@@ -2,7 +2,7 @@
   "zh": {
     "badge": "到校教師培訓計劃",
     "title": "讓老師的理解，",
-    "accents": ["成為孩子的力量", "親身體驗", "練習回應", "帶回校園"],
+    "accents": ["成為孩子的力量", "透過親身體驗", "從回應中練習", "帶回校園"],
     "sub": "孩子需要支持，老師也需要方法",
     "lead": "支持教育工作者，在有限資源下成為學生的一雙手。",
     "learn": "了解腦細話事",
@@ -28,7 +28,7 @@
     "video": {
       "h": "計劃實況",
       "src": "",
-      "poster": "/images/6.jpg",
+      "poster": "/images/vid-thumb.jpg",
       "note": "影片位置：請在 CMS 填入影片網址（video.src）。",
       "strips": ["角色體驗", "實用工具", "支持有需要的學生", "共同態度"]
     },
@@ -40,7 +40,7 @@
         { "h": "建立同事共同語言", "p": "全校團隊用同一套說法談情緒與支援，協作更順暢。" },
         { "h": "實踐指南延續反思", "p": "把工作坊所學帶回校園，並透過指南持續反思。" }
       ],
-      "quote": { "q": "學生更願意分享自己的感受，也更主動關心同學。", "school": "中學老師", "img": "/images/9.jpg" }
+      "quote": { "q": "學生更願意分享自己的感受，也更主動關心同學。", "school": "參與老師分享", "img": "/images/13.jpg" }
     },
     "cta": {
       "h1": "投資老師，",
@@ -52,7 +52,7 @@
   "en": {
     "badge": "On-Site Teacher Training Programme",
     "title": "Let teachers’ understanding",
-    "accents": ["become children’s strength", "Experience it", "Practise it", "Apply it"],
+    "accents": ["become children’s strength", "Through Experience", "Through Practice", "Apply it"],
     "sub": "Children need support. Teachers need tools too.",
     "lead": "Support teachers to become students’ “supporting hand” under limited resources.",
     "learn": "Learn about the programme",
@@ -78,7 +78,7 @@
     "video": {
       "h": "See the programme in action",
       "src": "",
-      "poster": "/images/6.jpg",
+      "poster": "/images/vid-thumb.jpg",
       "note": "Video placeholder: add the video URL in the CMS (video.src).",
       "strips": ["Role experience", "Practical tools", "Supporting students in need", "Shared attitudes"]
     },
@@ -90,7 +90,7 @@
         { "h": "Build colleagues’ shared language", "p": "A whole-school team that talks about emotions and support in the same way works together more easily." },
         { "h": "Continue reflections", "p": "Take what you practised back to campus and keep reflecting with the practice guide." }
       ],
-      "quote": { "q": "Students are more willing to share their feelings and care about each other.", "school": "Secondary School teacher", "img": "/images/9.jpg" }
+      "quote": { "q": "Students are more willing to share their feelings and care about each other.", "school": "Participating Teacher’s Sharing", "img": "/images/13.jpg" }
     },
     "cta": {
       "h1": "Invest in Teachers",

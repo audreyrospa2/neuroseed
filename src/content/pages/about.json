@@ -10,145 +10,61 @@
         "Whole-Person Development"
       ],
       "intro": [
-        {
-          "t": "Neuroseed",
-          "k": "neuroseed"
-        },
-        {
-          "t": " is an educational innovation project advancing whole-person development through neuroscience-informed learning, jointly developed by "
-        },
-        {
-          "t": "Brown Rice Livelihood Foundation",
-          "k": "brown-rice"
-        },
-        {
-          "t": " and "
-        },
-        {
-          "t": "Ecorazón",
-          "k": "ecorazon"
-        },
-        {
-          "t": "."
-        }
+        { "t": "Neuroseed", "k": "neuroseed" },
+        { "t": " is an educational innovation project advancing whole-person development through neuroscience-informed learning, jointly developed by " },
+        { "t": "Brown Rice Livelihood Foundation", "k": "brown-rice" },
+        { "t": " and " },
+        { "t": "Ecorazón", "k": "ecorazon" },
+        { "t": "." }
       ],
       "cta": "Our Story",
       "cards": {
-        "neuroseed": {
-          "t": "Neuroseed",
-          "d": "How the project started and what it sets out to do."
-        },
-        "brown-rice": {
-          "t": "Brown Rice",
-          "d": "Brown Rice Livelihood Foundation, co-developer of Neuroseed."
-        },
-        "ecorazon": {
-          "t": "Ecorazón",
-          "d": "Ecorazón, co-developer of Neuroseed."
-        },
-        "team": {
-          "t": "Our Team",
-          "d": "The people behind the project."
-        },
-        "join": {
-          "t": "Join us",
-          "d": "Ways to take part in Neuroseed."
-        }
+        "neuroseed": { "t": "Neuroseed", "d": "How the project started and what it sets out to do." },
+        "brown-rice": { "t": "Brown Rice", "d": "Brown Rice Livelihood Foundation, co-developer of Neuroseed." },
+        "ecorazon": { "t": "Ecorazón", "d": "Ecorazón, co-developer of Neuroseed." },
+        "team": { "t": "Our Team", "d": "The people behind the project." },
+        "join": { "t": "Join us", "d": "Ways to take part in Neuroseed." }
       }
     },
     "story": {
       "h": "Our Story",
       "items": [
-        {
-          "h": "Beginnings",
-          "p": "Content coming soon."
-        },
-        {
-          "h": "Brown Rice",
-          "p": "Content coming soon."
-        },
-        {
-          "h": "Ecorazón",
-          "p": "Content coming soon."
-        },
-        {
-          "h": "Neuroseed",
-          "p": "Content coming soon."
-        }
+        { "h": "Beginnings", "p": "Content coming soon." },
+        { "h": "Brown Rice", "p": "Content coming soon." },
+        { "h": "Ecorazón", "p": "Content coming soon." },
+        { "h": "Neuroseed", "p": "Content coming soon." }
       ]
     },
     "brown": {
       "tag": "Brown Rice",
       "h": "About Brown Rice",
-      "lead": "Brown Rice Livelihood Foundation is one of the two organisations behind Neuroseed.",
+      "lead": "A Hong Kong foundation connecting growth and inclusion",
       "points": [
-        {
-          "h": "Who they are",
-          "p": "A short introduction to the foundation, its mission and the values it works from."
-        },
-        {
-          "h": "What they do",
-          "p": "The programmes and communities the foundation works with day to day."
-        },
-        {
-          "h": "What they bring to Neuroseed",
-          "p": "The experience and networks that shape how the project reaches schools and families."
-        }
+        { "h": "Who they are", "p": "A Hong Kong foundation connecting growth and inclusion" },
+        { "h": "What they do", "p": "Creates and nurtures community projects that help neurodivergent people develop their strengths." },
+        { "h": "What they bring to Neuroseed", "p": "Brings teacher training into schools, and Soaring Academics offers students free tutoring by volunteers" }
       ]
     },
     "eco": {
       "tag": "Ecorazón",
       "h": "About Ecorazón",
-      "lead": "Ecorazón is the other organisation behind Neuroseed, and it develops the project together with Brown Rice.",
+      "lead": "Where nature's echo meets the art with heart",
       "points": [
-        {
-          "h": "Who they are",
-          "p": "A short introduction to Ecorazón, its story and what it stands for."
-        },
-        {
-          "h": "What they do",
-          "p": "The work Ecorazón leads, and the people it works with."
-        },
-        {
-          "h": "What they bring to Neuroseed",
-          "p": "The expertise in learning and well-being that turns the ideas into practice."
-        }
+        { "h": "Who they are", "p": "Ecorazón is where nature's echo meets the art with heart. " },
+        { "h": "What they do", "p": "Create impact through four major service areas: Corporate Gifts, Curated MICE, Wellness Initiative, and ESG Solutions. " },
+        { "h": "What they bring to Neuroseed", "p": "Bring together design thinking, innovative technology, sustainable materials, and human creativity to transform empathy into a visible, usable, and empowering force." }
       ]
     },
     "team": {
       "h": "Our Team",
       "p": "The people who design, teach and support Neuroseed.",
       "members": [
-        {
-          "name": "Name",
-          "role": "Role",
-          "img": ""
-        },
-        {
-          "name": "Name",
-          "role": "Role",
-          "img": ""
-        },
-        {
-          "name": "Name",
-          "role": "Role",
-          "img": ""
-        },
-        {
-          "name": "Name",
-          "role": "Role",
-          "img": ""
-        },
-        {
-          "name": "Name",
-          "role": "Role",
-          "img": ""
-        },
-        {
-          "name": "Name",
-          "role": "Role",
-          "img": ""
-        }
+        { "name": "Karis Yeung", "role": "Director of Game Experience Design", "img": "/images/karis.jpeg" },
+        { "name": "Bonnie Yip", "role": "Director of Game Content", "img": "/images/bonnie.webp" },
+        { "name": "Patrick Au Yeung", "role": "Executive Producer, Game Design", "img": "/images/patrick.jpeg" },
+        { "name": "Stanly", "role": "Programme Director", "img": "/images/stanly-fung.webp" },
+        { "name": "Michelle Yau", "role": "Project Operations Manager", "img": "" },
+        { "name": "Zoe Chan", "role": "External Affairs Manager ", "img": "" }
       ],
       "prev": "Previous team member",
       "next": "Next team member"
@@ -157,19 +73,9 @@
       "h": "Join the Neuroseed community",
       "p": "Whether you are a school, a teacher or a partner, there is a way to take part.",
       "links": [
-        {
-          "h": "Book a training for your school",
-          "href": "book-a-training",
-          "primary": true
-        },
-        {
-          "h": "See how the programme works",
-          "href": "service"
-        },
-        {
-          "h": "Read the impact",
-          "href": "impact"
-        }
+        { "h": "Book a training for your school", "href": "book-a-training", "primary": true },
+        { "h": "See how the programme works", "href": "service" },
+        { "h": "Read the impact", "href": "impact" }
       ]
     }
   },
@@ -184,145 +90,61 @@
         "促進全人發展"
       ],
       "intro": [
-        {
-          "t": "腦力試",
-          "k": "neuroseed"
-        },
-        {
-          "t": "是一個以腦神經科學啟發學習、促進全人發展的教育創新項目，由"
-        },
-        {
-          "t": "活米慈善基金",
-          "k": "brown-rice"
-        },
-        {
-          "t": "與"
-        },
-        {
-          "t": "自然緻語",
-          "k": "ecorazon"
-        },
-        {
-          "t": "共同開展。"
-        }
+        { "t": "腦力試", "k": "neuroseed" },
+        { "t": "是一個以腦神經科學啟發學習、促進全人發展的教育創新項目，由" },
+        { "t": "活米慈善基金", "k": "brown-rice" },
+        { "t": "與" },
+        { "t": "自然緻語", "k": "ecorazon" },
+        { "t": "共同開展。" }
       ],
       "cta": "我們的故事",
       "cards": {
-        "neuroseed": {
-          "t": "腦力試",
-          "d": "項目的緣起與理念。"
-        },
-        "brown-rice": {
-          "t": "活米",
-          "d": "活米慈善基金，腦力試的共同開展方。"
-        },
-        "ecorazon": {
-          "t": "自然緻語",
-          "d": "自然緻語，腦力試的共同開展方。"
-        },
-        "team": {
-          "t": "我們的團隊",
-          "d": "項目背後的團隊。"
-        },
-        "join": {
-          "t": "加入我們",
-          "d": "參與腦力試的方式。"
-        }
+        "neuroseed": { "t": "腦力試", "d": "項目的緣起與理念。" },
+        "brown-rice": { "t": "活米", "d": "活米慈善基金，腦力試的共同開展方。" },
+        "ecorazon": { "t": "自然緻語", "d": "自然緻語，腦力試的共同開展方。" },
+        "team": { "t": "我們的團隊", "d": "項目背後的團隊。" },
+        "join": { "t": "加入我們", "d": "參與腦力試的方式。" }
       }
     },
     "story": {
       "h": "我們的故事",
       "items": [
-        {
-          "h": "緣起",
-          "p": "內容即將更新。"
-        },
-        {
-          "h": "活米",
-          "p": "內容即將更新。"
-        },
-        {
-          "h": "自然緻語",
-          "p": "內容即將更新。"
-        },
-        {
-          "h": "腦力試",
-          "p": "內容即將更新。"
-        }
+        { "h": "緣起", "p": "內容即將更新。" },
+        { "h": "活米", "p": "內容即將更新。" },
+        { "h": "自然緻語", "p": "內容即將更新。" },
+        { "h": "腦力試", "p": "內容即將更新。" }
       ]
     },
     "brown": {
       "tag": "活米",
       "h": "關於活米",
-      "lead": "活米慈善基金是腦力試背後的兩個機構之一。",
+      "lead": "連繫成長與共融的香港基金會",
       "points": [
-        {
-          "h": "我們是誰",
-          "p": "簡單介紹基金的使命與價值觀。"
-        },
-        {
-          "h": "我們做什麼",
-          "p": "基金日常服務的項目與社群。"
-        },
-        {
-          "h": "為腦力試帶來什麼",
-          "p": "讓項目走進學校與家庭的經驗與網絡。"
-        }
+        { "h": "我們是誰", "p": "連繫成長與共融的香港基金會" },
+        { "h": "我們做什麼", "p": "締造並培育社區項目，協助神經多樣性人士發展個人強項。" },
+        { "h": "為腦力試帶來什麼", "p": "把教師培訓帶進校園，並透過 Soaring Academics 讓學生獲得義工提供的免費補習。" }
       ]
     },
     "eco": {
       "tag": "自然緻語",
       "h": "關於自然緻語",
-      "lead": "自然緻語是腦力試背後的另一個機構，與活米共同開展項目。",
+      "lead": "讓自然的迴響，遇上用心的藝術",
       "points": [
-        {
-          "h": "我們是誰",
-          "p": "簡單介紹自然緻語的故事與理念。"
-        },
-        {
-          "h": "我們做什麼",
-          "p": "自然緻語主導的工作，以及一起合作的人。"
-        },
-        {
-          "h": "為腦力試帶來什麼",
-          "p": "把理念化為實踐的學習與身心健康專業。"
-        }
+        { "h": "我們是誰", "p": "自然緻語，是自然的迴響與用心的藝術相遇之處。" },
+        { "h": "我們做什麼", "p": "透過四大服務範疇創造影響力：企業禮品、特色 MICE 活動策劃、身心健康計劃及 ESG 方案。" },
+        { "h": "為腦力試帶來什麼", "p": "融合設計思維、創新科技、可持續物料與人的創意，將同理心轉化為看得見、用得上、能賦能於人的力量。" }
       ]
     },
     "team": {
       "h": "我們的團隊",
       "p": "設計、教授與支持腦力試的人。",
       "members": [
-        {
-          "name": "姓名",
-          "role": "職位",
-          "img": ""
-        },
-        {
-          "name": "姓名",
-          "role": "職位",
-          "img": ""
-        },
-        {
-          "name": "姓名",
-          "role": "職位",
-          "img": ""
-        },
-        {
-          "name": "姓名",
-          "role": "職位",
-          "img": ""
-        },
-        {
-          "name": "姓名",
-          "role": "職位",
-          "img": ""
-        },
-        {
-          "name": "姓名",
-          "role": "職位",
-          "img": ""
-        }
+        { "name": "Karis Yeung", "role": "遊戲體驗設計總監", "img": "/images/karis.jpeg" },
+        { "name": "Bonnie Yip", "role": "遊戲內容總監", "img": "/images/bonnie.webp" },
+        { "name": "Patrick Au Yeung", "role": "遊戲設計執行監製", "img": "/images/patrick.jpeg" },
+        { "name": "Stanly", "role": "項目總監", "img": "/images/stanly-fung.webp" },
+        { "name": "Michelle Yau", "role": "項目營運經理", "img": "" },
+        { "name": "Zoe Chan", "role": "對外事務經理", "img": "" }
       ],
       "prev": "上一位成員",
       "next": "下一位成員"
@@ -331,19 +153,9 @@
       "h": "加入腦力試社群",
       "p": "無論你是學校、教師或合作夥伴，都有參與的方式。",
       "links": [
-        {
-          "h": "為學校預約培訓",
-          "href": "book-a-training",
-          "primary": true
-        },
-        {
-          "h": "了解計劃如何運作",
-          "href": "service"
-        },
-        {
-          "h": "了解成效",
-          "href": "impact"
-        }
+        { "h": "為學校預約培訓", "href": "book-a-training", "primary": true },
+        { "h": "了解計劃如何運作", "href": "service" },
+        { "h": "了解成效", "href": "impact" }
       ]
     }
   }

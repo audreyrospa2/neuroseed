@@ -8,7 +8,7 @@ const isActive = (p: string) => (p === 'home' ? path === `/${lang}/` : path.star
 <header class="site-header">
   <div class="container bar">
     <a class="brand" href={`/${lang}/`} aria-label={t(lang, 'site.name')}>
-      <img src="/images/brainy-logo-trans.png" alt="" height="88" />
+      <img src="/images/logo-white.png" alt="" height="88" />
     </a>
 
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav">
@@ -34,7 +34,7 @@ const isActive = (p: string) => (p === 'home' ? path === `/${lang}/` : path.star
   .site-header { position: sticky; top: 0; z-index: 50; color: #fff; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12);
   /* light blue behind the logo, fading into the brand blue where the white nav text sits */
   background-color: var(--brand);
-  background-image: linear-gradient(90deg, #A9CDF6 5%, #78A9EA 16%, #3B6FCB 38%, var(--brand) 62%, var(--brand) 100%); }
+  /* background-image: linear-gradient(90deg, #A9CDF6 5%, #78A9EA 16%, #3B6FCB 38%, var(--brand) 62%, var(--brand) 100%); } */
   .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: var(--header-h); }
   .brand { display: flex; align-items: center; text-decoration: none; }
   .brand img { width: auto; height: 88px; }
