@@ -1,0 +1,165 @@
+---
+// Coverflow carousel. The member in the centre is full size and sharp; the
+// ones either side shrink, blur and fade as they move away from the centre.
+// Arrows, dots, keyboard (← →), swipe, or tap a side member to bring them in.
+interface Props {
+  members: { name: string; role: string; img?: string }[];
+  prev: string;
+  next: string;
+}
+const { members, prev, next } = Astro.props;
+---
+<div class="tc" data-count={members.length} role="region" aria-roledescription="carousel" tabindex="0">
+  <div class="viewport">
+    <ul class="stage">
+      {members.map((m, i) => (
+        <li class={`slide c${i % 3}${i === 0 ? ' on' : ''}`} data-i={i} style={`--o:${i}`}>
+          <div class="avatar">
+            {m.img ? <img src={m.img} alt="" loading="lazy" /> : <span aria-hidden="true">PHOTO</span>}
+          </div>
+          <strong class="name">{m.name}</strong>
+          <span class="role">{m.role}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="controls">
+    <button type="button" class="arrow" data-dir="-1" aria-label={prev}>
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <div class="dots">
+      {members.map((_, i) => <button type="button" class="dot" data-go={i} aria-label={`${i + 1} / ${members.length}`}></button>)}
+    </div>
+    <button type="button" class="arrow" data-dir="1" aria-label={next}>
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+  <p class="sr-only" aria-live="polite"></p>
+</div>
+
+<style>
+  .tc {
+    --w: clamp(170px, 22vw, 260px);     /* centre slide width */
+    --step: calc(var(--w) * .8);        /* distance between slide centres */
+    --brand-c: var(--brand, #2F52A8);
+    outline: none;
+  }
+  .tc:focus-visible { outline: 3px solid var(--brand-c); outline-offset: 6px; border-radius: 12px; }
+
+  .viewport { overflow: hidden; padding-block: 1.5rem 1rem; touch-action: pan-y; }
+  .stage {
+    position: relative; margin: 0; padding: 0; list-style: none;
+    height: calc(var(--w) + 5.5rem);
+  }
+
+  .slide {
+    --a: 0;                              /* distance from centre, set by script */
+    position: absolute; top: 0; left: 50%;
+    width: var(--w); margin-left: calc(var(--w) / -2);
+    display: flex; flex-direction: column; gap: .2rem; text-align: center;
+    transform-origin: 50% 40%;
+    transform: translateX(calc(var(--o) * var(--step))) scale(calc(1 - var(--a) * .17));
+    filter: blur(calc(var(--a) * 2.6px));
+    opacity: calc(1 - var(--a) * .22);
+    cursor: pointer;
+    transition: transform .6s cubic-bezier(.2, .8, .2, 1), filter .6s, opacity .6s;
+  }
+  .slide.on { cursor: default; }
+  .slide[aria-hidden="true"] { opacity: 0; pointer-events: none; }
+
+  .avatar {
+    position: relative; aspect-ratio: 1; overflow: hidden; margin-bottom: .8rem;
+    border-radius: 50% 50% 18px 18px;          /* arched, like a document tab */
+    background: var(--brand-c);
+    display: grid; place-items: center;
+    color: #fff; font: 700 .7rem/1 var(--font-display, inherit); letter-spacing: .2em;
+    transition: box-shadow .6s;
+  }
+  .c1 .avatar { background: color-mix(in srgb, var(--brand-c) 62%, #fff); }
+  .c2 .avatar { background: var(--sun, #E9B949); color: #1B1B18; }
+  .slide.on .avatar { box-shadow: 0 26px 36px -22px rgba(20, 40, 100, .65); }
+  .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+  .name { font: 700 1.2rem/1.3 var(--font-display, inherit); }
+  .role { color: var(--muted, #555); font-size: var(--fs-sm, .9rem); }
+
+  /* ---- controls ---- */
+  .controls { display: flex; align-items: center; justify-content: center; gap: 1.4rem; margin-top: .6rem; }
+  .arrow {
+    width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
+    display: grid; place-items: center;
+    background: var(--brand-c); color: #fff;
+    transition: background .25s, color .25s, transform .25s;
+  }
+  .arrow:hover { background: var(--sun, #E9B949); color: #1B1B18; }
+  .arrow:active { transform: scale(.94); }
+  .arrow:focus-visible, .dot:focus-visible { outline: 3px solid var(--sun, #E9B949); outline-offset: 3px; }
+  .dots { display: flex; align-items: center; gap: .5rem; }
+  .dot {
+    width: 10px; height: 10px; padding: 0; border: 0; border-radius: 99px; cursor: pointer;
+    background: color-mix(in srgb, var(--brand-c) 28%, transparent);
+    transition: width .35s, background .35s;
+  }
+  .dot[aria-current="true"] { width: 28px; background: var(--brand-c); }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  @media (max-width: 860px) {
+    .tc { --w: 54vw; --step: calc(var(--w) * .78); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .slide, .avatar, .dot { transition: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.tc').forEach((root) => {
+    const slides = [...root.querySelectorAll<HTMLElement>('.slide')];
+    const dots = [...root.querySelectorAll<HTMLElement>('.dot')];
+    const live = root.querySelector<HTMLElement>('[aria-live]')!;
+    const n = slides.length;
+    let idx = 0;
+
+    const render = () => {
+      slides.forEach((el, i) => {
+        let o = (((i - idx) % n) + n) % n;       // loops around
+        if (o > n / 2) o -= n;
+        const a = Math.abs(o);
+        el.style.setProperty('--o', String(o));
+        el.style.setProperty('--a', String(Math.min(a, 3)));
+        el.style.zIndex = String(10 - a);
+        el.classList.toggle('on', o === 0);
+        el.setAttribute('aria-hidden', a > 2 ? 'true' : 'false');
+      });
+      dots.forEach((d, i) => d.setAttribute('aria-current', String(i === idx)));
+      const cur = slides[idx];
+      live.textContent = `${cur.querySelector('.name')?.textContent ?? ''}, ${cur.querySelector('.role')?.textContent ?? ''}`;
+    };
+    const go = (i: number) => { idx = ((i % n) + n) % n; render(); };
+
+    root.querySelectorAll<HTMLElement>('.arrow').forEach((b) =>
+      b.addEventListener('click', () => go(idx + Number(b.dataset.dir))));
+    dots.forEach((d) => d.addEventListener('click', () => go(Number(d.dataset.go))));
+    slides.forEach((el, i) => el.addEventListener('click', () => { if (i !== idx) go(i); }));
+
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx - 1); }
+    });
+
+    // swipe / drag
+    let startX: number | null = null;
+    const vp = root.querySelector<HTMLElement>('.viewport')!;
+    vp.addEventListener('pointerdown', (e) => { startX = e.clientX; });
+    vp.addEventListener('pointerup', (e) => {
+      if (startX === null) return;
+      const dx = e.clientX - startX;
+      startX = null;
+      if (Math.abs(dx) > 45) go(idx + (dx < 0 ? 1 : -1));
+    });
+    vp.addEventListener('pointercancel', () => { startX = null; });
+
+    render();
+  });
+</script>

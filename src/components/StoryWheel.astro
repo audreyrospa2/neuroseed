@@ -1,0 +1,173 @@
+---
+// "Our Story": a sticky stage where scrolling rolls a film-reel wheel.
+// Slides sit on the rim of a big wheel centred on the right edge of the
+// screen; scroll progress rotates the wheel so the next slide rolls up
+// into the reading position, and the text panel on the left follows.
+interface Props { c: { h: string; items: { h: string; p: string }[] } }
+const { c } = Astro.props;
+
+const SLOTS = 10;                 // total frames on the reel (extras are empty frames)
+const STEP = 360 / SLOTS;         // degrees between frames
+const frames = Array.from({ length: SLOTS }, (_, i) => c.items[i] ?? null);
+---
+<section class="story" id="story" data-count={c.items.length} data-step={STEP} style={`--n:${c.items.length}`}>
+  <div class="stage">
+    <div class="copy">
+      <h2>{c.h}</h2>
+      <div class="panels">
+        {c.items.map((it, i) => (
+          <article class={`panel${i === 0 ? ' on' : ''}`} data-i={i}>
+            <h3>{it.h}</h3>
+            <p>{it.p}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="wheel" aria-hidden="true">
+      <div class="ring"></div>
+      <div class="hub"></div>
+      {frames.map((it, i) => (
+        <div class="frame" style={`--a:${-i * STEP}deg`}>
+          <div class={`slide${it ? '' : ' empty'}${i === 0 ? ' on' : ''}`} data-i={it ? i : undefined}>
+            {it && <span>{it.h}</span>}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .story {
+    /* scroll distance = one screen per slide transition + one to settle */
+    height: calc(var(--n) * 90vh + 100vh);
+    /* palette: site brand blue + one sun-yellow accent, cream text */
+    --wbg: var(--brand, #2F52A8);
+    --wface: color-mix(in srgb, var(--wbg) 80%, #fff);
+    --wdeep: color-mix(in srgb, var(--wbg) 80%, #081742);
+    --wsun: var(--sun, #E9B949);
+    --wcream: #F6EEDC;
+    background: radial-gradient(120% 100% at 100% 50%, color-mix(in srgb, var(--wbg) 86%, #fff) 0%, var(--wbg) 55%, var(--wdeep) 100%);
+    color: var(--wcream);
+  }
+  .stage {
+    position: sticky; top: 0; height: 100vh; overflow: hidden;
+    --D: 150vh;               /* wheel diameter */
+    --R: 60vh;                /* distance from hub to slide centres */
+    --sw: 36vh;               /* slide width */
+    display: grid; grid-template-columns: minmax(280px, 0.85fr) 1.15fr;
+    align-items: center;
+    padding-inline: max(1.5rem, calc((100vw - 1180px) / 2));
+  }
+
+  /* ---- text ---- */
+  .copy { position: relative; z-index: 2; max-width: 34ch; }
+  .copy h2 { margin: 0 0 1.5rem; color: var(--wcream); }
+  .panels { position: relative; min-height: 12rem; }
+  .panel {
+    position: absolute; inset: 0 auto auto 0;
+    opacity: 0; transform: translateY(24px);
+    transition: opacity .45s ease, transform .45s ease;
+    pointer-events: none;
+  }
+  .panel.on { opacity: 1; transform: none; pointer-events: auto; }
+  .panel h3 { margin: 0 0 .6rem; font-size: 1.8rem; color: var(--wsun); }
+  .panel p { margin: 0; color: rgba(246, 238, 220, .88); line-height: 1.7; }
+
+  /* ---- wheel ---- */
+  .wheel {
+    position: absolute; top: 50%; right: calc(var(--D) / -2);
+    width: var(--D); height: var(--D); margin-top: calc(var(--D) / -2);
+    transform: rotate(var(--rot, 0deg));
+    will-change: transform;
+  }
+  .ring {
+    position: absolute; inset: calc((var(--D) - 2 * var(--R)) / 2);
+    border-radius: 50%; border: 1px dashed rgba(246, 238, 220, .28);
+  }
+  .hub {
+    position: absolute; inset: 0; margin: auto;
+    width: calc(var(--R) * .8); height: calc(var(--R) * .8); border-radius: 50%;
+    background:
+      radial-gradient(circle, var(--wdeep) 0 16%, transparent 17%),
+      repeating-conic-gradient(rgba(246, 238, 220, .12) 0 6deg, transparent 6deg 36deg);
+    border: 1px solid rgba(246, 238, 220, .24);
+  }
+  .frame { position: absolute; inset: 0; transform: rotate(var(--a)); }
+  .slide {
+    position: absolute; top: 50%; left: calc(50% - var(--R));
+    width: var(--sw); aspect-ratio: 4 / 3; transform: translate(-50%, -50%);
+    border-radius: 12px; overflow: hidden;
+    background: linear-gradient(135deg, var(--wface), color-mix(in srgb, var(--wbg) 90%, #fff));
+    border: 1px solid rgba(246, 238, 220, .3);
+    color: var(--wcream);
+    box-shadow: 0 14px 24px -16px rgba(6, 18, 60, .7);
+    display: flex; align-items: flex-end; padding: .9rem 1rem;
+    font: 700 1.1rem/1.2 var(--font-display, inherit);
+    opacity: .5; transition: opacity .4s, border-color .4s, box-shadow .4s;
+  }
+  .slide.on { opacity: 1; border-color: var(--wsun); box-shadow: 0 0 0 4px rgba(233, 185, 73, .22), 0 18px 30px -16px rgba(6, 18, 60, .8); }
+  .slide.empty { background: none; border-style: dashed; box-shadow: none; opacity: .28; }
+
+  /* ---- mobile ---- */
+  @media (max-width: 860px) {
+    .stage {
+      --D: 170vw; --R: 64vw; --sw: 54vw;
+      grid-template-columns: 1fr; align-items: start; padding-top: 5.5rem;
+    }
+    .wheel { top: 72%; }
+  }
+
+  /* ---- reduced motion: no pinned wheel, just stacked panels ---- */
+  @media (prefers-reduced-motion: reduce) {
+    .story { height: auto; }
+    .stage { position: static; height: auto; padding-block: 4rem; grid-template-columns: 1fr; }
+    .wheel { display: none; }
+    .panels { min-height: 0; display: grid; gap: 2rem; }
+    .panel { position: static; opacity: 1; transform: none; }
+  }
+</style>
+
+<script>
+  const sec = document.querySelector<HTMLElement>('.story');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (sec && !reduce) {
+    const wheel = sec.querySelector<HTMLElement>('.wheel')!;
+    const slides = [...sec.querySelectorAll<HTMLElement>('.slide[data-i]')];
+    const panels = [...sec.querySelectorAll<HTMLElement>('.panel')];
+    const n = Number(sec.dataset.count);
+    const step = Number(sec.dataset.step);
+
+    let target = 0;   // where scroll says the wheel should be (0 … n-1)
+    let current = 0;  // eased value that actually drives the rotation
+    let running = false;
+
+    const readScroll = () => {
+      const total = sec.offsetHeight - innerHeight;
+      const p = Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / total));
+      // first 10% and last 10% of the scroll hold on the first/last slide
+      const eased = Math.min(1, Math.max(0, (p - 0.1) / 0.8));
+      target = eased * (n - 1);
+      if (!running) { running = true; requestAnimationFrame(tick); }
+    };
+
+    const tick = () => {
+      current += (target - current) * 0.1;          // lower = floatier
+      if (Math.abs(target - current) < 0.001) current = target;
+      wheel.style.setProperty('--rot', `${current * step}deg`);
+
+      const active = Math.round(current);
+      slides.forEach((el) => el.classList.toggle('on', Number(el.dataset.i) === active));
+      panels.forEach((el, i) => el.classList.toggle('on', i === active));
+
+      if (current !== target) requestAnimationFrame(tick);
+      else running = false;
+    };
+
+    addEventListener('scroll', readScroll, { passive: true });
+    addEventListener('resize', readScroll);
+    readScroll();
+  }
+</script>

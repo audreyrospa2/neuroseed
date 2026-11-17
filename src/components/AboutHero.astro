@@ -1,0 +1,263 @@
+---
+// Hero: a kraft document folder on the right edge (bleeds off-screen like the
+// Waves Studio reference). Photos are tucked inside two sleeves and peek out,
+// scattered. Titles are written on the folder. Hover a photo / title / word in
+// the intro: the photo slides out and its description appears on the left.
+// Click jumps to the section.
+interface Props { c: any }
+const { c } = Astro.props;
+
+// x = left position (% of folder width), r = resting tilt (deg),
+// rest = how far the photo is tucked in (% of its own height; higher = more hidden)
+// img: add a real photo path later, e.g. img: '/img/about/neuroseed.jpg'
+const tiers = [
+  [
+    { key: 'neuroseed',  href: '#story',       color: 'red',    x: 6,  r: -4,   rest: 74, img: '' },
+    { key: 'brown-rice', href: '#brown-rice',  color: 'blue-a', x: 38, r: 2.5,  rest: 66, img: '' },
+    { key: 'ecorazon',   href: '#ecorazon',    color: 'blue-b', x: 69, r: -2,   rest: 78, img: '' },
+  ],
+  [
+    { key: 'team',       href: '#team',        color: 'black',  x: 20, r: 3,    rest: 70, img: '' },
+    { key: 'join',       href: '#join',        color: 'gold',   x: 52, r: -3,   rest: 76, img: '' },
+  ],
+];
+let n = 0;
+const [t1, t2] = tiers.map((tier) => tier.map((k) => ({ ...k, no: String(++n).padStart(2, '0') })));
+const all = [...t1, ...t2];
+const hrefOf = Object.fromEntries(all.map((k) => [k.key, k.href]));
+---
+<section class="hero">
+  <div class="left">
+    <p class="intro">
+      {c.intro.map((s: any) =>
+        s.k ? <a class="hl" href={hrefOf[s.k]} data-key={s.k}>{s.t}</a> : s.t
+      )}
+    </p>
+    <a class="btn btn--sun" href="#story">{c.cta}</a>
+
+    <div class="descs" aria-live="polite">
+      {all.map((k) => (
+        <div class={`desc desc--${k.color}`} data-for={k.key}>
+          <h2>{k.no} {c.cards[k.key].t}</h2>
+          <p>{c.cards[k.key].d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="folder">
+      <span class="tab">{c.sideTag}</span>
+      <div class="back"></div>
+      <div class="paper" aria-hidden="true"></div>
+
+      <!-- sleeve 1 photos -->
+      <div class="tier tier--1">
+        {t1.map((k) => (
+          <a class={`pc pc--${k.color}`} href={k.href} data-key={k.key}
+             style={`--x:${k.x};--r:${k.r};--rest:${k.rest}`} aria-label={c.cards[k.key].t}>
+            {k.img ? <img src={k.img} alt="" loading="lazy" /> : <span class="ph" aria-hidden="true">PHOTO</span>}
+          </a>
+        ))}
+      </div>
+      <div class="panel panel--mid">
+        {t1.map((k) => (
+          <a class="ttl" href={k.href} data-key={k.key} style={`--x:${k.x}`}>
+            <i>{k.no}</i><span class="t">{c.cards[k.key].t}</span>
+          </a>
+        ))}
+      </div>
+
+      <!-- sleeve 2 photos -->
+      <div class="tier tier--2">
+        {t2.map((k) => (
+          <a class={`pc pc--${k.color}`} href={k.href} data-key={k.key}
+             style={`--x:${k.x};--r:${k.r};--rest:${k.rest}`} aria-label={c.cards[k.key].t}>
+            {k.img ? <img src={k.img} alt="" loading="lazy" /> : <span class="ph" aria-hidden="true">PHOTO</span>}
+          </a>
+        ))}
+      </div>
+      <div class="panel panel--front">
+        {t2.map((k) => (
+          <a class="ttl" href={k.href} data-key={k.key} style={`--x:${k.x}`}>
+            <i>{k.no}</i><span class="t">{c.cards[k.key].t}</span>
+          </a>
+        ))}
+        <h1 class="cover-tag">
+          <i class="tape" aria-hidden="true"></i>
+          {c.cover.map((line: string) => <span>{line}</span>)}
+        </h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    --kraft: #C99B63; --kraft-dk: #B88A52; --ink: #3A2C14;
+    --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .16 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    position: relative; overflow: hidden;
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    align-items: center; gap: 2rem;
+    background: #F6EEDC; color: var(--ink);
+    padding-block: 4rem 3rem;
+  }
+
+  /* ---------- left ---------- */
+  .left { padding-left: max(1.5rem, calc((100vw - 1180px) / 2)); max-width: 40rem; }
+  .intro { margin: 0 0 1.6rem; line-height: 1.8; }
+  .hl {
+    color: inherit; font-weight: 700; text-decoration: none;
+    background: linear-gradient(transparent 62%, rgba(233, 185, 73, .55) 62%);
+  }
+  .hl.peek, .hl:focus-visible { background: #E9B949; border-radius: 3px; outline: none; }
+
+  .descs { position: relative; min-height: 9rem; margin-top: 2.4rem; }
+  .desc {
+    position: absolute; inset: 0 auto auto 0; max-width: 34ch;
+    padding-left: 1rem; border-left: 5px solid var(--c, #E9B949);
+    opacity: 0; transform: translateX(-14px); pointer-events: none;
+    transition: opacity .35s ease, transform .45s cubic-bezier(.2, .9, .25, 1);
+  }
+  .desc.on { opacity: 1; transform: none; }
+  .desc h2 { margin: 0 0 .4rem; font-size: 1.5rem; }
+  .desc p { margin: 0; line-height: 1.7; }
+  .desc--red { --c: #E4572E; } .desc--blue-a { --c: #4C7FE0; } .desc--blue-b { --c: #3A62C4; }
+  .desc--black { --c: #1B1B18; } .desc--gold { --c: #E9B949; }
+
+  /* ---------- folder ---------- */
+  .right { margin-right: -3vw; padding-left: 36px; }   /* bleeds off the right edge */
+  .folder { position: relative; aspect-ratio: 1.28; }
+
+  .back {
+    position: absolute; inset: 0; z-index: 0;
+    border-radius: 14px 0 0 0;
+    background: var(--grain), linear-gradient(160deg, var(--kraft), var(--kraft-dk));
+    box-shadow: 0 30px 40px -24px rgba(60, 40, 10, .55);
+  }
+  .tab {
+    position: absolute; left: -34px; top: 11%; z-index: 6;
+    width: 34px; padding: 1.1rem 0;
+    writing-mode: vertical-rl; text-align: center;
+    background: var(--kraft-dk); color: var(--ink);
+    font: 700 .78rem/1 var(--font-display, inherit); letter-spacing: .14em;
+    border-radius: 12px 0 0 12px;
+    box-shadow: -3px 3px 0 rgba(60, 40, 10, .15);
+  }
+  /* grid paper sticking out behind the photos */
+  .paper {
+    position: absolute; z-index: 1; left: 5%; right: -4%; top: -3.5%; height: 60%;
+    transform: rotate(-1.2deg);
+    background:
+      linear-gradient(rgba(90, 80, 60, .14) 1px, transparent 1px) 0 0 / 100% 14px,
+      linear-gradient(90deg, rgba(90, 80, 60, .14) 1px, transparent 1px) 0 0 / 14px 100%,
+      #EFE8D8;
+    box-shadow: 0 6px 12px -8px rgba(0, 0, 0, .4);
+  }
+
+  .panel {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: var(--grain), linear-gradient(170deg, #D2A56C, var(--kraft));
+    box-shadow: 0 -10px 18px -10px rgba(60, 40, 10, .45);
+    border-radius: 24px 24px 0 0;
+  }
+  .panel--mid   { top: 32%; z-index: 3; }
+  .panel--front { top: 62%; z-index: 5; border-radius: 24px 0 0 0; }
+
+  /* ---------- photos ---------- */
+  .tier { position: absolute; left: 0; right: 0; pointer-events: none; }
+  .tier--1 { top: 0;   height: 32%; z-index: 2; }
+  .tier--2 { top: 32%; height: 30%; z-index: 4; }
+
+  .pc {
+    position: absolute; bottom: 0; left: calc(var(--x) * 1%);
+    width: 24%; aspect-ratio: 4 / 5;
+    border-radius: 12px; overflow: hidden; pointer-events: auto;
+    box-shadow: 0 8px 16px -8px rgba(0, 0, 0, .55);
+    transform: translateY(calc(var(--rest) * 1%)) rotate(calc(var(--r) * 1deg));
+    transition: transform .6s cubic-bezier(.2, .9, .25, 1.12), box-shadow .3s;
+  }
+  .pc.peek, .pc:hover, .pc:focus-visible {
+    transform: translateY(calc((var(--rest) - 46) * 1%)) rotate(0deg) scale(1.04);
+    box-shadow: 0 22px 28px -14px rgba(0, 0, 0, .6);
+    z-index: 3; outline: none;
+  }
+  .pc:focus-visible { outline: 3px solid #1B1B18; outline-offset: 3px; }
+  .pc--red { background: #E4572E; } .pc--blue-a { background: #4C7FE0; } .pc--blue-b { background: #3A62C4; }
+  .pc--black { background: #1B1B18; } .pc--gold { background: #E9B949; }
+  .pc img, .ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ph {
+    display: grid; place-items: center; color: #fff;
+    font: 700 .65rem/1 var(--font-display, inherit); letter-spacing: .2em; opacity: .6;
+    background: repeating-linear-gradient(45deg, rgba(255, 255, 255, .12) 0 8px, transparent 8px 16px);
+  }
+
+  /* ---------- titles written on the folder ---------- */
+  .ttl {
+    position: absolute; left: calc(var(--x) * 1%); top: 1rem; width: 24%;
+    color: var(--ink); text-decoration: none;
+    font: 700 clamp(.9rem, 1.45vw, 1.2rem)/1.25 var(--font-display, inherit);
+  }
+  .ttl i {
+    display: block; font-style: normal; font-weight: 600;
+    font-size: .8em; opacity: .65; margin-bottom: .1rem;
+  }
+  /* underline draws in from the left, only as wide as the text */
+  .ttl .t {
+    padding-bottom: 3px;
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+    transition: background-size .4s cubic-bezier(.2, .9, .25, 1);
+  }
+  .ttl.peek .t, .ttl:focus-visible .t { background-size: 100% 2px; }
+  .ttl:focus-visible { outline: none; }
+
+  /* handwritten cover tag */
+  .cover-tag {
+    position: absolute; right: 5%; bottom: 7%; margin: 0;
+    background: #fff; color: #23356B; font-weight: 400;
+    padding: .9rem 1.2rem .8rem; transform: rotate(2deg);
+    box-shadow: 0 6px 14px -6px rgba(0, 0, 0, .4);
+    font-family: 'Caveat', 'Kalam', 'Ma Shan Zheng', 'KaiTi', 'Kaiti TC', cursive;
+    font-size: clamp(1rem, 1.9vw, 1.5rem); line-height: 1.2;
+    display: flex; flex-direction: column;
+  }
+  .tape {
+    position: absolute; top: -9px; left: 50%; width: 76px; height: 20px; margin-left: -38px;
+    background: rgba(233, 185, 73, .7); transform: rotate(-3deg);
+  }
+
+  /* ---------- touch + mobile + motion ---------- */
+  @media (hover: none) {
+    .pc { transform: translateY(calc((var(--rest) - 22) * 1%)) rotate(calc(var(--r) * 1deg)); }
+  }
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-block: 2.5rem 0; gap: 1.5rem; }
+    .left { padding-inline: 1.5rem; }
+    .descs { display: none; }
+    .right { margin-right: 0; padding-left: 0; }
+    .folder { aspect-ratio: .86; margin-left: 28px; }
+    .tab { left: -28px; width: 28px; }
+    .pc { width: 30%; }
+    .ttl { width: 28%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pc, .desc, .ttl .t { transition: none; }
+  }
+</style>
+
+<script>
+  const hero = document.querySelector<HTMLElement>('.hero');
+  if (hero) {
+    const set = (key: string, on: boolean) => {
+      hero.querySelectorAll(`[data-key="${key}"]`).forEach((el) => el.classList.toggle('peek', on));
+      hero.querySelector(`.desc[data-for="${key}"]`)?.classList.toggle('on', on);
+    };
+    hero.querySelectorAll<HTMLElement>('[data-key]').forEach((el) => {
+      const k = el.dataset.key!;
+      el.addEventListener('mouseenter', () => set(k, true));
+      el.addEventListener('mouseleave', () => set(k, false));
+      el.addEventListener('focus', () => set(k, true));
+      el.addEventListener('blur', () => set(k, false));
+    });
+  }
+</script>
