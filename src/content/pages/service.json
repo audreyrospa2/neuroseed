@@ -4,40 +4,60 @@
     "title": "服務",
     "lead": "為老師提供專業支援，結合科學實證方法與實踐工具，幫助他們更好地理解和回應有特殊學習需要的學生，讓每個孩子發掘潛能。",
     "challenge": {
+      "kicker": "挑戰",
       "h": "許多孩子正面對困難，而老師需要支援",
+      "lead": "今日的學生面對愈來愈多情緒、社交及學習上的挑戰。老師有心幫忙，卻往往欠缺合適的工具、策略和信心，難以帶來長遠的改變。",
       "belief": "我們相信，每個孩子都值得被理解。",
+      "photo": "/images/8.jpg",
       "prev": "上一個",
       "next": "下一個",
+      "pains": [
+        {
+          "h": "沒有空間與學生傾談？",
+          "sub": "No time or space to talk with students!",
+          "img": "/images/3.jpg"
+        },
+        {
+          "h": "難以評估學生情緒狀態？",
+          "sub": "Hard to assess emotional status of students!",
+          "img": "/images/11.jpg"
+        },
+        {
+          "h": "欠缺技巧處理學生情緒問題？",
+          "sub": "Unsure how to handle students’ emotional difficulties!",
+          "img": "/images/7.jpg"
+        }
+      ],
       "items": [
         {
           "icon": "🧠",
           "h": "情緒與行為挑戰",
-          "sub": "Emotional & behavioural challenges",
-          "color": "#1E4FA3"
+          "sub": "Emotional & behavioural challenges"
         },
         {
           "icon": "📖",
           "h": "學習困難",
-          "sub": "Learning difficulties",
-          "color": "#F7C948"
+          "sub": "Learning difficulties"
         },
         {
           "icon": "🤝",
           "h": "社交融入困難",
-          "sub": "Social integration challenges",
-          "color": "#C9463F"
+          "sub": "Social integration challenges"
         },
         {
           "icon": "🌱",
           "h": "自信心不足",
-          "sub": "Low self-confidence",
-          "color": "#2A7D4F"
+          "sub": "Low self-confidence"
         }
       ]
     },
     "steps": {
-      "kicker": "培訓特色｜由引導師帶領同事間的反思與交流",
       "h": "從角色體驗與合作搭建，讓抽象概念變成親身體驗",
+      "highlight": "培訓特色｜由引導師帶領同事間的反思與交流",
+      "highlightPhoto": "/images/10.jpg",
+      "logo": "/images/brainy-logo.png",
+      "logoAlt": "腦細話事 Brainy In-Charge",
+      "tagline": "從腦科學出發的心理健康覺察之旅",
       "next": "下一步",
       "restart": "重新開始",
       "items": [
@@ -46,6 +66,7 @@
           "h": "扮演角色",
           "sub": "Role-play",
           "color": "#2F6FD0",
+          "art": "/images/steps/role-play.png",
           "img": "/images/5.jpg",
           "p": "設身處地，從學生或同事的角度感受一個情景。"
         },
@@ -54,6 +75,7 @@
           "h": "搭建大腦",
           "sub": "Build the brain",
           "color": "#C9463F",
+          "art": "/images/steps/build-brain.png",
           "img": "/images/2.jpg",
           "p": "與同事合作搭建大腦模型，把抽象的腦科學概念變成看得見、摸得到的東西。"
         },
@@ -63,6 +85,7 @@
           "sub": "Experience events",
           "color": "#F3C9C9",
           "dark": true,
+          "art": "/images/steps/events.png",
           "img": "/images/9.jpg",
           "p": "抽出事件卡，一起走進真實課室裡可能發生的時刻。"
         },
@@ -71,6 +94,7 @@
           "h": "練習回應",
           "sub": "Practise responses",
           "color": "#2A7D4F",
+          "art": "/images/steps/responses.png",
           "img": "/images/6.jpg",
           "p": "練習具體的支持說話，再與引導師一起反思哪些回應最有幫助。"
         }
@@ -78,12 +102,10 @@
     },
     "theory": {
       "h": "理論基礎",
-      "tabs": [
-        "創傷知情照顧",
-        "安全圓圈"
-      ],
       "tic": {
         "h": "創傷知情照顧",
+        "sub": "Trauma-Informed Care",
+        "img": "/images/4.jpg",
         "p": "一種先問「發生了什麼事」而不是「你有什麼問題」的取向。它讓學校成為令學生和教職員都感到安全的地方。",
         "list": [
           {
@@ -114,6 +136,8 @@
       },
       "cos": {
         "h": "安全圓圈",
+        "sub": "Circle of Security",
+        "img": "/images/circle-of-security.png",
         "p": "「安全圓圈」框架已融入遊戲設計及引導師培訓。",
         "list": [
           {
@@ -138,40 +162,60 @@
     "title": "Service",
     "lead": "We give teachers professional support, combining evidence-based methods with practical tools, to better understand and respond to students with special learning needs, so every child can discover their potential.",
     "challenge": {
+      "kicker": "THE CHALLENGE",
       "h": "Many children are struggling, and teachers need support",
+      "lead": "Today’s students face growing emotional, social and learning challenges. Teachers want to help, but often lack the right tools, strategies and confidence to make a lasting difference.",
       "belief": "We believe every child deserves to be understood.",
+      "photo": "/images/8.jpg",
       "prev": "Previous",
       "next": "Next",
+      "pains": [
+        {
+          "h": "No time or space to talk with students?",
+          "sub": "沒有空間與學生傾談？",
+          "img": "/images/3.jpg"
+        },
+        {
+          "h": "Hard to assess emotional status of students?",
+          "sub": "難以評估學生情緒狀態？",
+          "img": "/images/11.jpg"
+        },
+        {
+          "h": "Unsure how to handle students’ emotional difficulties?",
+          "sub": "欠缺技巧處理學生情緒問題？",
+          "img": "/images/7.jpg"
+        }
+      ],
       "items": [
         {
           "icon": "🧠",
           "h": "Emotional & behavioural challenges",
-          "sub": "情緒與行為挑戰",
-          "color": "#1E4FA3"
+          "sub": "情緒與行為挑戰"
         },
         {
           "icon": "📖",
           "h": "Learning difficulties",
-          "sub": "學習困難",
-          "color": "#F7C948"
+          "sub": "學習困難"
         },
         {
           "icon": "🤝",
           "h": "Social integration challenges",
-          "sub": "社交融入困難",
-          "color": "#C9463F"
+          "sub": "社交融入困難"
         },
         {
           "icon": "🌱",
           "h": "Low self-confidence",
-          "sub": "自信心不足",
-          "color": "#2A7D4F"
+          "sub": "自信心不足"
         }
       ]
     },
     "steps": {
-      "kicker": "Training highlight: facilitator-guided reflection and exchange among colleagues",
       "h": "From role experience and collaborative building, abstract concepts become lived experience",
+      "highlight": "Training highlight | Facilitator-guided reflection and application among colleagues",
+      "highlightPhoto": "/images/10.jpg",
+      "logo": "/images/logo-white.png",
+      "logoAlt": "腦細話事 Brainy In-Charge",
+      "tagline": "Mental health journey starting with brain science",
       "next": "Next step",
       "restart": "Start again",
       "items": [
@@ -180,6 +224,7 @@
           "h": "Role-play",
           "sub": "扮演角色",
           "color": "#2F6FD0",
+          "art": "/images/steps/role-play.png",
           "img": "/images/5.jpg",
           "p": "Step into a student’s or colleague’s shoes and feel a situation from the inside."
         },
@@ -188,6 +233,7 @@
           "h": "Build the brain",
           "sub": "搭建大腦",
           "color": "#C9463F",
+          "art": "/images/steps/build-brain.png",
           "img": "/images/2.jpg",
           "p": "Build a brain model together, so abstract brain science becomes something you can see and touch."
         },
@@ -197,6 +243,7 @@
           "sub": "經歷事件",
           "color": "#F3C9C9",
           "dark": true,
+          "art": "/images/steps/events.png",
           "img": "/images/9.jpg",
           "p": "Draw an event card and walk through a moment that could really happen in a classroom."
         },
@@ -205,6 +252,7 @@
           "h": "Practise responses",
           "sub": "練習回應",
           "color": "#2A7D4F",
+          "art": "/images/steps/responses.png",
           "img": "/images/6.jpg",
           "p": "Practise supportive things to say, then reflect with the facilitator on which responses help most."
         }
@@ -212,12 +260,10 @@
     },
     "theory": {
       "h": "Theoretical foundation",
-      "tabs": [
-        "Trauma-Informed Care",
-        "Circle of Security"
-      ],
       "tic": {
         "h": "Trauma-Informed Care",
+        "sub": "創傷知情照顧",
+        "img": "/images/8.jpg",
         "p": "An approach that asks “what happened to you?” before “what is wrong with you?”. It helps a school feel safe for students and staff alike.",
         "list": [
           {
@@ -248,6 +294,8 @@
       },
       "cos": {
         "h": "Circle of Security",
+        "sub": "安全圓圈",
+        "img": "/images/13.jpg",
         "p": "The Circle of Security framework has been integrated into both the game design and facilitator training.",
         "list": [
           {

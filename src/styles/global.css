@@ -19,8 +19,12 @@ img, video { max-width: 100%; display: block; }
 
 .container { width: min(100% - 3rem, var(--container)); margin-inline: auto; }
 .section { padding-block: var(--space-5); }
-.section--tint { background: color-mix(in srgb, var(--line) 45%, var(--bg)); }
+.section--tint { background: var(--tint); }
+/* Blue-led bands. Headings turn blue on light backgrounds, white on blue ones. */
 .section--sky { background: var(--sky); color: var(--on-sky); }
+.section--deep { background: var(--brand-deep); color: #fff; }
+.section--grad { background: radial-gradient(110% 140% at 80% 0%, #2A63C2 0%, var(--brand) 50%, var(--brand-deep) 100%); color: #fff; }
+.section:not(.section--brand):not(.section--deep):not(.section--grad):not(.section--sky) h2 { color: var(--brand); }
 .section--brand { background: var(--brand); color: var(--on-brand); }
 .lead { color: var(--muted); max-width: 52ch; font-size: var(--fs-lg); }
 .muted { color: var(--muted); }

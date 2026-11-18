@@ -1,0 +1,272 @@
+{
+  "zh": {
+    "eyebrow": "成效",
+    "title": "影響力",
+    "lead": "以研究數據與前線聲音，看見「腦細話事」為老師、學生和社區帶來的改變。",
+    "research": {
+      "kicker": "研究數據",
+      "h": "用數據說話",
+      "partner": "香港理工大學護理學院",
+      "partnerSub": "PolyU School of Nursing",
+      "lead": "由理大護理學院跟進研究，量度計劃對老師信心與課室支援能力的影響。",
+      "stats": [
+        {
+          "value": "XX",
+          "suffix": "",
+          "label": "參與培訓的老師"
+        },
+        {
+          "value": "XX",
+          "suffix": "",
+          "label": "參與學校"
+        },
+        {
+          "value": "XX",
+          "suffix": "%",
+          "label": "老師表示更有信心回應學生"
+        },
+        {
+          "value": "XX",
+          "suffix": "",
+          "label": "受惠學生"
+        }
+      ],
+      "orbit": {
+        "h": "由體驗到改變",
+        "hint": "點選圖示，看看每一步",
+        "items": [
+          {
+            "icon": "🎭",
+            "h": "扮演角色",
+            "p": "設身處地，從學生或同事的角度感受一個情景。"
+          },
+          {
+            "icon": "🧩",
+            "h": "搭建大腦",
+            "p": "與同事合作搭建大腦模型，把腦科學變成看得見、摸得到的東西。"
+          },
+          {
+            "icon": "🃏",
+            "h": "經歷事件",
+            "p": "抽出事件卡，一起走進真實課室裡可能發生的時刻。"
+          },
+          {
+            "icon": "💬",
+            "h": "練習回應",
+            "p": "練習具體的支持說話，再與引導師一起反思。"
+          }
+        ]
+      }
+    },
+    "message": {
+      "kicker": "寄語",
+      "h": "Andy 的話",
+      "quote": "【請在此填寫 Andy 的訊息】",
+      "name": "Andy",
+      "role": "【職銜】",
+      "img": "/images/12.jpg"
+    },
+    "voices": {
+      "h": "前線的聲音",
+      "items": [
+        {
+          "quote": "【請填寫第一則回饋】",
+          "who": "兒童心理學家",
+          "img": "/images/1.jpg"
+        },
+        {
+          "quote": "小小的調整，可以帶來大大的不同。",
+          "who": "老師",
+          "img": "/images/13.jpg"
+        },
+        {
+          "quote": "讓我們一起，走在孩子的成長路上。",
+          "who": "特殊教育專家",
+          "img": "/images/12.jpg"
+        }
+      ]
+    },
+    "jobs": {
+      "kicker": "工作機會",
+      "h": "把體驗變成機會",
+      "lead": "「腦細話事」不只培訓老師，也為年輕人創造學習與就業的橋樑。",
+      "bridge": {
+        "icon": "🌉",
+        "h": "學習橋樑",
+        "sub": "Learning Bridge",
+        "p": "【請填寫 Learning Bridge 的簡介：對象、內容、成果】"
+      },
+      "roleplay": {
+        "h": "角色扮演者分享",
+        "sub": "Roleplayer sharing",
+        "hint": "點擊卡片，閱讀他們的分享",
+        "items": [
+          {
+            "name": "【姓名】",
+            "role": "角色扮演者",
+            "quote": "【分享內容】",
+            "img": "/images/6.jpg"
+          },
+          {
+            "name": "【姓名】",
+            "role": "角色扮演者",
+            "quote": "【分享內容】",
+            "img": "/images/9.jpg"
+          },
+          {
+            "name": "【姓名】",
+            "role": "角色扮演者",
+            "quote": "【分享內容】",
+            "img": "/images/10.jpg"
+          },
+          {
+            "name": "【姓名】",
+            "role": "角色扮演者",
+            "quote": "【分享內容】",
+            "img": "/images/11.jpg"
+          }
+        ]
+      }
+    },
+    "cta": {
+      "h": "投資老師，改變學生人生！",
+      "p": "提供培訓日期與教師人數，商議到校安排。",
+      "email": "enquiry@brownrice.org"
+    }
+  },
+  "en": {
+    "eyebrow": "Impact",
+    "title": "Impact",
+    "lead": "Research data and voices from the frontline show the change Brainy In-Charge brings to teachers, students and communities.",
+    "research": {
+      "kicker": "Research data",
+      "h": "Let the data speak",
+      "partner": "PolyU School of Nursing",
+      "partnerSub": "香港理工大學護理學院",
+      "lead": "The School of Nursing at PolyU follows the programme with research, measuring its effect on teachers’ confidence and classroom support skills.",
+      "stats": [
+        {
+          "value": "XX",
+          "suffix": "",
+          "label": "Teachers trained"
+        },
+        {
+          "value": "XX",
+          "suffix": "",
+          "label": "Schools reached"
+        },
+        {
+          "value": "XX",
+          "suffix": "%",
+          "label": "Teachers feel more confident responding to students"
+        },
+        {
+          "value": "XX",
+          "suffix": "",
+          "label": "Students benefited"
+        }
+      ],
+      "orbit": {
+        "h": "From experience to change",
+        "hint": "Tap an icon to explore each step",
+        "items": [
+          {
+            "icon": "🎭",
+            "h": "Role-play",
+            "p": "Step into a student’s or colleague’s shoes and feel a situation from the inside."
+          },
+          {
+            "icon": "🧩",
+            "h": "Build the brain",
+            "p": "Build a brain model together, so brain science becomes something you can see and touch."
+          },
+          {
+            "icon": "🃏",
+            "h": "Experience events",
+            "p": "Draw an event card and walk through a moment that could really happen in a classroom."
+          },
+          {
+            "icon": "💬",
+            "h": "Practise responses",
+            "p": "Practise supportive things to say, then reflect with the facilitator."
+          }
+        ]
+      }
+    },
+    "message": {
+      "kicker": "Message",
+      "h": "A message from Andy",
+      "quote": "[Add Andy’s message here]",
+      "name": "Andy",
+      "role": "[Title]",
+      "img": "/images/12.jpg"
+    },
+    "voices": {
+      "h": "Voices from the frontline",
+      "items": [
+        {
+          "quote": "[Add first quote]",
+          "who": "Child psychologist",
+          "img": "/images/1.jpg"
+        },
+        {
+          "quote": "Small adjustments can make a big difference.",
+          "who": "Teacher",
+          "img": "/images/13.jpg"
+        },
+        {
+          "quote": "Let’s walk together on each child’s path of growth.",
+          "who": "Special education expert",
+          "img": "/images/12.jpg"
+        }
+      ]
+    },
+    "jobs": {
+      "kicker": "Job opportunity",
+      "h": "Turning experience into opportunity",
+      "lead": "Brainy In-Charge doesn’t only train teachers. It also builds a bridge to learning and work for young people.",
+      "bridge": {
+        "icon": "🌉",
+        "h": "Learning Bridge",
+        "sub": "學習橋樑",
+        "p": "[Add a short description of Learning Bridge: who it is for, what it involves, what it achieves]"
+      },
+      "roleplay": {
+        "h": "Roleplayer sharing",
+        "sub": "角色扮演者分享",
+        "hint": "Click a card to read their story",
+        "items": [
+          {
+            "name": "[Name]",
+            "role": "Roleplayer",
+            "quote": "[Sharing]",
+            "img": "/images/6.jpg"
+          },
+          {
+            "name": "[Name]",
+            "role": "Roleplayer",
+            "quote": "[Sharing]",
+            "img": "/images/9.jpg"
+          },
+          {
+            "name": "[Name]",
+            "role": "Roleplayer",
+            "quote": "[Sharing]",
+            "img": "/images/10.jpg"
+          },
+          {
+            "name": "[Name]",
+            "role": "Roleplayer",
+            "quote": "[Sharing]",
+            "img": "/images/11.jpg"
+          }
+        ]
+      }
+    },
+    "cta": {
+      "h": "Invest in teachers to change students’ lives!",
+      "p": "Send us your preferred date and number of teachers to discuss on-site arrangements.",
+      "email": "enquiry@brownrice.org"
+    }
+  }
+}
