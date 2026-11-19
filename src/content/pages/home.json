@@ -20,7 +20,7 @@
       "support": "學以致用，在教學中看見改變",
       "link": "閱讀更多",
       "slides": [
-        { "label": "老師工作坊", "color": "#6B62B5", "img": "/images/1.jpg" },
+        { "label": "老師工作坊", "color": "#6B62B5", "img": "/images/11.jpg" },
         { "label": "合作搭建", "color": "#2F7FC4", "img": "/images/5.jpg" },
         { "label": "老師互相分享", "color": "#2A7D4F", "img": "/images/10.jpg" }
       ]
@@ -30,7 +30,7 @@
       "src": "",
       "poster": "/images/vid-thumb.jpg",
       "note": "影片位置：請在 CMS 填入影片網址（video.src）。",
-      "strips": ["角色體驗", "實用工具", "支持有需要的學生", "共同態度"]
+      "strips": ["角色體驗", "實用工具", "支持有需要的學生", "共同文化"]
     },
     "takeaways": {
       "h": "老師帶走的 4 份教學收穫",
@@ -70,7 +70,7 @@
       "support": "Learn it, use it, and see the change in your classroom.",
       "link": "Read more",
       "slides": [
-        { "label": "Teachers in a workshop", "color": "#6B62B5", "img": "/images/1.jpg" },
+        { "label": "Teachers in a workshop", "color": "#6B62B5", "img": "/images/11.jpg" },
         { "label": "Building together", "color": "#2F7FC4", "img": "/images/5.jpg" },
         { "label": "Teachers sharing ideas", "color": "#2A7D4F", "img": "/images/10.jpg" }
       ]
@@ -80,7 +80,7 @@
       "src": "",
       "poster": "/images/vid-thumb.jpg",
       "note": "Video placeholder: add the video URL in the CMS (video.src).",
-      "strips": ["Role experience", "Practical tools", "Supporting students in need", "Shared attitudes"]
+      "strips": ["Role experience", "Practical tools", "Supporting students in need", "Shared culture"]
     },
     "takeaways": {
       "h": "Four Key Takeaways for Teachers",
