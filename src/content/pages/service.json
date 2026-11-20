@@ -157,7 +157,7 @@
     "cta": {
       "h": "投資老師，改變學生人生！",
       "p": "提供培訓日期與教師人數，商議到校安排。",
-      "email": "enquiry@brownrice.org"
+      "email": "info@neuroseed.org"
     }
   },
   "en": {
@@ -298,7 +298,7 @@
       "cos": {
         "h": "Circle of Security",
         "sub": "安全圈",
-        "img": "/images/13.jpg",
+        "img": "/images/security.jpeg",
         "p": [
           "Circle of Security® is an evidence-based parent-child attachment intervention designed to help caregivers understand children’s emotional needs and behavioural cues, thereby building safer and more stable parent-child relationships.",
           "The Circle of Security® framework has been integrated into the game design and facilitator training of <em>Brainy In-Charge</em>, supporting caregivers and educators to accompany children with greater empathy as they explore emotions, face challenges, and build a sense of security."
@@ -318,7 +318,7 @@
     "cta": {
       "h": "Invest in teachers to change students’ lives!",
       "p": "Send us your preferred date and number of teachers to discuss on-site arrangements.",
-      "email": "enquiry@brownrice.org"
+      "email": "info@neuroseed.org"
     }
   }
 }
