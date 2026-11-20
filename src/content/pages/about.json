@@ -143,8 +143,8 @@
         { "name": "Bonnie Yip", "role": "遊戲內容總監", "img": "/images/bonnie.webp" },
         { "name": "Patrick Au Yeung", "role": "遊戲設計執行監製", "img": "/images/patrick.jpeg" },
         { "name": "Stanly", "role": "項目總監", "img": "/images/stanly-fung.webp" },
-        { "name": "Michelle Yau", "role": "項目營運經理", "img": "" },
-        { "name": "Zoe Chan", "role": "對外事務經理", "img": "" }
+        { "name": "Michelle Yau", "role": "項目營運經理", "img": "/images/michelle.jpeg" },
+        { "name": "Zoe Chan", "role": "對外事務經理", "img": "/images/zoe.jpeg" }
       ],
       "prev": "上一位成員",
       "next": "下一位成員"
