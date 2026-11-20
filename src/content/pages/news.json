@@ -10,15 +10,8 @@
       "brandV": "BRAINY",
       "brandH": "NEWSROOM"
     },
-    "cats": {
-      "press": "新聞稿",
-      "invite": "活動邀請"
-    },
-    "filters": {
-      "all": "全部",
-      "press": "過往活動新聞稿",
-      "invite": "數據發佈會邀請"
-    },
+    "cats": { "expo": "展覽路演" },
+    "filters": { "all": "全部", "expo": "展覽路演" },
     "list": {
       "h": "最新消息",
       "hint": "選擇右邊的消息，在左邊預覽",
@@ -29,147 +22,29 @@
     "items": [
       {
         "id": "n1",
-        "cat": "press",
-        "date": "2026-11-12",
-        "title": "天地玄黃，宇宙洪荒",
-        "excerpt": "天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。寒來暑往，秋收冬藏。",
+        "cat": "expo",
+        "date": "2026-11-20",
+        "title": "NeuroSeed @ 2026 香港腦力多元研討會",
+        "excerpt": "NeuroSeed 將參與2026 香港腦力多元研討會，向大家介紹我們的原創教育培訓項目《腦細話事》Brainy In-Charge。",
         "body": [
-          "天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。寒來暑往，秋收冬藏。閏餘成歲，律呂調陽。雲騰致雨，露結為霜。",
-          "始制文字，乃服衣裳。推位讓國，有虞陶唐。弔民伐罪，周發殷湯。坐朝問道，垂拱平章。愛育黎首，臣伏戎羌。"
+          "NeuroSeed 將參與2026 香港腦力多元研討會，向大家介紹我們的原創教育培訓項目《腦細話事》Brainy In-Charge。",
+          "歡迎大家親臨支持，認識我們如何透過遊戲化學習，支持老師陪伴學童探索情緒、心理健康與成長挑戰。現場設有簡單互動活動，包括分享你關注的學童成長議題、寫下支持說話，以及共同建構「大腦連結」藝術作品。參與者亦可獲得項目宣傳品及「腦細心語卡」，一起為學童送上鼓勵與支持！",
+          "歡迎到訪 Brown Rice x NeuroSeed 展區，與我們的宣傳大使親身交流！"
         ],
-        "img": "/images/3.jpg"
-      },
-      {
-        "id": "n2",
-        "cat": "invite",
-        "date": "2026-11-05",
-        "title": "日月盈昃，辰宿列張",
-        "excerpt": "天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。寒來暑往，秋收冬藏。",
-        "body": [
-          "金生麗水，玉出崑岡。劍號巨闕，珠稱夜光。果珍李柰，菜重芥薑。海鹹河淡，鱗潛羽翔。龍師火帝，鳥官人皇。",
-          "遐邇一體，率賓歸王。鳴鳳在樹，白駒食場。化被草木，賴及萬方。蓋此身髮，四大五常。恭惟鞠養，豈敢毀傷。"
-        ],
-        "img": "/images/10.jpg",
         "meta": [
-          {
-            "k": "日期",
-            "v": "2026.12.05"
-          },
-          {
-            "k": "地點",
-            "v": "天地玄黃禮堂"
-          },
-          {
-            "k": "回覆",
-            "v": "enquiry@brownrice.org"
-          }
-        ]
-      },
-      {
-        "id": "n3",
-        "cat": "press",
-        "date": "2026-10-22",
-        "title": "寒來暑往，秋收冬藏",
-        "excerpt": "天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。寒來暑往，秋收冬藏。",
-        "body": [
-          "始制文字，乃服衣裳。推位讓國，有虞陶唐。弔民伐罪，周發殷湯。坐朝問道，垂拱平章。愛育黎首，臣伏戎羌。",
-          "女慕貞絜，男效才良。知過必改，得能莫忘。罔談彼短，靡恃己長。信使可覆，器欲難量。墨悲絲染，詩讚羔羊。"
+          { "k": "日期", "v": "2026年11月21日（星期六）" },
+          { "k": "時間", "v": "上午9時至下午5時" },
+          { "k": "地點", "v": "香港中文大學康本國際學術園" }
         ],
-        "img": "/images/7.jpg"
-      },
-      {
-        "id": "n4",
-        "cat": "press",
-        "date": "2026-09-30",
-        "title": "閏餘成歲，律呂調陽",
-        "excerpt": "天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。寒來暑往，秋收冬藏。",
-        "body": [
-          "遐邇一體，率賓歸王。鳴鳳在樹，白駒食場。化被草木，賴及萬方。蓋此身髮，四大五常。恭惟鞠養，豈敢毀傷。",
-          "景行維賢，克念作聖。德建名立，形端表正。空谷傳聲，虛堂習聽。禍因惡積，福緣善慶。尺璧非寶，寸陰是競。"
-        ],
-        "img": "/images/4.jpg"
-      },
-      {
-        "id": "n5",
-        "cat": "invite",
-        "date": "2026-09-12",
-        "title": "雲騰致雨，露結為霜",
-        "excerpt": "天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。寒來暑往，秋收冬藏。",
-        "body": [
-          "女慕貞絜，男效才良。知過必改，得能莫忘。罔談彼短，靡恃己長。信使可覆，器欲難量。墨悲絲染，詩讚羔羊。",
-          "天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。寒來暑往，秋收冬藏。閏餘成歲，律呂調陽。雲騰致雨，露結為霜。"
-        ],
-        "img": "/images/13.jpg",
-        "meta": [
-          {
-            "k": "日期",
-            "v": "2026.12.12"
-          },
-          {
-            "k": "地點",
-            "v": "天地玄黃禮堂"
-          },
-          {
-            "k": "回覆",
-            "v": "enquiry@brownrice.org"
-          }
-        ]
-      },
-      {
-        "id": "n6",
-        "cat": "press",
-        "date": "2026-08-18",
-        "title": "金生麗水，玉出崑岡",
-        "excerpt": "天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。寒來暑往，秋收冬藏。",
-        "body": [
-          "景行維賢，克念作聖。德建名立，形端表正。空谷傳聲，虛堂習聽。禍因惡積，福緣善慶。尺璧非寶，寸陰是競。",
-          "金生麗水，玉出崑岡。劍號巨闕，珠稱夜光。果珍李柰，菜重芥薑。海鹹河淡，鱗潛羽翔。龍師火帝，鳥官人皇。"
-        ],
-        "img": "/images/11.jpg"
-      },
-      {
-        "id": "n7",
-        "cat": "press",
-        "date": "2026-07-03",
-        "title": "劍號巨闕，珠稱夜光",
-        "excerpt": "天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。寒來暑往，秋收冬藏。",
-        "body": [
-          "天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。寒來暑往，秋收冬藏。閏餘成歲，律呂調陽。雲騰致雨，露結為霜。",
-          "始制文字，乃服衣裳。推位讓國，有虞陶唐。弔民伐罪，周發殷湯。坐朝問道，垂拱平章。愛育黎首，臣伏戎羌。"
-        ],
-        "img": "/images/8.jpg"
-      },
-      {
-        "id": "n8",
-        "cat": "invite",
-        "date": "2026-06-20",
-        "title": "果珍李柰，菜重芥薑",
-        "excerpt": "天地玄黃，宇宙洪荒。日月盈昃，辰宿列張。寒來暑往，秋收冬藏。",
-        "body": [
-          "金生麗水，玉出崑岡。劍號巨闕，珠稱夜光。果珍李柰，菜重芥薑。海鹹河淡，鱗潛羽翔。龍師火帝，鳥官人皇。",
-          "遐邇一體，率賓歸王。鳴鳳在樹，白駒食場。化被草木，賴及萬方。蓋此身髮，四大五常。恭惟鞠養，豈敢毀傷。"
-        ],
-        "img": "/images/12.jpg",
-        "meta": [
-          {
-            "k": "日期",
-            "v": "2027.01.16"
-          },
-          {
-            "k": "地點",
-            "v": "天地玄黃禮堂"
-          },
-          {
-            "k": "回覆",
-            "v": "enquiry@brownrice.org"
-          }
-        ]
+        "img": "/images/poster.png",
+        "poster": true,
+        "alt": "NeuroSeed @ 2026 香港腦力多元研討會，2026年11月21日，香港中文大學康本國際學術園"
       }
     ],
     "cta": {
       "h": "投資老師，改變學生人生！",
       "p": "提供培訓日期與教師人數，商議到校安排。",
-      "email": "enquiry@brownrice.org"
+      "email": "info@neuroseed.org"
     }
   },
   "en": {
@@ -183,15 +58,8 @@
       "brandV": "BRAINY",
       "brandH": "NEWSROOM"
     },
-    "cats": {
-      "press": "Press release",
-      "invite": "Invitation"
-    },
-    "filters": {
-      "all": "All",
-      "press": "Past events",
-      "invite": "Data Release Conference"
-    },
+    "cats": { "expo": "Exhibition & Roadshow" },
+    "filters": { "all": "All", "expo": "Exhibition & Roadshow" },
     "list": {
       "h": "Latest news",
       "hint": "Choose a story on the right to preview it on the left",
@@ -202,147 +70,29 @@
     "items": [
       {
         "id": "n1",
-        "cat": "press",
-        "date": "2026-11-12",
-        "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+        "cat": "expo",
+        "date": "2026-11-20",
+        "title": "NeuroSeed @ Hong Kong Neurodiversity Conference 2026",
+        "excerpt": "NeuroSeed will be joining the Hong Kong Neurodiversity Conference 2026 to introduce our original educational training programme, 《腦細話事》Brainy In-Charge.",
         "body": [
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+          "NeuroSeed will be joining the Hong Kong Neurodiversity Conference 2026 to introduce our original educational training programme, 《腦細話事》Brainy In-Charge.",
+          "We warmly invite you to come and support us, and learn more about how we use game-based learning to help teachers support students in exploring emotions, mental well-being, and growth challenges. Our booth will feature simple interactive activities, including sharing the student development issues you care about, writing a message of support, and co-creating a “brain connection” artwork. Participants can also receive project promotional materials and Brainy Message Cards, joining us in sending encouragement and support to students!",
+          "Come visit the Brown Rice x NeuroSeed booth and connect with our ambassadors in person!"
         ],
-        "img": "/images/3.jpg"
-      },
-      {
-        "id": "n2",
-        "cat": "invite",
-        "date": "2026-11-05",
-        "title": "Sed ut perspiciatis unde omnis iste natus error sit",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
-        "body": [
-          "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-        ],
-        "img": "/images/10.jpg",
         "meta": [
-          {
-            "k": "Date",
-            "v": "2026.12.05"
-          },
-          {
-            "k": "Venue",
-            "v": "Lorem Ipsum Hall"
-          },
-          {
-            "k": "RSVP",
-            "v": "enquiry@brownrice.org"
-          }
-        ]
-      },
-      {
-        "id": "n3",
-        "cat": "press",
-        "date": "2026-10-22",
-        "title": "Ut enim ad minim veniam, quis nostrud exercitation ullamco",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
-        "body": [
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-          "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem."
+          { "k": "Date", "v": "21 November 2026, Saturday" },
+          { "k": "Time", "v": "9:00 AM – 5:00 PM" },
+          { "k": "Venue", "v": "Yasumoto International Academic Park, The Chinese University of Hong Kong" }
         ],
-        "img": "/images/7.jpg"
-      },
-      {
-        "id": "n4",
-        "cat": "press",
-        "date": "2026-09-30",
-        "title": "Duis aute irure dolor in reprehenderit in voluptate velit",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
-        "body": [
-          "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-          "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident."
-        ],
-        "img": "/images/4.jpg"
-      },
-      {
-        "id": "n5",
-        "cat": "invite",
-        "date": "2026-09-12",
-        "title": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
-        "body": [
-          "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-        ],
-        "img": "/images/13.jpg",
-        "meta": [
-          {
-            "k": "Date",
-            "v": "2026.12.12"
-          },
-          {
-            "k": "Venue",
-            "v": "Lorem Ipsum Hall"
-          },
-          {
-            "k": "RSVP",
-            "v": "enquiry@brownrice.org"
-          }
-        ]
-      },
-      {
-        "id": "n6",
-        "cat": "press",
-        "date": "2026-08-18",
-        "title": "Excepteur sint occaecat cupidatat non proident, sunt in culpa",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
-        "body": [
-          "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.",
-          "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        ],
-        "img": "/images/11.jpg"
-      },
-      {
-        "id": "n7",
-        "cat": "press",
-        "date": "2026-07-03",
-        "title": "Neque porro quisquam est, qui dolorem ipsum quia dolor",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
-        "body": [
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-        ],
-        "img": "/images/8.jpg"
-      },
-      {
-        "id": "n8",
-        "cat": "invite",
-        "date": "2026-06-20",
-        "title": "At vero eos et accusamus et iusto odio dignissimos ducimus",
-        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
-        "body": [
-          "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
-        ],
-        "img": "/images/12.jpg",
-        "meta": [
-          {
-            "k": "Date",
-            "v": "2027.01.16"
-          },
-          {
-            "k": "Venue",
-            "v": "Lorem Ipsum Hall"
-          },
-          {
-            "k": "RSVP",
-            "v": "enquiry@brownrice.org"
-          }
-        ]
+        "img": "/images/poster.png",
+        "poster": true,
+        "alt": "NeuroSeed @ Hong Kong Neurodiversity Conference 2026, 21 November 2026, Yasumoto International Academic Park, The Chinese University of Hong Kong"
       }
     ],
     "cta": {
       "h": "Invest in teachers to change students’ lives!",
       "p": "Send us your preferred date and number of teachers to discuss on-site arrangements.",
-      "email": "enquiry@brownrice.org"
+      "email": "info@neuroseed.org"
     }
   }
 }

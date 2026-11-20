@@ -168,9 +168,6 @@ const goLabel = lang === 'zh' ? '預約培訓' : 'Book a training';
     </div>
   </section>
 
-  <!-- 5. PARTNERS -->
-  <Partners lang={lang} />
-
   <!-- 6. BOOK A TRAINING: last block before the footer -->
   <section class="section cta2" id="contact">
     <div class="container">
@@ -183,7 +180,11 @@ const goLabel = lang === 'zh' ? '預約培訓' : 'Book a training';
             <a class="btn btn--primary" href={bookHref}>{t(lang, 'cta.book')}</a>
             <a class="btn ghost" href={`/${lang}/service/`}>{c.learn}</a>
           </div>
-          <p class="cta2__foot"><a href={`mailto:${b.contact.email}`}>{b.contact.email}</a></p>
+          <p class="cta2__foot">
+            {lang === 'zh' ? '聯絡我們' : 'Contact us'}:<br />
+            📞 <a href="https://wa.me/85295472118" target="_blank" rel="noopener">wa.me/85295472118</a><br />
+            📧 <a href="mailto:info@neuroseed.org">info@neuroseed.org</a>
+          </p>
         </div>
 
         <div class="cols" data-cols>
@@ -211,6 +212,10 @@ const goLabel = lang === 'zh' ? '預約培訓' : 'Book a training';
       </div>
     </div>
   </section>
+
+  <!-- 5. PARTNERS -->
+  <Partners lang={lang} />
+
 </Layout>
 
 <style>
@@ -326,10 +331,9 @@ const goLabel = lang === 'zh' ? '預約培訓' : 'Book a training';
   .rail__track { display: flex; width: max-content; height: 100%; }
   .rail__set { display: flex; gap: 1.5rem; padding-right: 1.5rem; }
   .panel { padding: 2rem 1.6rem; border-radius: 28px; color: #fff; background: linear-gradient(160deg, #2A63C2, var(--brand-deep)); display: flex; flex-direction: column; gap: 1.2rem; }
-  .panel h2 { color: #fff; font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 0; text-wrap: balance; }
+  .take-grid .panel h2 { color: #fff !important; font-size: clamp(1.5rem, 2.6vw, 2rem); margin: 0; text-wrap: balance; }
   .pills { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
   .pill-row { display: flex; align-items: center; gap: .8rem; padding: .7rem 1rem; border-radius: 999px; background: var(--p); color: #fff; font: 700 1rem / 1.25 var(--font-display); }
-  .pill-row:nth-child(2) { color: #3A2A10; }
   .pill-row__n { flex: none; width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; background: #fff; color: #1F2A44; font-size: .95rem; }
   .qcard { flex: 0 0 min(340px, 78vw); margin: 0; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 28px; overflow: hidden; }
   .qcard img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--brand-deep); pointer-events: none; }
@@ -348,7 +352,7 @@ const goLabel = lang === 'zh' ? '預約培訓' : 'Book a training';
   .cta2__actions .btn--primary { box-shadow: 0 10px 24px rgba(30, 79, 163, .3); }
   .ghost { background: transparent; border: 2px solid var(--brand-deep); color: var(--brand-deep); }
   .ghost:hover { background: var(--brand-deep); color: #fff; border-color: var(--brand-deep); }
-  .cta2__foot { margin: 2.2rem 0 0; font-size: var(--fs-sm); color: var(--muted); }
+  .cta2__foot { margin: 2.2rem 0 0; line-height: 1.8; font-size: var(--fs-sm); color: var(--muted); }
   .cta2__foot a { color: var(--brand); font-weight: 700; }
 
   .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; height: clamp(440px, 64vh, 640px); overflow: hidden;

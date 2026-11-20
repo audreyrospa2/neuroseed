@@ -16,13 +16,15 @@ const items = [...c.items]
   .sort((a, b) => b.date.localeCompare(a.date))
   .map((n) => ({
     ...n,
+    meta: (n as { meta?: { k: string; v: string }[] }).meta ?? [],
     dateLabel: new Date(n.date + 'T00:00:00').toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' }),
     dot: n.date.replaceAll('-', '.'),
-    catLabel: c.cats[n.cat as 'press' | 'invite']
+    catLabel: c.cats[n.cat as 'expo']
   }));
 const featured = items[0];
 const count = (k: string) => (k === 'all' ? items.length : items.filter((n) => n.cat === k).length);
-const filters = (['all', 'press', 'invite'] as const).map((k) => ({ k, label: c.filters[k], n: count(k) }));
+const filters = (['all', 'expo'] as const).map((k) => ({ k, label: c.filters[k], n: count(k) }));
+const multi = items.length > 1;
 ---
 <Layout lang={lang} title={t(lang, 'nav.news')} description={c.lead}>
 
@@ -85,37 +87,51 @@ const filters = (['all', 'press', 'invite'] as const).map((k) => ({ k, label: c.
       </header>
 
       <div class="news__grid">
-        <!-- LEFT: preview -->
-        <div class="preview rv" data-preview>
-          {items.map((n, i) => (
-            <article class="pv" id={`pv-${n.id}`} data-id={n.id} role="tabpanel" aria-labelledby={`li-${n.id}`} hidden={i !== 0}>
-              <div class="pv__cover">
+      <!-- LEFT: preview -->
+      <div class="preview rv" data-preview>
+        {items.map((n, i) => (
+          <article class="pv" id={`pv-${n.id}`} data-id={n.id} role="tabpanel" aria-labelledby={`li-${n.id}`} hidden={i !== 0}>
+            <div class="pv__cover">
+              {n.poster ? (
+                <img class="pv__poster" src={n.img} alt={n.alt} loading="lazy" />
+              ) : (
                 <Photo label={n.title} src={n.img} color="#2F6FD0" icon="📰" ratio="16 / 9" />
-                <span class={`chip chip--${n.cat}`}>{n.catLabel}</span>
-              </div>
-              <div class="pv__body">
-                <time datetime={n.date}>{n.dateLabel}</time>
-                <h3>{n.title}</h3>
-                {n.body.map((p) => <p>{p}</p>)}
-                {n.meta && (
-                  <dl class="pv__meta">
-                    {n.meta.map((m) => (<div><dt>{m.k}</dt><dd>{m.v}</dd></div>))}
-                  </dl>
-                )}
+              )}
+              <span class={`chip chip--${n.cat}`}>{n.catLabel}</span>
+            </div>
+
+            <div class="pv__body">
+              <time datetime={n.date}>{n.dateLabel}</time>
+              <h3>{n.title}</h3>
+
+              {n.body.map((p) => <p>{p}</p>)}
+
+              {n.meta && n.meta.length > 0 && (
+                <dl class="pv__meta">
+                  {n.meta.map((m) => (
+                    <div><dt>{m.k}</dt><dd>{m.v}</dd></div>
+                  ))}
+                </dl>
+              )}
+
+              {(multi || n.cat === 'invite') && (
                 <div class="pv__foot">
                   {n.cat === 'invite' && (
                     <a class="btn btn--sun" href={`mailto:${c.cta.email}?subject=${encodeURIComponent(n.title)}`}>{c.list.rsvp}</a>
                   )}
-                  <div class="pv__nav">
-                    <button type="button" data-step="-1" aria-label={c.list.prev}>‹</button>
-                    <span data-pos>1 / {items.length}</span>
-                    <button type="button" data-step="1" aria-label={c.list.next}>›</button>
-                  </div>
+                  {multi && (
+                    <div class="pv__nav">
+                      <button type="button" data-step="-1" aria-label={c.list.prev}>‹</button>
+                      <span data-pos>1 / {items.length}</span>
+                      <button type="button" data-step="1" aria-label={c.list.next}>›</button>
+                    </div>
+                  )}
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
 
         <!-- RIGHT: list -->
         <div class="list" role="tablist" aria-orientation="vertical" aria-label={c.list.h} data-list>
@@ -235,12 +251,13 @@ const filters = (['all', 'press', 'invite'] as const).map((k) => ({ k, label: c.
 
   .chip { display: inline-block; font-style: normal; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.28rem 0.7rem; border-radius: 99px; }
   .chip--press { background: color-mix(in srgb, var(--brand) 12%, #fff); color: var(--brand-deep); }
-  .chip--invite { background: var(--sun); color: #3a2a0a; }
+  .chip--invite, .chip--expo { background: var(--sun); color: #3a2a0a; }
 
   /* preview (left) */
   .preview { position: sticky; top: 5.5rem; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 20px 50px rgba(30, 79, 163, 0.1); }
   .pv[hidden] { display: none; }
   .pv__cover { position: relative; overflow: hidden; animation: cover 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .pv__poster { display: block; width: 100%; height: auto; }
   @keyframes cover { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
   .pv__cover .chip { position: absolute; left: 1rem; top: 1rem; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); }
   .pv__body { padding: clamp(1.3rem, 3vw, 2rem); animation: pvIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
@@ -306,6 +323,8 @@ const filters = (['all', 'press', 'invite'] as const).map((k) => ({ k, label: c.
     .li { grid-template-columns: 1fr auto; }
     .li__n { display: none; }
     .pv__meta div { grid-template-columns: 4rem 1fr; }
+    .filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; gap: 0.35rem; border-radius: 24px; }
+    .filters__btn { justify-content: center; gap: 0.4rem; min-height: 44px; padding: 0 0.6rem; text-align: center; line-height: 1.2; font-size: 0.85rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     .paper, .shard, .hero__title span, .hero__lead, .pick, .pv__cover, .pv__body { animation: none; }

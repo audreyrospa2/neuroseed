@@ -22,15 +22,22 @@ const langHeading = lang === 'zh' ? '語言' : 'Language';
 </ul>
 </div>
 <div>
-<h3>{t(lang, 'footer.contact')}</h3>
+<h3>{lang === 'zh' ? '聯絡我們' : 'Contact Us'}</h3>
 <ul>
-<li>{t(lang, 'footer.email')}</li>
-<li>{t(lang, 'footer.whatsapp')}</li>
+<li>Email: <a href="mailto:info@neuroseed.org">info@neuroseed.org</a></li>
+<li>{lang === 'zh' ? '電話' : 'Phone'}: <a href="https://wa.me/85295472118" target="_blank" rel="noopener">+852 95472118</a></li>
 </ul>
+<div class="social">
+<a href="https://www.instagram.com/Neuroseed.hk" target="_blank" rel="noopener" aria-label="Instagram">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+</a>
+<a href="https://www.facebook.com/neuroseed.hk/" target="_blank" rel="noopener" aria-label="Facebook">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+</a>
+<a href="https://www.linkedin.com/company/neuroseed-hk/home/" target="_blank" rel="noopener" aria-label="LinkedIn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+</a>
 </div>
-<div class="foot-lang">
-<h3>{langHeading}</h3>
-<a class="btn btn--sm lang" href={switchLangPath(path, lang)} hreflang={lang === 'zh' ? 'en' : 'zh-Hant'}>{t(lang, 'ui.switch')}</a>
 </div>
 </div>
 </footer>
@@ -50,6 +57,12 @@ a { text-decoration: none; } a:hover { color: #fff; text-decoration: underline; 
 .foot-lang { display: none; }
 .foot-lang .lang { display: inline-flex; background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.6); text-decoration: none; }
 .foot-lang .lang:hover { background: rgba(255, 255, 255, 0.14); border-color: #fff; text-decoration: none; }
+
+.social { display: flex; gap: 0.7rem; margin-top: 1rem; }
+.social a { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid rgba(255,255,255,0.6); color: #fff; transition: background 0.2s, border-color 0.2s; }
+.social a:hover { background: rgba(255,255,255,0.16); border-color: #fff; text-decoration: none; }
+.social svg { width: 20px; height: 20px; }
+
 @media (max-width: 860px) {
   .foot-lang { display: block; grid-column: 1 / -1; padding-top: 1.4rem; border-top: 1px solid rgba(255, 255, 255, 0.2); }
 }
