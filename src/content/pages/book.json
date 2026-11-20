@@ -30,7 +30,10 @@
         "培訓到校舉行"
       ],
       "contact": "或直接聯絡我們",
-      "email": "info@neuroseed.org"
+      "emailLabel": "電郵",
+      "email": "info@neuroseed.org",
+      "phoneLabel": "電話／WhatsApp",
+      "phone": "+852 95472118"
     }
   },
   "en": {
@@ -64,7 +67,10 @@
         "The training takes place at your school"
       ],
       "contact": "Or contact us directly",
-      "email": "info@neuroseed.org"
+      "emailLabel": "Email",
+      "email": "info@neuroseed.org",
+      "phoneLabel": "Phone / WhatsApp",
+      "phone": "+852 95472118"
     }
   }
 }

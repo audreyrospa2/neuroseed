@@ -63,8 +63,8 @@
         { "name": "Bonnie Yip", "role": "Director of Game Content", "img": "/images/bonnie.webp" },
         { "name": "Patrick Au Yeung", "role": "Executive Producer, Game Design", "img": "/images/patrick.jpeg" },
         { "name": "Stanly", "role": "Programme Director", "img": "/images/stanly-fung.webp" },
-        { "name": "Michelle Yau", "role": "Project Operations Manager", "img": "" },
-        { "name": "Zoe Chan", "role": "External Affairs Manager ", "img": "" }
+        { "name": "Michelle Yau", "role": "Project Operations Manager", "img": "/images/michelle.jpeg" },
+        { "name": "Zoe Chan", "role": "External Affairs Manager ", "img": "/images/zoe.jpeg" }
       ],
       "prev": "Previous team member",
       "next": "Next team member"

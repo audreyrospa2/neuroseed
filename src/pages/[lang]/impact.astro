@@ -283,8 +283,7 @@ const drops = [0.4, 1.8, 0.9, 2.2]; // rem: how far each card hangs
   .rp__head p { margin: 0.3rem 0 0; color: var(--sun); font-weight: 700; }
 
   /* hanging cards: string -> thread -> pin -> card swinging from the pin */
-  .hang { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; padding: 0 0.8rem; }
-  .slot { position: relative; padding-top: calc(1.8rem + var(--drop)); }
+  .hang { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; padding: 0 0.8rem; max-width: 62rem; margin-inline: auto; }  .slot { position: relative; padding-top: calc(1.8rem + var(--drop)); }
   .slot::before { content: ''; position: absolute; top: 0; left: -0.8rem; right: -0.8rem; height: 3px; border-radius: 3px; background: rgba(255, 255, 255, 0.5); }
   .slot__thread { position: absolute; top: 0; left: 50%; width: 2px; height: calc(1.8rem + var(--drop)); translate: -50% 0; background: rgba(255, 255, 255, 0.6); }
 
@@ -356,7 +355,7 @@ const drops = [0.4, 1.8, 0.9, 2.2]; // rem: how far each card hangs
 
   @media (max-width: 1000px) {
     .hang { grid-template-columns: repeat(2, 1fr); row-gap: 1.4rem; }
-  }
+    }
   @media (max-width: 880px) {
     .data { grid-template-columns: 1fr; }
     .msg { grid-template-columns: 1fr; justify-items: center; text-align: center; }
@@ -365,9 +364,11 @@ const drops = [0.4, 1.8, 0.9, 2.2]; // rem: how far each card hangs
     .msg__who { justify-content: center; }
     .voices { grid-template-columns: 1fr; row-gap: 4.2rem; max-width: 26rem; margin: 0 auto; }
   }
+    @media (max-width: 760px) {
+    .hang { grid-template-columns: 1fr; max-width: 270px; margin: 0 auto; row-gap: 1.4rem; }
+  }
   @media (max-width: 560px) {
     .bridge { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 1.6rem; }
-    .hang { grid-template-columns: 1fr; max-width: 270px; margin: 0 auto; }
     .stat { padding: 1.4rem 1rem 1.2rem; }
     .stat::after { left: 1rem; right: 1rem; }
     .orbit__node em { font-size: 0.7rem; max-width: 6rem; }

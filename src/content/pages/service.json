@@ -135,18 +135,21 @@
         ]
       },
       "cos": {
-        "h": "安全圓圈",
+        "h": "安全圈",
         "sub": "Circle of Security",
         "img": "/images/circle-of-security.png",
-        "p": "「安全圓圈」框架已融入遊戲設計及引導師培訓。",
+        "p": [
+          "「安全圈®」是一項以實證為基礎的親子依附介入項目，旨在幫助照顧者理解孩子的情緒需要與行為訊號，從而建立更安全、穩定的親子關係。",
+          "「安全圈®」框架已融入《腦細話事》遊戲設計及引導師培訓，協助教養者以更具同理心的方式，陪伴孩子探索情緒、面對挑戰和建立安全感。"
+        ],
         "list": [
           {
-            "h": "安全基地",
-            "p": "孩子知道有可信任的成人在身邊，就更敢去探索。"
+            "h": "理念與歷史",
+            "p": "「安全圈®」最初是為了將依戀理論以更容易理解的方式呈現予父母和照顧者。其後，項目整合了超過五十年的早期兒童發展研究，發展成以影片為本的介入計劃，協助照顧者觀察孩子行為、理解背後需要，並提升自身的養育回應能力。"
           },
           {
-            "h": "安全避風港",
-            "p": "當孩子感到不安，可以回到成人身邊得到安慰。"
+            "h": "安全基地",
+            "p": "「安全圈®」強調每個孩子都渴望與照顧者建立安全感，而安全的依附關係對孩子的情緒、學習、人際關係和長遠發展都有重要影響。孩子在探索世界和尋求安慰時，都有不同的情感需要，這些需要幫助孩子在「探索」與「連結」之間建立安全感。"
           }
         ]
       }
@@ -294,17 +297,20 @@
       },
       "cos": {
         "h": "Circle of Security",
-        "sub": "安全圓圈",
+        "sub": "安全圈",
         "img": "/images/13.jpg",
-        "p": "The Circle of Security framework has been integrated into both the game design and facilitator training.",
+        "p": [
+          "Circle of Security® is an evidence-based parent-child attachment intervention designed to help caregivers understand children’s emotional needs and behavioural cues, thereby building safer and more stable parent-child relationships.",
+          "The Circle of Security® framework has been integrated into the game design and facilitator training of <em>Brainy In-Charge</em>, supporting caregivers and educators to accompany children with greater empathy as they explore emotions, face challenges, and build a sense of security."
+        ],
         "list": [
           {
-            "h": "Secure base",
-            "p": "Children explore more confidently when they know a trusted adult is there."
+            "h": "Philosophy and History",
+            "p": "Circle of Security® was originally developed to present attachment theory to parents and caregivers in a more accessible and easy-to-understand way. It later integrated over fifty years of early childhood development research and evolved into a video-based intervention programme, supporting caregivers to observe children’s behaviours, understand the needs behind them, and strengthen their own caregiving responses."
           },
           {
-            "h": "Safe haven",
-            "p": "When a child feels upset, they can return to an adult for comfort."
+            "h": "Secure Base",
+            "p": "Circle of Security® emphasises that every child longs to build a sense of security with their caregivers, and that a secure attachment relationship plays an important role in children’s emotions, learning, relationships, and long-term development. When children explore the world and seek comfort, they have different emotional needs. These needs help children build a sense of security between “exploration” and “connection.”"
           }
         ]
       }

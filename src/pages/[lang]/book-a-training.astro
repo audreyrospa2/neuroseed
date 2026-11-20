@@ -80,7 +80,16 @@ const mailTo = c.next.email;
           {c.next.steps.map((s, i) => <li><span class="n">{i + 1}</span>{s}</li>)}
         </ol>
         <p class="side__or">{c.next.contact}</p>
-        <a class="side__mail" href={`mailto:${mailTo}`}>{mailTo}</a>
+        <ul class="side__list">
+          <li>
+            <span>{c.next.emailLabel}</span>
+            <a class="side__mail" href={`mailto:${mailTo}`}>{mailTo}</a>
+          </li>
+          <li>
+            <span>{c.next.phoneLabel}</span>
+            <a class="side__mail" href="https://wa.me/85295472118" target="_blank" rel="noopener">{c.next.phone}</a>
+          </li>
+        </ul>
       </aside>
 
     </div>
@@ -130,6 +139,9 @@ const mailTo = c.next.email;
   .n { flex: none; width: 2.1rem; height: 2.1rem; border-radius: 50%; display: grid; place-items: center; background: var(--sun); color: #1B1B18; font-weight: 700; }
   .side__or { margin: 0 0 0.2rem; opacity: 0.85; font-size: var(--fs-sm); }
   .side__mail { color: #fff; font-weight: 700; font-size: var(--fs-lg); word-break: break-all; }
+  .side__list { list-style: none; margin: 0.6rem 0 0; padding: 0; display: grid; gap: 0.9rem; }
+  .side__list li { display: grid; gap: 0.15rem; }
+  .side__list span { font-size: var(--fs-sm); opacity: 0.85; }
 
   @media (max-width: 900px) {
     .layout { grid-template-columns: 1fr; }

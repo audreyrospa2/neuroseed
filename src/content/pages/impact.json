@@ -8,28 +8,12 @@
       "h": "用數據說話",
       "partner": "香港理工大學護理學院",
       "partnerSub": "PolyU School of Nursing",
-      "lead": "由理大護理學院跟進研究，量度計劃對老師信心與課室支援能力的影響。",
+      "lead": "理大護理學院跟進研究，涵蓋 4 次工作坊前後評估及 2 個月跨時間追蹤，量度計劃對老師信心與課室支援能力的影響。",
       "stats": [
-        {
-          "value": "XX",
-          "suffix": "",
-          "label": "參與培訓的老師"
-        },
-        {
-          "value": "XX",
-          "suffix": "",
-          "label": "參與學校"
-        },
-        {
-          "value": "XX",
-          "suffix": "%",
-          "label": "老師表示更有信心回應學生"
-        },
-        {
-          "value": "XX",
-          "suffix": "",
-          "label": "受惠學生"
-        }
+        { "value": "100", "suffix": "+", "label": "教育工作者參與" },
+        { "value": "2", "suffix": "", "label": "個月跨時間追蹤" },
+        { "value": "100", "suffix": "%", "label": "更理解學生精神健康需要" },
+        { "value": "97.7", "suffix": "%", "label": "更有信心支援學生" }
       ],
       "orbit": {
         "h": "由體驗到改變",
@@ -60,30 +44,18 @@
     },
     "message": {
       "kicker": "寄語",
-      "h": "Andy 的話",
-      "quote": "【請在此填寫 Andy 的訊息】",
-      "name": "Andy",
-      "role": "【職銜】",
-      "img": "/images/12.jpg"
+      "h": "Dr. Andy Fung 的話",
+      "quote": "「腦細話事」透過創傷知情及腦神經科學的角度，協助參加者理解學生的需要，成為他們成長路上堅實的後盾。",
+      "name": "Dr. Andy Fung",
+      "role": "香港理工大學護理學院 研究助理教授",
+      "img": "/images/andy-fung.jpg"
     },
     "voices": {
       "h": "前線的聲音",
       "items": [
-        {
-          "quote": "【請填寫第一則回饋】",
-          "who": "兒童心理學家",
-          "img": "/images/1.jpg"
-        },
-        {
-          "quote": "小小的調整，可以帶來大大的不同。",
-          "who": "老師",
-          "img": "/images/13.jpg"
-        },
-        {
-          "quote": "讓我們一起，走在孩子的成長路上。",
-          "who": "特殊教育專家",
-          "img": "/images/12.jpg"
-        }
+        { "quote": "回想起我的教學初心，且首次明白如何以同理心回應，而非急於解決問題。", "who": "資深教師分享", "img": "/images/1.jpg" },
+        { "quote": "更深入理解老師們面對的困難，是加深認識和互相學習的好機會。", "who": "參與校長分享", "img": "/images/13.jpg" },
+        { "quote": "透過角色扮演借鏡同事經驗。培訓加深彼此連結，建立互助文化。", "who": "新入職教師分享", "img": "/images/12.jpg" }
       ]
     },
     "jobs": {
@@ -97,33 +69,27 @@
         "p": "【請填寫 Learning Bridge 的簡介：對象、內容、成果】"
       },
       "roleplay": {
-        "h": "角色扮演者分享",
-        "sub": "Roleplayer sharing",
+        "h": "參與者分享",
+        "sub": "Participants’ sharing",
         "hint": "點擊卡片，閱讀他們的分享",
         "items": [
           {
-            "name": "【姓名】",
-            "role": "角色扮演者",
-            "quote": "【分享內容】",
+            "name": "參與校長",
+            "role": "分享",
+            "quote": "更深入理解老師們面對的困難，是加深認識和互相學習的好機會。",
             "img": "/images/6.jpg"
           },
           {
-            "name": "【姓名】",
-            "role": "角色扮演者",
-            "quote": "【分享內容】",
+            "name": "資深教師",
+            "role": "分享",
+            "quote": "回想起我的教學初心，且首次明白如何以同理心回應，而非急於解決問題。",
             "img": "/images/9.jpg"
           },
           {
-            "name": "【姓名】",
-            "role": "角色扮演者",
-            "quote": "【分享內容】",
+            "name": "新入職教師",
+            "role": "分享",
+            "quote": "透過角色扮演借鏡同事經驗。培訓加深彼此連結，建立互助文化。",
             "img": "/images/10.jpg"
-          },
-          {
-            "name": "【姓名】",
-            "role": "角色扮演者",
-            "quote": "【分享內容】",
-            "img": "/images/11.jpg"
           }
         ]
       }
@@ -143,28 +109,12 @@
       "h": "Let the data speak",
       "partner": "PolyU School of Nursing",
       "partnerSub": "香港理工大學護理學院",
-      "lead": "The School of Nursing at PolyU follows the programme with research, measuring its effect on teachers’ confidence and classroom support skills.",
+      "lead": "The School of Nursing at PolyU follows the programme with research, using 4 pre- and post-workshop assessments and 2 months of longitudinal follow-up to measure its effect on teachers’ confidence and classroom support skills.",
       "stats": [
-        {
-          "value": "XX",
-          "suffix": "",
-          "label": "Teachers trained"
-        },
-        {
-          "value": "XX",
-          "suffix": "",
-          "label": "Schools reached"
-        },
-        {
-          "value": "XX",
-          "suffix": "%",
-          "label": "Teachers feel more confident responding to students"
-        },
-        {
-          "value": "XX",
-          "suffix": "",
-          "label": "Students benefited"
-        }
+        { "value": "100", "suffix": "+", "label": "Educators participated" },
+        { "value": "2", "suffix": "", "label": "Months longitudinal follow-up" },
+        { "value": "100", "suffix": "%", "label": "Better understanding of students’ mental health needs" },
+        { "value": "97.7", "suffix": "%", "label": "Greater confidence in supporting students" }
       ],
       "orbit": {
         "h": "From experience to change",
@@ -195,30 +145,18 @@
     },
     "message": {
       "kicker": "Message",
-      "h": "A message from Andy",
-      "quote": "[Add Andy’s message here]",
-      "name": "Andy",
-      "role": "[Title]",
-      "img": "/images/12.jpg"
+      "h": "A message from Dr. Andy Fung",
+      "quote": "Through trauma-informed and neuroscience perspectives, “Brainy” helps participants understand students’ needs and become a reliable source of support as they grow.",
+      "name": "Dr. Andy Fung",
+      "role": "Research Assistant Professor, School of Nursing, PolyU",
+      "img": "/images/andy-fung.jpg"
     },
     "voices": {
       "h": "Voices from the frontline",
       "items": [
-        {
-          "quote": "[Add first quote]",
-          "who": "Child psychologist",
-          "img": "/images/1.jpg"
-        },
-        {
-          "quote": "Small adjustments can make a big difference.",
-          "who": "Teacher",
-          "img": "/images/13.jpg"
-        },
-        {
-          "quote": "Let’s walk together on each child’s path of growth.",
-          "who": "Special education expert",
-          "img": "/images/12.jpg"
-        }
+        { "quote": "It reminded me of my purpose as a teacher, and I learned to respond with empathy rather than rush to solve problems.", "who": "Experienced teacher’s sharing", "img": "/images/1.jpg" },
+        { "quote": "I gained a deeper understanding of the difficulties teachers face. This is a good opportunity to know more and learn from each other.", "who": "Principal’s sharing", "img": "/images/13.jpg" },
+        { "quote": "Role-play helped me learn from my colleagues. After the training, we deepened our connections and fostered mutual support.", "who": "New teacher’s sharing", "img": "/images/12.jpg" }
       ]
     },
     "jobs": {
@@ -232,33 +170,27 @@
         "p": "[Add a short description of Learning Bridge: who it is for, what it involves, what it achieves]"
       },
       "roleplay": {
-        "h": "Roleplayer sharing",
-        "sub": "角色扮演者分享",
+        "h": "Participants’ sharing",
+        "sub": "參與者分享",
         "hint": "Click a card to read their story",
         "items": [
           {
-            "name": "[Name]",
-            "role": "Roleplayer",
-            "quote": "[Sharing]",
+            "name": "Participating Principal",
+            "role": "Sharing",
+            "quote": "I gained a deeper understanding of the difficulties teachers face. This is a good opportunity to know more and learn from each other.",
             "img": "/images/6.jpg"
           },
           {
-            "name": "[Name]",
-            "role": "Roleplayer",
-            "quote": "[Sharing]",
+            "name": "Experienced Teacher",
+            "role": "Sharing",
+            "quote": "It reminded me of my purpose as a teacher, and I learned to respond with empathy rather than rush to solve problems.",
             "img": "/images/9.jpg"
           },
           {
-            "name": "[Name]",
-            "role": "Roleplayer",
-            "quote": "[Sharing]",
+            "name": "New Teacher",
+            "role": "Sharing",
+            "quote": "Role-play helped me learn from my colleagues. After the training, we deepened our connections and fostered mutual support.",
             "img": "/images/10.jpg"
-          },
-          {
-            "name": "[Name]",
-            "role": "Roleplayer",
-            "quote": "[Sharing]",
-            "img": "/images/11.jpg"
           }
         ]
       }

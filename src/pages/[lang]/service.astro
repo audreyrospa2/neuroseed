@@ -134,7 +134,7 @@ const { tic, cos } = c.theory;
           </div>
           <h3>{cos.h}</h3>
           <p class="tc__sub">{cos.sub}</p>
-          <p class="tc__lead">{cos.p}</p>
+          {cos.p.map((x) => <p class="tc__lead" set:html={x} />)}
           <div class="tc__pair">
             {cos.list.map((x) => (
               <div class="tc__chip">
