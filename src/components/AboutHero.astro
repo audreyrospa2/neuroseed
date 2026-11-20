@@ -12,13 +12,13 @@ const { c } = Astro.props;
 // img: add a real photo path later, e.g. img: '/img/about/neuroseed.jpg'
 const tiers = [
   [
-    { key: 'neuroseed',  href: '#story',       color: 'red',    x: 6,  r: -4,   rest: 80, img: '' },
-    { key: 'brown-rice', href: '#brown-rice',  color: 'blue-a', x: 38, r: 2.5,  rest: 72, img: '' },
-    { key: 'ecorazon',   href: '#ecorazon',    color: 'blue-b', x: 69, r: -2,   rest: 84, img: '' },
+    { key: 'neuroseed',  href: '#story',      color: 'red',    x: 6,  r: -4,  rest: 80, img: '', icon: '🌱' },
+    { key: 'brown-rice', href: '#brown-rice', color: 'blue-a', x: 38, r: 2.5, rest: 72, img: '', icon: '🌾' },
+    { key: 'ecorazon',   href: '#ecorazon',   color: 'blue-b', x: 69, r: -2,  rest: 84, img: '', icon: '🌿' },
   ],
   [
-    { key: 'team',       href: '#team',        color: 'black',  x: 20, r: 3,    rest: 76, img: '' },
-    { key: 'join',       href: '#join',        color: 'gold',   x: 52, r: -3,   rest: 62, img: '' },
+    { key: 'team',       href: '#team',       color: 'black',  x: 20, r: 3,   rest: 76, img: '', icon: '🤝' },
+    { key: 'join',       href: '#join',       color: 'gold',   x: 52, r: -3,  rest: 62, img: '', icon: '🙌' },
   ],
 ];
 let n = 0;
@@ -55,7 +55,12 @@ const hrefOf = Object.fromEntries(all.map((k) => [k.key, k.href]));
         {t1.map((k) => (
           <a class={`pc pc--${k.color}`} href={k.href} data-key={k.key}
              style={`--x:${k.x};--r:${k.r};--rest:${k.rest}`} aria-label={c.cards[k.key].t}>
-            {k.img ? <img src={k.img} alt="" loading="lazy" /> : <span class="ph" aria-hidden="true">PHOTO</span>}
+            {k.img ? <img src={k.img} alt="" loading="lazy" /> : (
+              <span class="ph" aria-hidden="true">
+                <b class="ph__icon">{k.icon}</b>
+                <span class="ph__t">{c.cards[k.key].t}</span>
+              </span>
+            )}
           </a>
         ))}
       </div>
@@ -72,7 +77,12 @@ const hrefOf = Object.fromEntries(all.map((k) => [k.key, k.href]));
         {t2.map((k) => (
           <a class={`pc pc--${k.color}`} href={k.href} data-key={k.key}
              style={`--x:${k.x};--r:${k.r};--rest:${k.rest}`} aria-label={c.cards[k.key].t}>
-            {k.img ? <img src={k.img} alt="" loading="lazy" /> : <span class="ph" aria-hidden="true">PHOTO</span>}
+            {k.img ? <img src={k.img} alt="" loading="lazy" /> : (
+              <span class="ph" aria-hidden="true">
+                <b class="ph__icon">{k.icon}</b>
+                <span class="ph__t">{c.cards[k.key].t}</span>
+              </span>
+            )}
           </a>
         ))}
       </div>
@@ -176,10 +186,13 @@ const hrefOf = Object.fromEntries(all.map((k) => [k.key, k.href]));
   .pc--black { background: #1B1B18; } .pc--gold { background: #E9B949; }
   .pc img, .ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .ph {
-    display: grid; place-items: center; color: #fff;
-    font: 700 .65rem/1 var(--font-display, inherit); letter-spacing: .2em; opacity: .6;
-    background: repeating-linear-gradient(45deg, rgba(255, 255, 255, .12) 0 8px, transparent 8px 16px);
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    gap: .35rem; padding: .8rem .5rem 0; text-align: center; color: #fff;
+    background: repeating-linear-gradient(45deg, rgba(255, 255, 255, .1) 0 8px, transparent 8px 16px);
   }
+  .ph__icon { font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1; font-weight: 400; }
+  .ph__t { font: 700 clamp(.7rem, 1.1vw, .95rem)/1.2 var(--font-display, inherit); letter-spacing: .02em; text-wrap: balance; }
+  .pc--gold .ph, .pc--gold .ph__t { color: #1B1B18; }
 
   /* ---------- titles written on the folder ---------- */
   .ttl {
