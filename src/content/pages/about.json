@@ -117,11 +117,11 @@
     "brown": {
       "tag": "Brown Rice",
       "h": "About Brown Rice",
-      "lead": "A Hong Kong foundation connecting growth and inclusion",
+      "lead": "Neuroseed is an education initiative of Brown Rice Livelihood Foundation.",
       "points": [
-        { "h": "Who they are", "p": "A Hong Kong foundation connecting growth and inclusion" },
-        { "h": "What they do", "p": "Creates and nurtures community projects that help neurodivergent people develop their strengths." },
-        { "h": "What they bring to Neuroseed", "p": "Brings teacher training into schools, and Soaring Academics offers students free tutoring by volunteers" }
+        { "h": "The Foundation", "p": "Brown Rice Livelihood Foundation brings together caregivers, educators and the wider community to foster understanding and respect for differences. Working alongside neurodivergent people, the Foundation helps them develop their strengths, enjoy life and take part in and contribute to society in their own way." },
+        { "h": "Brown Rice’s work", "p": "Brown Rice continues to launch and nurture social welfare programmes that help neurodivergent people develop their strengths, lead lives they enjoy and find a sense of belonging in their communities." },
+        { "h": "From mission to classroom", "p": "Brown Rice and Ecorazón co-founded Neuroseed. Through school-based training and the Brainy In-Charge board game, teachers explore how their responses can shape children’s sense of safety, emotional regulation and brain development." }
       ]
     },
     "eco": {
@@ -139,7 +139,7 @@
       "p": "The people who design, teach and support Neuroseed.",
       "members": [
         { "name": "Karis Yeung", "role": "Director of Game Experience Design", "img": "/images/karis.jpeg" },
-        { "name": "Bonnie Yip", "role": "Director of Game Content", "img": "/images/bonnie.webp" },
+        { "name": "Bonnie Yip", "role": "Director of Education", "img": "/images/bonnie.webp" },
         { "name": "Patrick Au Yeung", "role": "Executive Producer, Game Design", "img": "/images/patrick.jpeg" },
         { "name": "Stanly", "role": "Programme Director", "img": "/images/stanly-fung.webp" },
         { "name": "Michelle Yau", "role": "Project Operations Manager", "img": "/images/michelle.jpeg" },
@@ -275,11 +275,11 @@
     "brown": {
       "tag": "活米",
       "h": "關於活米",
-      "lead": "連繫成長與共融的香港基金會",
+      "lead": "腦力試（Neuroseed）是活米慈善基金旗下的教育項目。",
       "points": [
-        { "h": "我們是誰", "p": "連繫成長與共融的香港基金會" },
-        { "h": "我們做什麼", "p": "締造並培育社區項目，協助神經多樣性人士發展個人強項。" },
-        { "h": "為腦力試帶來什麼", "p": "把教師培訓帶進校園，並透過 Soaring Academics 讓學生獲得義工提供的免費補習。" }
+        { "h": "基金簡介", "p": "活米慈善基金與神經多樣性人士同行，連結照顧者、教育工作者與社會各界，營造理解與尊重差異的環境，支持他們發展所長、熱愛生活，並以自己的方式參與及貢獻社會。" },
+        { "h": "活米的工作", "p": "活米持續創立和培育社福項目，支持神經多樣性人士發展所長、過自己喜歡的生活，在社群中找到歸屬感。" },
+        { "h": "從使命到課室", "p": "活米與自然緻語（Ecorazón）共同創立腦力試，透過到校培訓和《腦細話事》桌遊，讓教師探索自己的回應如何影響孩子的安全感、情緒調節與大腦發展。" }
       ]
     },
     "eco": {
@@ -297,7 +297,7 @@
       "p": "設計、教授與支持腦力試的人。",
       "members": [
         { "name": "Karis Yeung", "role": "遊戲體驗設計總監", "img": "/images/karis.jpeg" },
-        { "name": "Bonnie Yip", "role": "遊戲內容總監", "img": "/images/bonnie.webp" },
+        { "name": "Bonnie Yip", "role": "教育總監", "img": "/images/bonnie.webp" },
         { "name": "Patrick Au Yeung", "role": "遊戲設計執行監製", "img": "/images/patrick.jpeg" },
         { "name": "Stanly", "role": "項目總監", "img": "/images/stanly-fung.webp" },
         { "name": "Michelle Yau", "role": "項目營運經理", "img": "/images/michelle.jpeg" },
