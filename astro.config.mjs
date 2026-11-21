@@ -47,6 +47,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [pageSecurity],
   vite: { build: { assetsInlineLimit: 0 } },
+  build: { inlineStylesheets: 'always' },
   i18n: {
     defaultLocale: 'zh',
     locales: ['zh', 'en'],

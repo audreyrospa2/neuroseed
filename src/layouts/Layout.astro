@@ -43,6 +43,7 @@ const jsonLd = metadata?.section === ''
 <link rel="alternate" hreflang={lang === 'zh' ? 'zh-Hant' : 'en'} href={here} />
 <link rel="alternate" hreflang={other === 'zh' ? 'zh-Hant' : 'en'} href={there} />
 <link rel="alternate" hreflang="x-default" href={defaultLanguage} />
+<slot name="head" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="NeuroSeed" />
 <meta property="og:title" content={fullTitle} />

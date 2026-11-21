@@ -5,11 +5,15 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : Astro.url.pathname + '/';
 const isActive = (p: string) => (p === 'home' ? path === `/${lang}/` : path.startsWith(pagePath(lang, p)));
+const logo = optimizedImage('/images/logo-white.png');
+const logoSources = logo === '/images/optimized/logo-white.webp'
+  ? `/images/optimized/logo-white-312.webp 312w, ${logo} 528w`
+  : undefined;
 ---
 <header class="site-header">
   <div class="container bar">
     <a class="brand" href={`/${lang}/`} aria-label={t(lang, 'site.name')}>
-      <img src={optimizedImage("/images/logo-white.png")} alt="" width="156" height="88" decoding="async" />
+      <img src={logo} srcset={logoSources} sizes={logoSources ? '156px' : undefined} alt="" width="156" height="88" decoding="async" />
     </a>
 
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav">

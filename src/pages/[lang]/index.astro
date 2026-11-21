@@ -15,9 +15,16 @@ const b = brainy[lang];
 const heroOriginal = '/images/hero photo.png';
 const hasOptimizedHero = optimizedImage(heroOriginal) !== heroOriginal;
 const heroImg = hasOptimizedHero ? '/images/optimized/hero-800.webp' : heroOriginal;
-const heroSources = hasOptimizedHero
-  ? [480, 800, 1280].map(width => `/images/optimized/hero-${width}.webp ${width}w`).join(', ')
+const heroSizes = '(max-width: 860px) 100vw, 56vw';
+const heroSources = (format: 'avif' | 'webp') => hasOptimizedHero
+  ? [480, 800, 1280].map(width => `/images/optimized/hero-${width}.${format} ${width}w`).join(', ')
   : undefined;
+const heroAvif = heroSources('avif');
+const poster = optimizedImage(c.video.poster);
+const posterSources = poster === '/images/optimized/video-poster.webp'
+  ? `/images/optimized/video-poster-768.webp 768w, ${poster} 1280w`
+  : undefined;
+const pictureSizes = '(max-width: 988px) calc(100vw - 3rem), 940px';
 const pillColors = ['#E2655F', '#F7C948', '#6FA6E8', '#5BB487'];
 
 // Quote cards: teacher card first, then the principal voices.
@@ -41,6 +48,9 @@ const colB = cards.filter((_, i) => i % 2 === 1).map((x, i) => ({ ...x, r: ratio
 const bookHref = `/${lang}/book-a-training/`;
 ---
 <Layout lang={lang} title={t(lang, 'nav.home')} description={c.lead}>
+  <Fragment slot="head">
+    {heroAvif && <link rel="preload" as="image" type="image/avif" imagesrcset={heroAvif} imagesizes={heroSizes} fetchpriority="high" />}
+  </Fragment>
 
   <!-- 1. HERO (unchanged) -->
   <section class="hero">
@@ -69,7 +79,10 @@ const bookHref = `/${lang}/book-a-training/`;
       </div>
     </div>
     <div class="hero__photo">
-      <img src={heroImg} srcset={heroSources} sizes="(max-width: 860px) 100vw, 56vw" width="1672" height="941" alt="" fetchpriority="high" decoding="async" data-hide-on-error />
+      <picture>
+        {heroAvif && <source type="image/avif" srcset={heroAvif} sizes={heroSizes} />}
+        <img src={heroImg} srcset={heroSources('webp')} sizes={heroSizes} width="1672" height="941" alt="" fetchpriority="high" decoding="async" data-hide-on-error />
+      </picture>
     </div>
   </section>
 
@@ -112,8 +125,11 @@ const bookHref = `/${lang}/book-a-training/`;
           <span class="shots__back" aria-hidden="true"></span>
           <div class="shots__frame">
             {c.intro.slides.map((s, i) => (
-              <figure class={`shot${i === 0 ? ' is-on' : ''}`} style={`background:${s.color}`}>
-                <img src={optimizedImage(s.img)} alt={s.label} loading="lazy" decoding="async" data-hide-on-error />
+              <figure class={`shot${i === 0 ? ' is-on' : ''}`} style={`background:${s.color}`} aria-hidden={i !== 0}>
+                <template>
+                  <img src={optimizedImage(s.img)} alt={s.label} decoding="async" data-hide-on-error />
+                </template>
+                {i === 0 && <noscript><img src={optimizedImage(s.img)} alt={s.label} loading="lazy" decoding="async" /></noscript>}
               </figure>
             ))}
           </div>
@@ -133,7 +149,10 @@ const bookHref = `/${lang}/book-a-training/`;
         <div class="stage">
           {c.video.strips.map((s, i) => <span class={`strip strip--${i + 1}`} aria-hidden="true">{s}</span>)}
           <div class="video" data-video data-src={c.video.src}>
-            {c.video.poster && <img class="video__poster" src={optimizedImage(c.video.poster)} alt="" loading="lazy" decoding="async" />}
+            {poster && <template data-video-poster>
+              <img class="video__poster" src={poster} srcset={posterSources} sizes={pictureSizes} alt="" decoding="async" fetchpriority="low" />
+            </template>}
+            {poster && <noscript><img class="video__poster" src={poster} srcset={posterSources} sizes={pictureSizes} alt="" loading="lazy" decoding="async" /></noscript>}
             <button type="button" class="play" aria-label={c.watch}><span aria-hidden="true">▶</span></button>
             {!c.video.src && <small class="video__note">{c.video.note}</small>}
           </div>
@@ -253,6 +272,7 @@ const bookHref = `/${lang}/book-a-training/`;
   .proof { font-size: var(--fs-sm); color: rgba(255,255,255,0.75); max-width: 46ch; }
   .hero__photo { position: absolute; z-index: 1; top: 0; right: 0; bottom: 0; width: 56%;
     -webkit-mask-image: linear-gradient(to right, transparent 0, #000 34%); mask-image: linear-gradient(to right, transparent 0, #000 34%); }
+  .hero__photo picture { display: block; height: 100%; }
   .hero__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 40% center; }
   .typewriter::after { content: '|'; margin-left: 2px; animation: blink 1s steps(1) infinite; }
   @keyframes blink { 50% { opacity: 0; } }
@@ -450,39 +470,93 @@ const bookHref = `/${lang}/book-a-training/`;
       if (n <= 0) { dir = 1; w = (w + 1) % words.length; }
     }, 90);
   })();
-</script>
 
-<script>
-  // Intro photos: crossfade + dots
+  function loadNearViewport(target: Element, load: () => void) {
+    if (!('IntersectionObserver' in window)) { load(); return; }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      load();
+    }, { rootMargin: '200px 0px' });
+    observer.observe(target);
+  }
+
+  function mountImage(template: HTMLTemplateElement | null) {
+    const image = template?.content.querySelector('img');
+    if (template && image) template.replaceWith(image);
+    return image;
+  }
+
+  // Bring in each gallery image when it is first shown.
   (function () {
-    var root = document.querySelector('[data-shots]');
+    const root = document.querySelector('[data-shots]');
     if (!root) return;
-    var shots = root.querySelectorAll('.shot'), dots = root.querySelectorAll('.dot'), i = 0, timer;
-    function show(n) {
-      i = (n + shots.length) % shots.length;
-      shots.forEach(function (s, k) { s.classList.toggle('is-on', k === i); });
-      dots.forEach(function (d, k) {
-        d.classList.toggle('is-on', k === i);
-        d.setAttribute('aria-current', k === i ? 'true' : 'false');
+    const shots = [...root.querySelectorAll('.shot')];
+    const dots = [...root.querySelectorAll('.dot')];
+    if (!shots.length) return;
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+    let current = 0;
+    let selection = 0;
+    let timer: number | undefined;
+    let visible = false;
+    let hovered = false;
+
+    function getImage(shot: Element) {
+      return shot.querySelector('img') ?? mountImage(shot.querySelector('template'));
+    }
+
+    async function show(index: number) {
+      const request = ++selection;
+      const image = getImage(shots[index]);
+      try { await image?.decode(); } catch { /* The slide's background remains usable. */ }
+      if (request !== selection) return;
+      current = index;
+      shots.forEach((shot, i) => {
+        shot.classList.toggle('is-on', i === current);
+        shot.setAttribute('aria-hidden', String(i !== current));
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-on', i === current);
+        dot.setAttribute('aria-current', String(i === current));
       });
     }
-    function start() {
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      stop(); timer = setInterval(function () { show(i + 1); }, 4500);
-    }
-    function stop() { clearInterval(timer); }
-    dots.forEach(function (d) { d.addEventListener('click', function () { show(+d.dataset.i); start(); }); });
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', start);
-    start();
-  })();
-</script>
 
-<script>
+    function schedule() {
+      window.clearTimeout(timer);
+      if (!visible || hovered || reduceMotion.matches || shots.length < 2) return;
+      timer = window.setTimeout(async () => {
+        await show((current + 1) % shots.length);
+        schedule();
+      }, 4500);
+    }
+
+    loadNearViewport(root, () => getImage(shots[current]));
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        schedule();
+      }).observe(root);
+    } else {
+      visible = true;
+      schedule();
+    }
+    dots.forEach((dot, i) => dot.addEventListener('click', async () => {
+      window.clearTimeout(timer);
+      await show(i);
+      schedule();
+    }));
+    root.addEventListener('mouseenter', () => { hovered = true; schedule(); });
+    root.addEventListener('mouseleave', () => { hovered = false; schedule(); });
+    reduceMotion.addEventListener('change', schedule);
+  })();
+
   // Video: big play button swaps in an inline player
   (function () {
     var box = document.querySelector('[data-video]');
     if (!box) return;
+    loadNearViewport(box, () => {
+      if (!box.classList.contains('is-playing')) mountImage(box.querySelector('[data-video-poster]'));
+    });
     var src = box.dataset.src;
     var button = box.querySelector('.play');
     button.addEventListener('click', function () {
@@ -495,9 +569,7 @@ const bookHref = `/${lang}/book-a-training/`;
       v.play().catch(() => v.focus());
     });
   })();
-</script>
 
-<script>
   // Takeaways rail: endless auto-scroll, pause on hover/focus, drag + arrows
   (function () {
     var vp = document.querySelector('[data-rail]');
@@ -548,9 +620,7 @@ const bookHref = `/${lang}/book-a-training/`;
       observer.observe(vp);
     }
   })();
-</script>
 
-<script>
   // CTA photo cards: heart toggle
   (function () {
     var cols = document.querySelector('[data-cols]');
