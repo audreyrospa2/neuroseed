@@ -29,10 +29,89 @@
     "story": {
       "h": "Our Story",
       "items": [
-        { "h": "Beginnings", "p": "Content coming soon." },
-        { "h": "Brown Rice", "p": "Content coming soon." },
-        { "h": "Ecorazón", "p": "Content coming soon." },
-        { "h": "Neuroseed", "p": "Content coming soon." }
+        {
+          "no": "01", "h": "Our Beginnings",
+          "t": "From Understanding the Brain to Understanding the Child",
+          "p": [
+            "Brainy In-Charge began with a question: when children experience emotional, behavioural or learning difficulties, could we pause before blaming or correcting them and ask instead, “What are they going through?”",
+            "We care not only about how children behave, but also about the feelings, experiences and needs behind their behaviour. We wanted to turn brain science and parenting knowledge into an accessible, hands-on learning tool, giving parents, teachers, social workers and other frontline caregivers opportunities not just to understand children’s needs, but to practise responding to them.",
+            "Supporting the adults who nurture children became our starting point. Through play, we hoped to create space to slow down, see things differently and reconsider how we understand and support children in everyday relationships."
+          ]
+        },
+        {
+          "no": "02", "h": "Localisation",
+          "t": "Bringing Brain Science into Everyday Parenting and Education in Asia",
+          "p": [
+            "In the early stages, we drew on Harvard University research and knowledge of children’s brain development to explore how experiences, stress and relationships connect with development.",
+            "Our aim was not simply to translate knowledge, but to place these ideas within local family and school contexts. We connected them with situations and questions familiar to caregivers, while exploring how Circle of Security parenting principles could be integrated into education in Asia."
+          ]
+        },
+        {
+          "no": "03", "h": "Making Science Accessible",
+          "t": "Finding an Experiential Path through Professional Dialogue",
+          "p": [
+            "During the concept development stage, we met with neurologist Dr Lo Man Wai to seek his guidance on making specialist knowledge accessible and understandable.",
+            "One important suggestion was to incorporate role-play, giving participants opportunities to step into different situations and reflect on their judgements and responses. This helped shape the programme’s progression from understanding concepts to practising responses."
+          ]
+        },
+        {
+          "no": "04", "h": "Gamification",
+          "t": "Turning Learning into an Immersive Experience",
+          "p": [
+            "From the initial idea to the programme’s launch, we went through an intensive process of cross-disciplinary exchange, playtesting and continual refinement. Feedback from corporate training facilitators helped us fine-tune the game flow, interactions and facilitation.",
+            "We looked beyond whether the game was enjoyable. We wanted each stage to present meaningful choices and spark discussion, helping participants connect their experiences in the game with everyday parenting, teaching and care through participation, dialogue and reflection."
+          ]
+        },
+        {
+          "no": "05", "h": "Educational Development",
+          "t": "From a Board Game Concept to Professional Training",
+          "p": [
+            "The project began as a board game concept. However, conversations with professors from the Faculty of Education at The University of Hong Kong brought an encouraging perspective: this was more than a conventional board game. It was a professional training programme built around gameplay, facilitation and reflection.",
+            "Their feedback prompted us to rethink the project’s positioning. We shifted our attention beyond how the game was played to how knowledge was understood, experiences were facilitated and reflections connected with everyday practice.",
+            "We wanted participants to leave with more than a few brain science terms: a fresh perspective on children and a starting point for reconsidering everyday interactions."
+          ]
+        },
+        {
+          "no": "06", "h": "Broadening Participation",
+          "t": "Helping Different Caregivers Find Their Place",
+          "p": [
+            "Later, a design thinking brainstorming session with postgraduate students from HKU’s Faculty of Education helped us examine the game’s scenarios, language and participation from different users’ perspectives.",
+            "Parents, teachers, social workers and other frontline caregivers each face different responsibilities and constraints. We wanted the game to be relevant across these roles, while creating opportunities to exchange perspectives and develop a shared language for understanding children."
+          ]
+        },
+        {
+          "no": "07", "h": "Responding to Current Needs",
+          "t": "Connecting Trauma-Informed Practice with Mental Health",
+          "p": [
+            "As Brainy In-Charge evolved from a board game concept into a game-based training programme for those who nurture and support children, we sought to respond more closely to the needs of students and frontline educators.",
+            "The pilot study we commissioned from The Hong Kong Polytechnic University inspired us to further integrate trauma-informed and mental health perspectives. It also encouraged us to look beyond participant satisfaction and examine learning outcomes, exploring the programme’s potential and impact, and establishing a clearer basis for its continued development."
+          ]
+        },
+        {
+          "no": "08", "h": "The Launch",
+          "t": "Turning Understanding into Action",
+          "p": [
+            "After ten months of research and development, cross-disciplinary exchange, expert playtesting, design thinking and a pilot study, Brainy In-Charge has evolved into an educational innovation combining an understanding of brain structures, life-event analysis, role-play and practice in supportive responses.",
+            "The launch marks the beginning of a wider journey, inviting more adults who nurture and support children to take part.",
+            "We hope that when adults become more willing to understand the needs behind behaviour, new possibilities for connection can emerge. Whether children are exploring the world or seeking reassurance, we hope more adults can become the “pair of hands” that supports, accompanies and holds them."
+          ]
+        },
+        {
+          "no": "09", "h": "Inclusion",
+          "t": "Creating Meaningful Roles for Neurodivergent Young People",
+          "p": [
+            "We are gradually training neurodivergent youth with potential to become training assistants and take on central roles in the role-play activities, interacting with participants as they practise supportive responses.",
+            "We want these young people to be more than beneficiaries, but partners in creating the learning experience. Through paid participation, they can contribute their strengths, gain experience, build confidence and access further learning opportunities, embedding inclusion into how the programme operates."
+          ]
+        },
+        {
+          "no": "10", "h": "Expansion",
+          "t": "Starting in Hong Kong, Taking Understanding Further",
+          "p": [
+            "Our next step is to introduce Brainy In-Charge to primary and secondary schools and kindergartens across Hong Kong, giving more educators opportunities to explore ways of understanding and supporting children through experience, dialogue and reflection.",
+            "Building on our experience in Hong Kong, we hope to gradually expand into the Greater Bay Area and other Asian countries, adapting the content to different educational and cultural contexts. We also plan to develop editions for parents and students, extending understanding into schools, homes and everyday life."
+          ]
+        }
       ]
     },
     "brown": {
@@ -109,10 +188,88 @@
     "story": {
       "h": "我們的故事",
       "items": [
-        { "h": "緣起", "p": "內容即將更新。" },
-        { "h": "活米", "p": "內容即將更新。" },
-        { "h": "自然緻語", "p": "內容即將更新。" },
-        { "h": "腦力試", "p": "內容即將更新。" }
+        {
+          "no": "01", "h": "項目緣起",
+          "t": "從理解大腦，到理解孩子",
+          "p": [
+            "《腦細話事》的起點，是一個關於理解的提問：當孩子出現情緒、行為或學習上的困難，我們能否先不急於責難或糾正，而是多問一句：「他正在經歷甚麼？」",
+            "我們關心的不只是孩子的表現，而是表現背後的感受、經歷與需要，希望把腦科學與養育知識，轉化成貼近日常、可以親身體驗的學習工具，讓家長、老師、社工及前線教養者，不只知道孩子需要支持，更有機會練習如何回應。",
+            "《腦細話事》因此由支持教養者出發，期望透過遊戲創造一個可以放慢腳步、轉換視角的空間，讓大人重新思考自己如何看待孩子，又如何在日常關係中成為孩子的支持。"
+          ]
+        },
+        {
+          "no": "02", "h": "在地化",
+          "t": "讓腦科學走進亞洲教養日常",
+          "p": [
+            "項目早期，我們參考哈佛大學相關研究與兒童腦神經發展知識，思考成長經驗、壓力與關係如何與孩子的發展連結。",
+            "我們希望做的，不只是翻譯知識，而是將這些概念放回本地家庭與校園的處境，連結教養者熟悉的情境與疑問，同時探索如何把「安全圈」養育概念融入亞洲教育。"
+          ]
+        },
+        {
+          "no": "03", "h": "科普化",
+          "t": "從專業交流找到體驗的入口",
+          "p": [
+            "在構思階段，我們與一位著名的腦神經科專家盧文偉醫生交流，請教如何將專業知識轉化成容易理解的學習內容。",
+            "其中一個重要啟發，是加入角色扮演，讓參加者不只聽見孩子的需要，更有機會代入不同處境，思考自己的判斷與回應。這個建議，為遊戲由「認識概念」走向「親身練習」提供了方向。"
+          ]
+        },
+        {
+          "no": "04", "h": "遊戲化",
+          "t": "讓學習變成沈浸式體驗",
+          "p": [
+            "從最初構思到遊戲推出，我們經歷了一段跨專業交流、試玩與日以繼夜修整的旅程。透過企業培訓導師的回饋，我們反覆調整遊戲流程、互動方式與引導節奏。",
+            "我們關心的不只是「好不好玩」，而是每個環節能否帶出值得討論的選擇，讓參加者在投入、交流與反思之間，逐步連結遊戲經驗與日常教養。"
+          ]
+        },
+        {
+          "no": "05", "h": "教育化",
+          "t": "從桌遊概念走向專業培訓",
+          "p": [
+            "項目最初以桌遊概念出發，但在與港大教育系教授們交流的過程中，我們收到了一個振奮人心的回饋：這不只是一般的桌遊，而是一個透過遊戲體驗、引導與反思展開的專業培訓。",
+            "這些回饋讓我們重新梳理項目定位，不再只着眼於遊戲如何進行，而是更重視知識如何被吸收、體驗如何被引導，以及反思如何連結日常。",
+            "我們希望參加者帶走的，不只是幾個腦科學名詞，而是一個理解孩子的新角度，以及重新檢視日常互動的起點。"
+          ]
+        },
+        {
+          "no": "06", "h": "通用化",
+          "t": "讓教養者找到自己的位置",
+          "p": [
+            "後來，在與港大教育系研究生進行的設計思維腦力激盪中，我們進一步從不同使用者的角度，檢視遊戲的情境、語言與參與方式。",
+            "家長、老師、社工與其他前線教養者，各自面對不同的責任與限制。我們希望遊戲既能回應不同角色的需要，亦能讓彼此透過交流，建立理解孩子的共同語言。"
+          ]
+        },
+        {
+          "no": "07", "h": "在時化",
+          "t": "連結創傷知情與精神健康",
+          "p": [
+            "由桌遊構思逐步發展為以遊戲為載體的專業教養者培訓計劃，《腦細話事》希望能進一步回應學生及前線教育工作者的支援需要。",
+            "委託香港理工大學進行的先導研究啟發了我們進一步融入創傷知情與精神健康視角，讓我們在關注參加者滿意度外，亦開始檢視培訓帶來的學習成果，了解其影響力與潛力，為後續發展建立更清晰的依據。"
+          ]
+        },
+        {
+          "no": "08", "h": "項目發布",
+          "t": "讓理解有機會變成行動",
+          "p": [
+            "歷時十個月的研學開發、跨專業交流、專家試玩、設計思維與先導研究，《腦細話事》已發展成一套結合腦部結構認知、生活事件分析、角色扮演及支援回應練習的教育創新產品。",
+            "項目發布是讓更多教養者參與其中的起點。我們期望，當大人更願意理解行為背後的需要，就能多一個連結孩子的可能，並在孩子探索世界或需要依靠時，成為那雙願意支持、陪伴與承接的「一雙手」。"
+          ]
+        },
+        {
+          "no": "09", "h": "共融化",
+          "t": "讓青年成為培訓的一部分",
+          "p": [
+            "我們正逐步培訓有潛質的神經多樣性青年，讓他們擔任培訓助理，並在角色扮演環節中成為參加者實戰練習的互動主角。",
+            "我們希望他們不只是被支持的對象，更是共同創造學習體驗的伙伴。透過參與培訓工作，既能發揮所長、累積經驗及建立自信，亦能獲得學習機會與有酬工作的收入，讓共融成為項目運作的一部分。"
+          ]
+        },
+        {
+          "no": "10", "h": "國際化",
+          "t": "從香港出發，讓理解走得更遠",
+          "p": [
+            "下一步，我們計劃向全港中小學及幼稚園推廣《腦細話事》，讓更多教育工作者有機會透過體驗、交流與反思，探索理解及支持孩子的方法。",
+            "以香港的實踐經驗為起點，我們期望逐步拓展至大灣區及亞洲其他國家，並因應不同地區的教育與文化處境調整內容。同時，我們亦計劃發展家長版、學生版等版本，將理解延伸至校園、家庭與日常生活。"
+          ]
+        }
       ]
     },
     "brown": {

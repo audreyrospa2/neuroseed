@@ -3,7 +3,8 @@
 // Slides sit on the rim of a big wheel centred on the right edge of the
 // screen; scroll progress rotates the wheel so the next slide rolls up
 // into the reading position, and the text panel on the left follows.
-interface Props { c: { h: string; items: { h: string; p: string }[] } }
+interface Item { no: string; h: string; t: string; p: string[] }
+interface Props { c: { h: string; items: Item[] } }
 const { c } = Astro.props;
 
 const SLOTS = 10;                 // total frames on the reel (extras are empty frames)
@@ -17,8 +18,9 @@ const frames = Array.from({ length: SLOTS }, (_, i) => c.items[i] ?? null);
       <div class="panels">
         {c.items.map((it, i) => (
           <article class={`panel${i === 0 ? ' on' : ''}`} data-i={i}>
-            <h3>{it.h}</h3>
-            <p>{it.p}</p>
+            <p class="kicker">{it.no} · {it.h}</p>
+            <h3>{it.t}</h3>
+            {it.p.map((para) => <p class="body">{para}</p>)}
           </article>
         ))}
       </div>
@@ -30,7 +32,7 @@ const frames = Array.from({ length: SLOTS }, (_, i) => c.items[i] ?? null);
       {frames.map((it, i) => (
         <div class="frame" style={`--a:${-i * STEP}deg`}>
           <div class={`slide${it ? '' : ' empty'}${i === 0 ? ' on' : ''}`} data-i={it ? i : undefined}>
-            {it && <span>{it.h}</span>}
+            {it && <span><b>{it.no}</b>{it.h}</span>}
           </div>
         </div>
       ))}
@@ -56,24 +58,29 @@ const frames = Array.from({ length: SLOTS }, (_, i) => c.items[i] ?? null);
     --D: 150vh;               /* wheel diameter */
     --R: 60vh;                /* distance from hub to slide centres */
     --sw: 36vh;               /* slide width */
-    display: grid; grid-template-columns: minmax(280px, 0.85fr) 1.15fr;
+    display: grid; grid-template-columns: minmax(300px, 0.95fr) 1.05fr;
     align-items: center;
     padding-inline: max(1.5rem, calc((100vw - 1180px) / 2));
   }
 
   /* ---- text ---- */
-  .copy { position: relative; z-index: 2; max-width: 34ch; }
-  .copy h2 { margin: 0 0 1.5rem; color: var(--wcream); }
-  .panels { position: relative; min-height: 12rem; }
+  .copy { position: relative; z-index: 2; max-width: 34rem; }
+  .copy h2 { margin: 0 0 1rem; color: var(--wcream); }
+  /* all panels share one grid cell, so the box is as tall as the longest one */
+  .panels { display: grid; }
   .panel {
-    position: absolute; inset: 0 auto auto 0;
+    grid-area: 1 / 1;
     opacity: 0; transform: translateY(24px);
     transition: opacity .45s ease, transform .45s ease;
     pointer-events: none;
   }
   .panel.on { opacity: 1; transform: none; pointer-events: auto; }
-  .panel h3 { margin: 0 0 .6rem; font-size: 1.8rem; color: var(--wsun); }
-  .panel p { margin: 0; color: rgba(246, 238, 220, .88); line-height: 1.7; }
+  .panel .kicker {
+    margin: 0 0 .4rem; font-weight: 700; letter-spacing: .12em; font-size: .8rem;
+    text-transform: uppercase; color: rgba(246, 238, 220, .7);
+  }
+  .panel h3 { margin: 0 0 .8rem; font-size: clamp(1.3rem, 2.3vw, 1.75rem); line-height: 1.25; color: var(--wsun); text-wrap: balance; }
+  .panel .body { margin: 0 0 .7rem; font-size: clamp(.85rem, 1.05vw + .35vh, .98rem); color: rgba(246, 238, 220, .9); line-height: 1.65; }
 
   /* ---- wheel ---- */
   .wheel {
@@ -104,19 +111,23 @@ const frames = Array.from({ length: SLOTS }, (_, i) => c.items[i] ?? null);
     color: var(--wcream);
     box-shadow: 0 14px 24px -16px rgba(6, 18, 60, .7);
     display: flex; align-items: flex-end; padding: .9rem 1rem;
-    font: 700 1.1rem/1.2 var(--font-display, inherit);
+    font: 700 1.05rem/1.2 var(--font-display, inherit);
     opacity: .5; transition: opacity .4s, border-color .4s, box-shadow .4s;
   }
+  .slide b { display: block; font-size: 1.8rem; line-height: 1; margin-bottom: .3rem; color: var(--wsun); }
   .slide.on { opacity: 1; border-color: var(--wsun); box-shadow: 0 0 0 4px rgba(233, 185, 73, .22), 0 18px 30px -16px rgba(6, 18, 60, .8); }
   .slide.empty { background: none; border-style: dashed; box-shadow: none; opacity: .28; }
 
   /* ---- mobile ---- */
   @media (max-width: 860px) {
     .stage {
-      --D: 170vw; --R: 64vw; --sw: 54vw;
-      grid-template-columns: 1fr; align-items: start; padding-top: 5.5rem;
+      --D: 170vw; --R: 64vw; --sw: 44vw;
+      grid-template-columns: 1fr; align-items: start; padding-top: 5rem;
     }
-    .wheel { top: 72%; }
+    .copy h2 { font-size: 1.5rem; margin-bottom: .6rem; }
+    .panel h3 { font-size: 1.2rem; margin-bottom: .5rem; }
+    .panel .body { font-size: .84rem; line-height: 1.55; margin-bottom: .5rem; }
+    .wheel { top: 90%; }
   }
 
   /* ---- reduced motion: no pinned wheel, just stacked panels ---- */
@@ -124,8 +135,8 @@ const frames = Array.from({ length: SLOTS }, (_, i) => c.items[i] ?? null);
     .story { height: auto; }
     .stage { position: static; height: auto; padding-block: 4rem; grid-template-columns: 1fr; }
     .wheel { display: none; }
-    .panels { min-height: 0; display: grid; gap: 2rem; }
-    .panel { position: static; opacity: 1; transform: none; }
+    .panels { gap: 2.4rem; }
+    .panel { grid-area: auto; opacity: 1; transform: none; }
   }
 </style>
 
