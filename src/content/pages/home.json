@@ -27,7 +27,7 @@
     },
     "video": {
       "h": "計劃實況",
-      "src": "/images/Brainy In-Charge Promotional Video.mp4",
+      "src": "/videos/brainy.mp4",
       "poster": "/images/vid-thumb.jpg",
       "note": "影片位置：請在 CMS 填入影片網址（video.src）。",
       "strips": ["角色體驗", "實用工具", "支持有需要的學生", "共同文化"]
@@ -77,7 +77,7 @@
     },
     "video": {
       "h": "See the programme in action",
-      "src": "/images/Brainy In-Charge Promotional Video.mp4",
+      "src": "/videos/brainy.mp4",
       "poster": "/images/vid-thumb.jpg",
       "note": "Video placeholder: add the video URL in the CMS (video.src).",
       "strips": ["Role experience", "Practical tools", "Supporting students in need", "Shared culture"]
