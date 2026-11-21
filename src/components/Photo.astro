@@ -1,10 +1,11 @@
 ---
+import { optimizedImage } from '../media/images';
 // Shows an <img> when src is set, otherwise a labelled colour placeholder.
 interface Props { label: string; color?: string; icon?: string; src?: string; ratio?: string; round?: boolean }
 const { label, color = '#C9CEF2', icon = '', src = '', ratio = '1 / 1.1', round = false } = Astro.props;
 ---
 {src ? (
-  <img class="photo" src={src} alt={label} loading="lazy" style={`aspect-ratio:${ratio}`} />
+  <img class="photo" src={optimizedImage(src)} alt={label} loading="lazy" style={`aspect-ratio:${ratio}`} />
 ) : (
   <div class="photo ph" role="img" aria-label={label} style={`background:${color};aspect-ratio:${ratio}`}>
     <span class="ico" aria-hidden="true">{icon}</span>

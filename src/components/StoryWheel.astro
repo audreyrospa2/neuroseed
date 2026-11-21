@@ -11,7 +11,7 @@ const SLOTS = 10;                 // total frames on the reel (extras are empty 
 const STEP = 360 / SLOTS;         // degrees between frames
 const frames = Array.from({ length: SLOTS }, (_, i) => c.items[i] ?? null);
 ---
-<section class="story" id="story" data-count={c.items.length} data-step={STEP} style={`--n:${c.items.length}`}>
+<section class="story story--stacked" id="story" data-count={c.items.length} data-step={STEP} style={`--n:${c.items.length}`}>
   <div class="stage">
     <div class="copy">
       <h2>{c.h}</h2>
@@ -130,21 +130,19 @@ const frames = Array.from({ length: SLOTS }, (_, i) => c.items[i] ?? null);
     .wheel { top: 90%; }
   }
 
-  /* ---- reduced motion: no pinned wheel, just stacked panels ---- */
-  @media (prefers-reduced-motion: reduce) {
-    .story { height: auto; }
-    .stage { position: static; height: auto; padding-block: 4rem; grid-template-columns: 1fr; }
-    .wheel { display: none; }
-    .panels { gap: 2.4rem; }
-    .panel { grid-area: auto; opacity: 1; transform: none; }
-  }
+  /* Short and narrow viewports, reduced motion and no-JS get readable stacked content. */
+  .story--stacked { height: auto; }
+  .story--stacked .stage { position: static; height: auto; padding-block: 3rem; grid-template-columns: minmax(0, 1fr); overflow: visible; }
+  .story--stacked .wheel { display: none; }
+  .story--stacked .panels { gap: 2.4rem; }
+  .story--stacked .panel { grid-area: auto; opacity: 1; transform: none; transition: none; pointer-events: auto; }
 </style>
 
 <script>
   const sec = document.querySelector<HTMLElement>('.story');
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stacked = matchMedia('(prefers-reduced-motion: reduce), (max-width: 360px), (max-height: 680px)');
 
-  if (sec && !reduce) {
+  if (sec) {
     const wheel = sec.querySelector<HTMLElement>('.wheel')!;
     const slides = [...sec.querySelectorAll<HTMLElement>('.slide[data-i]')];
     const panels = [...sec.querySelectorAll<HTMLElement>('.panel')];
@@ -156,7 +154,9 @@ const frames = Array.from({ length: SLOTS }, (_, i) => c.items[i] ?? null);
     let running = false;
 
     const readScroll = () => {
+      if (stacked.matches) return;
       const total = sec.offsetHeight - innerHeight;
+      if (total <= 0) return;
       const p = Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / total));
       // first 10% and last 10% of the scroll hold on the first/last slide
       const eased = Math.min(1, Math.max(0, (p - 0.1) / 0.8));
@@ -165,13 +165,17 @@ const frames = Array.from({ length: SLOTS }, (_, i) => c.items[i] ?? null);
     };
 
     const tick = () => {
+      if (stacked.matches) { running = false; return; }
       current += (target - current) * 0.1;          // lower = floatier
       if (Math.abs(target - current) < 0.001) current = target;
       wheel.style.setProperty('--rot', `${current * step}deg`);
 
       const active = Math.round(current);
       slides.forEach((el) => el.classList.toggle('on', Number(el.dataset.i) === active));
-      panels.forEach((el, i) => el.classList.toggle('on', i === active));
+      panels.forEach((el, i) => {
+        el.classList.toggle('on', i === active);
+        el.setAttribute('aria-hidden', i === active ? 'false' : 'true');
+      });
 
       if (current !== target) requestAnimationFrame(tick);
       else running = false;
@@ -179,6 +183,12 @@ const frames = Array.from({ length: SLOTS }, (_, i) => c.items[i] ?? null);
 
     addEventListener('scroll', readScroll, { passive: true });
     addEventListener('resize', readScroll);
-    readScroll();
+    const syncMode = () => {
+      sec.classList.toggle('story--stacked', stacked.matches);
+      if (stacked.matches) panels.forEach(el => el.removeAttribute('aria-hidden'));
+      else readScroll();
+    };
+    stacked.addEventListener('change', syncMode);
+    syncMode();
   }
 </script>

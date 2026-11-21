@@ -1,4 +1,5 @@
 ---
+import { optimizedImage } from '../../media/images';
 import Layout from '../../layouts/Layout.astro';
 import Partners from '../../components/Partners.astro';
 import { t, type Lang } from '../../i18n/utils';
@@ -11,7 +12,12 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Lang;
 const c = home[lang];
 const b = brainy[lang];
-const heroImg = '/images/hero photo.png';
+const heroOriginal = '/images/hero photo.png';
+const hasOptimizedHero = optimizedImage(heroOriginal) !== heroOriginal;
+const heroImg = hasOptimizedHero ? '/images/optimized/hero-800.webp' : heroOriginal;
+const heroSources = hasOptimizedHero
+  ? [480, 800, 1280].map(width => `/images/optimized/hero-${width}.webp ${width}w`).join(', ')
+  : undefined;
 const pillColors = ['#E2655F', '#F7C948', '#6FA6E8', '#5BB487'];
 
 // Quote cards: teacher card first, then the principal voices.
@@ -49,7 +55,10 @@ const bookHref = `/${lang}/book-a-training/`;
     <div class="container hero__grid">
       <div class="hero__text">
         <!-- <span class="pill">{c.badge}</span> -->
-        <h1>{c.title}<br /><span class="accent typewriter" data-words={JSON.stringify(c.accents)}>{c.accents[0]}</span></h1>
+        <h1>{c.title}<br /><span class="accent headline-choices">
+          {c.accents.map(word => <span class="headline-measure" aria-hidden="true">{word}</span>)}
+          <span class="typewriter" data-words={JSON.stringify(c.accents)}>{c.accents[0]}</span>
+        </span></h1>
         <p class="sub">{c.sub}</p>
         <p class="lead">{c.lead}</p>
         <div class="actions">
@@ -60,7 +69,7 @@ const bookHref = `/${lang}/book-a-training/`;
       </div>
     </div>
     <div class="hero__photo">
-      <img src={heroImg} alt="" onerror="this.style.display='none'" />
+      <img src={heroImg} srcset={heroSources} sizes="(max-width: 860px) 100vw, 56vw" width="1672" height="941" alt="" fetchpriority="high" decoding="async" data-hide-on-error />
     </div>
   </section>
 
@@ -104,13 +113,13 @@ const bookHref = `/${lang}/book-a-training/`;
           <div class="shots__frame">
             {c.intro.slides.map((s, i) => (
               <figure class={`shot${i === 0 ? ' is-on' : ''}`} style={`background:${s.color}`}>
-                <img src={s.img} alt={s.label} loading={i === 0 ? 'eager' : 'lazy'} onerror="this.style.display='none'" />
+                <img src={optimizedImage(s.img)} alt={s.label} loading="lazy" decoding="async" data-hide-on-error />
               </figure>
             ))}
           </div>
           <div class="dots">
             {c.intro.slides.map((s, i) => (
-              <button type="button" class={`dot${i === 0 ? ' is-on' : ''}`} aria-label={s.label} data-i={i}></button>
+              <button type="button" class={`dot${i === 0 ? ' is-on' : ''}`} aria-label={s.label} aria-current={i === 0 ? 'true' : 'false'} data-i={i}></button>
             ))}
           </div>
         </div>
@@ -124,7 +133,7 @@ const bookHref = `/${lang}/book-a-training/`;
         <div class="stage">
           {c.video.strips.map((s, i) => <span class={`strip strip--${i + 1}`} aria-hidden="true">{s}</span>)}
           <div class="video" data-video data-src={c.video.src}>
-            {c.video.poster && <img class="video__poster" src={c.video.poster} alt="" />}
+            {c.video.poster && <img class="video__poster" src={optimizedImage(c.video.poster)} alt="" loading="lazy" decoding="async" />}
             <button type="button" class="play" aria-label={c.watch}><span aria-hidden="true">▶</span></button>
             {!c.video.src && <small class="video__note">{c.video.note}</small>}
           </div>
@@ -154,7 +163,7 @@ const bookHref = `/${lang}/book-a-training/`;
             <div class="rail__set" aria-hidden={copy === 1 ? 'true' : undefined}>
               {quotes.map((q) => (
                 <figure class="qcard">
-                  <img src={q.img} alt="" style={`object-position:${q.pos}`} loading="lazy" onerror="this.style.display='none'" />
+                  <img src={optimizedImage(q.img)} alt="" style={`object-position:${q.pos}`} loading="lazy" data-hide-on-error />
                   <blockquote>{q.quote}</blockquote>
                   <figcaption>{q.tag}</figcaption>
                 </figure>
@@ -193,11 +202,7 @@ const bookHref = `/${lang}/book-a-training/`;
                   <div class="col__set" aria-hidden={copy === 1 ? 'true' : undefined} inert={copy === 1}>
                     {col.map((x) => (
                       <article class="pcard" style={`aspect-ratio:${x.r}`}>
-                        <img src={x.img} alt="" loading="lazy" onerror="this.style.display='none'" />
-                        <article class="pcard" style={`aspect-ratio:${x.r}`}>
-                          <img src={x.img} alt="" loading="lazy" onerror="this.style.display='none'" />
-                          <span class="pcard__label">{x.label}</span>
-                        </article>
+                        <img src={optimizedImage(x.img)} alt="" loading="lazy" data-hide-on-error />
                         <span class="pcard__label">{x.label}</span>
                       </article>
                     ))}
@@ -230,6 +235,13 @@ const bookHref = `/${lang}/book-a-training/`;
   .hero .pill { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); color: #fff; }
   .hero h1 { margin: 1.2rem 0 0.9rem; text-wrap: balance; color: #fff; }
   .hero .accent { color: var(--sun); background: none; }
+  .headline-choices { display: block; }
+  .headline-measure { display: none; }
+  @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+    .headline-choices { display: grid; }
+    .headline-choices > span { grid-area: 1 / 1; }
+    .headline-measure { display: block; visibility: hidden; }
+  }
   .hero .typewriter::after { color: var(--sun); }
   .hero .sub { font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
   .hero .lead { color: rgba(255,255,255,0.88); }
@@ -424,11 +436,12 @@ const bookHref = `/${lang}/book-a-training/`;
   }
 </style>
 
-<script is:inline>
+<script>
   (function () {
     var el = document.querySelector('.typewriter');
-    if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var words = JSON.parse(el.dataset.words), w = 0, n = 0, dir = 1;
+    if (!(el instanceof HTMLElement) || !matchMedia('(min-width: 861px) and (prefers-reduced-motion: no-preference)').matches) return;
+    var words = JSON.parse(el.dataset.words ?? '[]'), w = 0, n = el.textContent?.length ?? 0, dir = 1;
+    if (words.length < 2) return;
     setInterval(function () {
       var word = words[w];
       n += dir;
@@ -439,7 +452,7 @@ const bookHref = `/${lang}/book-a-training/`;
   })();
 </script>
 
-<script is:inline>
+<script>
   // Intro photos: crossfade + dots
   (function () {
     var root = document.querySelector('[data-shots]');
@@ -448,7 +461,10 @@ const bookHref = `/${lang}/book-a-training/`;
     function show(n) {
       i = (n + shots.length) % shots.length;
       shots.forEach(function (s, k) { s.classList.toggle('is-on', k === i); });
-      dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); });
+      dots.forEach(function (d, k) {
+        d.classList.toggle('is-on', k === i);
+        d.setAttribute('aria-current', k === i ? 'true' : 'false');
+      });
     }
     function start() {
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -462,22 +478,26 @@ const bookHref = `/${lang}/book-a-training/`;
   })();
 </script>
 
-<script is:inline>
+<script>
   // Video: big play button swaps in an inline player
   (function () {
     var box = document.querySelector('[data-video]');
     if (!box) return;
     var src = box.dataset.src;
-    box.querySelector('.play').addEventListener('click', function () {
+    var button = box.querySelector('.play');
+    button.addEventListener('click', function () {
       if (!src) return;
       var v = document.createElement('video');
-      v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true;
+      v.src = src; v.controls = true; v.playsInline = true;
+      v.setAttribute('aria-label', button.getAttribute('aria-label') || '');
       box.appendChild(v); box.classList.add('is-playing');
+      // Start within the button's user gesture, including on Safari with audio.
+      v.play().catch(() => v.focus());
     });
   })();
 </script>
 
-<script is:inline>
+<script>
   // Takeaways rail: endless auto-scroll, pause on hover/focus, drag + arrows
   (function () {
     var vp = document.querySelector('[data-rail]');
@@ -486,6 +506,7 @@ const bookHref = `/${lang}/book-a-training/`;
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
     var pos = 0, paused = false, hold = 0, last = 0, speed = 0.045; // px per ms
     var drag = false, sx = 0, sl = 0;
+    let frame = 0;
     function half() { return track.scrollWidth / 2; }
     function wrap() { var h = half(); if (pos >= h) pos -= h; else if (pos <= 0) pos += h; }
     function tick(t) {
@@ -494,7 +515,7 @@ const bookHref = `/${lang}/book-a-training/`;
       else if (!paused && !reduce) pos += speed * dt;
       wrap();
       if (Math.abs(vp.scrollLeft - pos) > 0.5) vp.scrollLeft = pos;
-      requestAnimationFrame(tick);
+      frame = requestAnimationFrame(tick);
     }
     vp.addEventListener('mouseenter', function () { paused = true; });
     vp.addEventListener('mouseleave', function () { paused = false; });
@@ -514,11 +535,22 @@ const bookHref = `/${lang}/book-a-training/`;
         vp.scrollBy({ left: +a.dataset.dir * 364, behavior: reduce ? 'auto' : 'smooth' });
       });
     });
-    requestAnimationFrame(function (t) { last = t; pos = half() / 2; vp.scrollLeft = pos; requestAnimationFrame(tick); });
+    if (!reduce && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting && !frame) {
+          pos = vp.scrollLeft;
+          frame = requestAnimationFrame(t => { last = t; tick(t); });
+        } else if (!entry.isIntersecting) {
+          cancelAnimationFrame(frame);
+          frame = 0;
+        }
+      });
+      observer.observe(vp);
+    }
   })();
 </script>
 
-<script is:inline>
+<script>
   // CTA photo cards: heart toggle
   (function () {
     var cols = document.querySelector('[data-cols]');

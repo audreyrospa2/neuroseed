@@ -1,4 +1,6 @@
 ---
+import { optimizedImage } from '../../media/images';
+import { existsSync } from 'node:fs';
 import Layout from '../../layouts/Layout.astro';
 import PageHead from '../../components/PageHead.astro';
 import Photo from '../../components/Photo.astro';
@@ -13,6 +15,7 @@ const lang = Astro.params.lang as Lang;
 const c = service[lang];
 const other = service[lang === 'zh' ? 'en' : 'zh']; // used for the bilingual banner
 const { tic, cos } = c.theory;
+const validArt = (source: string) => /^\/images\/[a-z0-9/_ .-]+$/i.test(source) && !source.includes('..') && existsSync(`public${source}`);
 ---
 <Layout lang={lang} title={t(lang, 'nav.service')} description={c.lead}>
   <PageHead eyebrow={c.eyebrow} title={c.title} lead={c.lead} />
@@ -76,7 +79,7 @@ const { tic, cos } = c.theory;
             <Photo label={c.steps.highlight} src={c.steps.highlightPhoto} color="#2F6FD0" icon="🎭" ratio="16 / 9" />
           </div>
           <div class="highlight__brand">
-            <img src={c.steps.logo} alt={c.steps.logoAlt} onerror="this.style.display='none'" />
+            <img src={optimizedImage(c.steps.logo)} alt={c.steps.logoAlt} data-hide-on-error />
             <p class="highlight__tag">{c.steps.tagline}</p>
           </div>
         </div>
@@ -84,19 +87,22 @@ const { tic, cos } = c.theory;
 
       <div class="stepper" data-stepper>
         <div class="stepper__tabs" role="tablist" aria-label={c.steps.h}>
-          {c.steps.items.map((s, i) => (
+          {c.steps.items.map((s, i) => {
+            const showArt = validArt(s.art);
+            return (
             <button class={`stab${s.dark ? ' stab--dark' : ''}`} type="button" role="tab" id={`tab-${i}`}
               aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`panel-${i}`} tabindex={i === 0 ? 0 : -1}
               style={`--c:${s.color}`}>
-              <img class="stab__art" src={s.art} alt="" onerror="this.style.display='none'; this.nextElementSibling.hidden=false" />
-              <span class="stab__icon" aria-hidden="true" hidden>{s.icon}</span>
+              {showArt && <img class="stab__art" src={optimizedImage(s.art)} alt="" loading="lazy" data-fallback-icon />}
+              <span class="stab__icon" aria-hidden="true" hidden={showArt}>{s.icon}</span>
               <span class="stab__pad">
                 <span class="stab__name">{s.h}</span>
                 <small>{s.sub}</small>
                 <b class="stab__n">{i + 1}</b>
               </span>
             </button>
-          ))}
+            );
+          })}
         </div>
 
         <div class="stepper__bar" aria-hidden="true"><i data-bar></i></div>
@@ -130,7 +136,7 @@ const { tic, cos } = c.theory;
       <div class="tc">
         <div class="tc__cos">
           <div class="tc__diagram">
-            <img src={cos.img} alt={cos.h} loading="lazy" />
+            <img src={optimizedImage(cos.img)} alt={cos.h} loading="lazy" />
           </div>
           <h3>{cos.h}</h3>
           <p class="tc__sub">{cos.sub}</p>
@@ -315,7 +321,7 @@ const { tic, cos } = c.theory;
   }
 </style>
 
-<script is:inline>
+<script>
   (function () {
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 

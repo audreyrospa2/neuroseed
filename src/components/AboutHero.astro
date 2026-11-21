@@ -1,4 +1,5 @@
 ---
+import { optimizedImage } from '../media/images';
 // Hero: a kraft document folder on the right edge (bleeds off-screen like the
 // Waves Studio reference). Photos are tucked inside two sleeves and peek out,
 // scattered. Titles are written on the folder. Hover a photo / title / word in
@@ -55,7 +56,7 @@ const hrefOf = Object.fromEntries(all.map((k) => [k.key, k.href]));
         {t1.map((k) => (
           <a class={`pc pc--${k.color}`} href={k.href} data-key={k.key}
              style={`--x:${k.x};--r:${k.r};--rest:${k.rest}`} aria-label={c.cards[k.key].t}>
-            {k.img ? <img src={k.img} alt="" loading="lazy" /> : (
+            {k.img ? <img src={optimizedImage(k.img)} alt="" loading="lazy" /> : (
               <span class="ph" aria-hidden="true">
                 <b class="ph__icon">{k.icon}</b>
                 <span class="ph__t">{c.cards[k.key].t}</span>
@@ -77,7 +78,7 @@ const hrefOf = Object.fromEntries(all.map((k) => [k.key, k.href]));
         {t2.map((k) => (
           <a class={`pc pc--${k.color}`} href={k.href} data-key={k.key}
              style={`--x:${k.x};--r:${k.r};--rest:${k.rest}`} aria-label={c.cards[k.key].t}>
-            {k.img ? <img src={k.img} alt="" loading="lazy" /> : (
+            {k.img ? <img src={optimizedImage(k.img)} alt="" loading="lazy" /> : (
               <span class="ph" aria-hidden="true">
                 <b class="ph__icon">{k.icon}</b>
                 <span class="ph__t">{c.cards[k.key].t}</span>

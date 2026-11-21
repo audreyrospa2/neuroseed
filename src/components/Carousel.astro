@@ -8,7 +8,7 @@ const { label = 'Carousel' } = Astro.props;
   .carousel { display: flex; gap: 1.25rem; overflow-x: auto; padding: 0.5rem 0.25rem 1.25rem; scroll-snap-type: x proximity; scrollbar-width: thin; }
   .carousel__item { flex: 0 0 min(320px, 80vw); scroll-snap-align: start; }
 </style>
-<script is:inline>
+<script>
   document.querySelectorAll('[data-carousel]').forEach(function (el) {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var paused = false;

@@ -20,7 +20,7 @@ const { slides, ratio = '4 / 3.4' } = Astro.props;
   .dots span { width: 10px; height: 10px; border-radius: 99px; background: var(--line); transition: width 0.3s, background 0.3s; }
   .dots span.on { width: 30px; background: var(--ink); }
 </style>
-<script is:inline>
+<script>
   document.querySelectorAll('[data-switcher]').forEach(function (el) {
     var slides = el.querySelectorAll('.slide'), dots = el.querySelectorAll('.dots span'), i = 0;
     if (slides.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;

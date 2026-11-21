@@ -482,24 +482,51 @@
 <script>
 (function () {
   const ALL_TAGS = ["Sustainability","Artists","Corporate Gifting","ESG","Upcycling","Seed Paper","Social Impact","Innovation"];
+  const oauthWorkerOrigin = new URL(CONFIG.WORKER_URL).origin;
   let token = sessionStorage.getItem("ecorazon_gh_token") || null;
   let currentFile = null; // { path, sha } of post being edited
+  let pendingGitHubLogin = null;
 
   // ---------- Auth ----------
+  function validGitHubToken(value) {
+    return typeof value === "string" && value.length > 0 && !/\s/.test(value);
+  }
+
+  function clearPendingGitHubLogin() {
+    if (!pendingGitHubLogin) return;
+    window.removeEventListener("message", pendingGitHubLogin.onMessage);
+    pendingGitHubLogin = null;
+  }
+
   document.getElementById("login-btn").onclick = () => {
-    const popup = window.open(`${CONFIG.WORKER_URL}/auth`, "gh-oauth", "width=600,height=700");
-    window.addEventListener("message", function handler(e) {
-      if (e.data && e.data.type === "ecorazon-cms-auth") {
-        token = e.data.token;
-        sessionStorage.setItem("ecorazon_gh_token", token);
-        window.removeEventListener("message", handler);
-        boot();
-      }
-    });
+    const error = document.getElementById("login-error");
+    error.textContent = "";
+    if (pendingGitHubLogin && !pendingGitHubLogin.popup.closed) {
+      pendingGitHubLogin.popup.focus();
+      return;
+    }
+    clearPendingGitHubLogin();
+
+    const popup = window.open(`${CONFIG.WORKER_URL}/auth`, "_blank", "width=600,height=700");
+    if (!popup) {
+      error.textContent = "The login window could not open. Allow pop-ups and try again.";
+      return;
+    }
+    function onMessage(event) {
+      if (event.origin !== oauthWorkerOrigin || event.source !== popup) return;
+      if (event.data?.type !== "ecorazon-cms-auth" || !validGitHubToken(event.data.token)) return;
+      clearPendingGitHubLogin();
+      token = event.data.token;
+      sessionStorage.setItem("ecorazon_gh_token", token);
+      boot();
+    }
+    pendingGitHubLogin = { popup, onMessage };
+    window.addEventListener("message", onMessage);
   };
 
   document.getElementById("logout-btn").onclick = (e) => {
     e.preventDefault();
+    clearPendingGitHubLogin();
     sessionStorage.removeItem("ecorazon_gh_token");
     location.reload();
   };
@@ -521,6 +548,11 @@
         errEl.textContent = data.error || "Login failed.";
         return;
       }
+      if (!validGitHubToken(data?.token)) {
+        errEl.textContent = "The login service returned an invalid response.";
+        return;
+      }
+      clearPendingGitHubLogin();
       token = data.token;
       sessionStorage.setItem("ecorazon_gh_token", token);
       boot();
@@ -613,7 +645,7 @@
       });
     } catch (err) {
       if (err.message !== "Unauthorized") {
-        listEl.innerHTML = `<p class='empty-note'>Error loading posts: ${err.message}</p>`;
+        listEl.innerHTML = `<p class='empty-note'>Error loading posts: ${escapeHtml(err.message)}</p>`;
       }
     }
   }
@@ -1054,7 +1086,7 @@ ${data.body.trim()}
       });
     } catch (err) {
       if (err.message !== "Unauthorized") {
-        listEl.innerHTML = `<p class='empty-note'>Error loading products: ${err.message}</p>`;
+        listEl.innerHTML = `<p class='empty-note'>Error loading products: ${escapeHtml(err.message)}</p>`;
       }
     }
   }
@@ -1299,7 +1331,7 @@ ${data.body.trim()}
       renderTeamList();
     } catch (err) {
       if (err.message !== "Unauthorized") {
-        listEl.innerHTML = `<p class='empty-note'>Error loading team: ${err.message}</p>`;
+        listEl.innerHTML = `<p class='empty-note'>Error loading team: ${escapeHtml(err.message)}</p>`;
       }
     }
   }

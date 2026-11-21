@@ -1,4 +1,5 @@
 ---
+import { optimizedImage } from '../media/images';
 // One partner-organisation section. Used for both Brown Rice and Ecorazón;
 // `flip` mirrors the layout so the two sections don't look identical.
 interface Props {
@@ -15,7 +16,7 @@ const { id, c, flip = false, tint = false, tone = 'a', img = '' } = Astro.props;
   <div class={`container org-grid${flip ? ' flip' : ''}`}>
     <div class={`org-media tone-${tone}`}>
       {img
-        ? <img src={img} alt="" loading="lazy" />
+        ? <img src={optimizedImage(img)} alt="" loading="lazy" />
         : <span class="ph" aria-hidden="true">PHOTO</span>}
       <span class="org-tag">{c.tag}</span>
     </div>

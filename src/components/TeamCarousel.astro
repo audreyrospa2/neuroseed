@@ -1,4 +1,5 @@
 ---
+import { optimizedImage } from '../media/images';
 // Coverflow carousel. The member in the centre is full size and sharp; the
 // ones either side shrink, blur and fade as they move away from the centre.
 // Arrows, dots, keyboard (← →), swipe, or tap a side member to bring them in.
@@ -15,7 +16,7 @@ const { members, prev, next } = Astro.props;
       {members.map((m, i) => (
         <li class={`slide c${i % 3}${i === 0 ? ' on' : ''}`} data-i={i} style={`--o:${i}`}>
           <div class="avatar">
-            {m.img ? <img src={m.img} alt="" loading="lazy" /> : <span aria-hidden="true">PHOTO</span>}
+            {m.img ? <img src={optimizedImage(m.img)} alt="" loading="lazy" /> : <span aria-hidden="true">PHOTO</span>}
           </div>
           <strong class="name">{m.name}</strong>
           <span class="role">{m.role}</span>

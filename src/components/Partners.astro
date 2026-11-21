@@ -1,4 +1,5 @@
 ---
+import { optimizedImage } from '../media/images';
 import type { Lang } from '../i18n/utils';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -25,13 +26,13 @@ const research = {
 
     <div class="group">
       <!-- mobile only: sits above the label -->
-      <img class="lead m-only" src={neuroseed.src} alt={neuroseed.alt} loading="lazy" style={`height:${neuroseed.h}px`} />
+      <img class="lead m-only" src={optimizedImage(neuroseed.src)} alt={neuroseed.alt} loading="lazy" style={`height:${neuroseed.h}px`} />
       <p class="label"><strong>{presented.zh}</strong><span class="bar" aria-hidden="true"></span><span>{presented.en}</span></p>
       <ul class="logos logos--row">
         <!-- desktop only: Neuroseed sits in the row with the others -->
-        <li class="d-only"><img src={neuroseed.src} alt={neuroseed.alt} loading="lazy" style={`height:${neuroseed.h}px`} /></li>
+        <li class="d-only"><img src={optimizedImage(neuroseed.src)} alt={neuroseed.alt} loading="lazy" style={`height:${neuroseed.h}px`} /></li>
         {presented.logos.map((l) => (
-          <li><img src={l.src} alt={l.alt} loading="lazy" style={`height:${l.h}px`} /></li>
+          <li><img src={optimizedImage(l.src)} alt={l.alt} loading="lazy" style={`height:${l.h}px`} /></li>
         ))}
       </ul>
     </div>
@@ -40,7 +41,7 @@ const research = {
       <p class="label"><strong>{research.zh}</strong><span class="bar" aria-hidden="true"></span><span>{research.en}</span></p>
       <ul class="logos">
         {research.logos.map((l) => (
-          <li><img src={l.src} alt={l.alt} loading="lazy" style={`height:${l.h}px`} /></li>
+          <li><img src={optimizedImage(l.src)} alt={l.alt} loading="lazy" style={`height:${l.h}px`} /></li>
         ))}
       </ul>
     </div>

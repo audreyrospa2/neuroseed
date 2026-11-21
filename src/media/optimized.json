@@ -1,0 +1,106 @@
+{
+  "/images/hero photo.png": {
+    "optimized": "/images/optimized/hero-1280.webp",
+    "sourceSha256": "b679f5e7d0befabafff58f88947e106dfaa184be094561819aef94f9029a913d"
+  },
+  "/images/vid-thumb.jpg": {
+    "optimized": "/images/optimized/video-poster.webp",
+    "sourceSha256": "b85b6c2df49511e7e0f0c88eb127aef929942f5f8e53465f1a7a4dcdea0d6df9"
+  },
+  "/images/1.jpg": {
+    "optimized": "/images/optimized/photo-1.webp",
+    "sourceSha256": "b23c9c7c65e79b8f12df499536cceb53750d3e20fd0577239fd9cae5736017b9"
+  },
+  "/images/2.jpg": {
+    "optimized": "/images/optimized/photo-2.webp",
+    "sourceSha256": "c1ade8be0b587b1681cbd86e4fc557e1bffc8168b5217ee115b640f375439b06"
+  },
+  "/images/3.jpg": {
+    "optimized": "/images/optimized/photo-3.webp",
+    "sourceSha256": "79f5f20fd827f8ecdce174975da6371fa62f92a11c5e96e1ff38d512073aa961"
+  },
+  "/images/4.jpg": {
+    "optimized": "/images/optimized/photo-4.webp",
+    "sourceSha256": "18c39f98f3935728ac0de9ee085030b67dc58429430296eeaa8f240f25ea3f71"
+  },
+  "/images/5.jpg": {
+    "optimized": "/images/optimized/photo-5.webp",
+    "sourceSha256": "3412385a679a232071c5ed25fc1f5cd9ff5e755e015ac0e646de3c7683013cff"
+  },
+  "/images/6.jpg": {
+    "optimized": "/images/optimized/photo-6.webp",
+    "sourceSha256": "e746c4837c9746384939c36716bfb3bd6163e21e5bd23926ea0e70a329c9220b"
+  },
+  "/images/7.jpg": {
+    "optimized": "/images/optimized/photo-7.webp",
+    "sourceSha256": "74b2ff50e4ad2ce59333abb50c30928d8fa28421489312331761508d7d136638"
+  },
+  "/images/8.jpg": {
+    "optimized": "/images/optimized/photo-8.webp",
+    "sourceSha256": "5af5cfe47f7c0cfec70abd263fc931f2f9c8a7734ed1f5be0626066e096bc0e5"
+  },
+  "/images/9.jpg": {
+    "optimized": "/images/optimized/photo-9.webp",
+    "sourceSha256": "4a32f188c63febdba1e2b5c8c68775eb6736be419198759cf7ff87a3d8cdfc54"
+  },
+  "/images/10.jpg": {
+    "optimized": "/images/optimized/photo-10.webp",
+    "sourceSha256": "5296fce586754ad1c4e0b48980fdf2ca7a105611c708de38ef81f9bc36cd693e"
+  },
+  "/images/11.jpg": {
+    "optimized": "/images/optimized/photo-11.webp",
+    "sourceSha256": "bfd9ea53d081f44cd3e299bde0b8ba089877f3c3cafd9708200ae9df729d3bb9"
+  },
+  "/images/12.jpg": {
+    "optimized": "/images/optimized/photo-12.webp",
+    "sourceSha256": "ab2349abe9ff49b523de843cd502dd222f6d8cee224f2c5752fc78bc188ff982"
+  },
+  "/images/13.jpg": {
+    "optimized": "/images/optimized/photo-13.webp",
+    "sourceSha256": "4068f830dc4965783592314ceb491c7f319a3c4e58405a3b3138f32570a6bfa1"
+  },
+  "/images/about1.jpeg": {
+    "optimized": "/images/optimized/about-1.webp",
+    "sourceSha256": "e906e202ebe465c9d7641852ef4538bc4c7f0aeaa32b3007706b77701bc81b33"
+  },
+  "/images/about2.jpeg": {
+    "optimized": "/images/optimized/about-2.webp",
+    "sourceSha256": "243213b2a2300c9d3615e0eff85a4c4abeff3028ed69fdf487bfa1b496536c60"
+  },
+  "/images/poster.png": {
+    "optimized": "/images/optimized/programme-poster.webp",
+    "sourceSha256": "1505c7e1c5d583a707c746c705b8146af23dc231e9c40bff4de76ef7adbf9e6b"
+  },
+  "/images/logo-white.png": {
+    "optimized": "/images/optimized/logo-white.webp",
+    "sourceSha256": "0e6cd324a3e82a85071913d5749dec365e8d1afa0e66540bf70163cb1cc48c57"
+  },
+  "/images/neuroseedlogopackage-02.png": {
+    "optimized": "/images/optimized/neuroseed-logo-02.webp",
+    "sourceSha256": "cb9462d6fc0c10ccfb06dd26bb648843353cf9ed10e02dfbeac2b37495f99c0d"
+  },
+  "/images/neuroseedlogopackage-03.png": {
+    "optimized": "/images/optimized/neuroseed-logo-03.webp",
+    "sourceSha256": "c998317c1199c8e76b4ddc0fca8ef8a39ce8ae93e4109d774a46cd55e75ad6d3"
+  },
+  "/images/brainy-logo-trans.png": {
+    "optimized": "/images/optimized/brainy-logo-trans.webp",
+    "sourceSha256": "da12aa1bb506fc81a72c8d411303ec89bc3598009d7cc5836a47234912085444"
+  },
+  "/images/brainy-logo.png": {
+    "optimized": "/images/optimized/brainy-logo.webp",
+    "sourceSha256": "414257ff8a0533f3a5dd8c460ee60fd4f0d1a0bb7c0eca722cbd73b411a93b24"
+  },
+  "/images/BR_B.png": {
+    "optimized": "/images/optimized/brown-rice-partner-logo.webp",
+    "sourceSha256": "3e2734402ad4e5cdfd2079a289f59eb48313280a5d129858d4b985655015d48f"
+  },
+  "/images/PolyU & SN.png": {
+    "optimized": "/images/optimized/polyu-sn-logo.webp",
+    "sourceSha256": "958d09d11f65a8b3453a53f946d01988cf8bb1ae969b27982a9b1e19537ca6bb"
+  },
+  "/images/logo.png": {
+    "optimized": "/images/optimized/ecorazon-partner-logo.webp",
+    "sourceSha256": "fbdfb3e672d66f45b7fd8de2d5e172001f799cdd33b939c342b918755f1165ca"
+  }
+}

@@ -4,45 +4,84 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { t, switchLangPath, type Lang } from '../i18n/utils';
+import { searchMetadata, sectionPath } from '../i18n/seo';
 
 interface Props { title: string; description?: string; lang?: Lang }
 const { title, description = '', lang = 'zh' } = Astro.props;
-const fullTitle = `${title} | ${t(lang, 'site.name')}`;
-
+const site = Astro.site ?? new URL('https://www.neuroseed.org/');
 const other = lang === 'zh' ? 'en' : 'zh';
-const here = new URL(Astro.url.pathname, Astro.site).href;
-const there = new URL(switchLangPath(Astro.url.pathname, lang), Astro.site).href;
+const metadata = searchMetadata(lang, Astro.url.pathname);
+const fullTitle = metadata?.title ?? `${title} | NeuroSeed`;
+const summary = metadata?.description ?? description;
+const here = new URL(Astro.url.pathname, site).href;
+const there = new URL(switchLangPath(Astro.url.pathname, lang), site).href;
+const defaultLanguage = new URL(metadata ? sectionPath('zh', metadata.section) : '/zh/', site).href;
+const shareImage = new URL('/neuroseed-share-colour-v1.jpg', site).href;
+const homepage = new URL('/', site).href;
+const brandLogo = new URL('/images/neuroseed-logo.png', site).href;
+const localHome = new URL(sectionPath(lang, ''), site).href;
+const jsonLd = metadata?.section === ''
+  ? { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'WebSite', '@id': `${homepage}#website`, url: homepage, name: 'NeuroSeed', alternateName: '腦力試', inLanguage: ['zh-Hant', 'en'], publisher: { '@id': `${homepage}#neuroseed` } },
+      { '@type': 'Organization', '@id': `${homepage}#neuroseed`, url: homepage, name: 'NeuroSeed', alternateName: '腦力試', logo: brandLogo,
+        sameAs: ['https://www.instagram.com/Neuroseed.hk', 'https://www.facebook.com/neuroseed.hk/', 'https://www.linkedin.com/company/neuroseed-hk/home/'] },
+    ] }
+  : { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t(lang, 'nav.home'), item: localHome },
+      { '@type': 'ListItem', position: 2, name: title, item: here },
+    ] };
 ---
 <!doctype html>
 <html lang={lang === 'zh' ? 'zh-Hant' : 'en'}>
 <head>
 <meta charset="utf-8" />
-<script is:inline>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{fullTitle}</title>
-<meta name="description" content={description} />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+TC:wght@600;700&display=swap"
-/>
-
+<meta name="description" content={summary} />
+<link rel="icon" type="image/png" href="/images/neuroseed-logo.png" />
+<link rel="canonical" href={here} />
 <link rel="alternate" hreflang={lang === 'zh' ? 'zh-Hant' : 'en'} href={here} />
 <link rel="alternate" hreflang={other === 'zh' ? 'zh-Hant' : 'en'} href={there} />
+<link rel="alternate" hreflang="x-default" href={defaultLanguage} />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="NeuroSeed" />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={summary} />
+<meta property="og:url" content={here} />
+<meta property="og:locale" content={lang === 'zh' ? 'zh_HK' : 'en_HK'} />
+<meta property="og:image" content={shareImage} />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1080" />
+<meta property="og:image:height" content="1080" />
+<meta property="og:image:alt" content={lang === 'zh' ? 'NeuroSeed 腦力試彩色標誌' : 'NeuroSeed colour logo'} />
+<meta name="twitter:card" content="summary_large_image" />
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd).replaceAll('<', '\\u003c')} />
 </head>
 <body>
 <a class="skip-link" href="#main">{t(lang, 'ui.skip')}</a>
 <Header lang={lang} />
 <main id="main"><slot /></main>
 <Footer lang={lang} />
-<script is:inline>
+<script>
 (function () {
+  document.documentElement.classList.add('js');
+  const fallback = (img: HTMLImageElement) => {
+    if (!img.matches('[data-hide-on-error], [data-fallback-icon]')) return;
+    img.hidden = true;
+    if (img.hasAttribute('data-fallback-icon') && img.nextElementSibling instanceof HTMLElement) {
+      img.nextElementSibling.hidden = false;
+    }
+  };
+  window.addEventListener('error', (event) => {
+    if (event.target instanceof HTMLImageElement) fallback(event.target);
+  }, true);
+  document.querySelectorAll<HTMLImageElement>('img[data-hide-on-error], img[data-fallback-icon]').forEach((img) => {
+    if (img.complete && !img.naturalWidth) fallback(img);
+  });
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   // [selector, effect]: what animates, and how. Add a selector here to animate more.
   var rules = [
-    ['.hero__text > *', 'up'], ['.tiles > *', 'zoom'],
+    ['.tiles > *', 'zoom'],
     ['.head > *', 'up'], ['.grid > *', 'up'], ['.stats > *', 'up'],
     ['.two__text > *', 'left'], ['[data-switcher]', 'right'],
     ['.closing', 'up'], ['.video', 'zoom'], ['.ribbon > *', 'zoom'],

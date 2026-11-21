@@ -1,4 +1,5 @@
 ---
+import { optimizedImage } from '../../media/images';
 import Layout from '../../layouts/Layout.astro';
 import Photo from '../../components/Photo.astro';
 import Partners from '../../components/Partners.astro';
@@ -74,7 +75,7 @@ const multi = items.length > 1;
     <div class="container">
       <header class="news__head rv">
         <div>
-          <h2>{c.list.h}</h2>
+          <h1>{c.list.h}</h1>
           <p class="news__hint">{c.list.hint}</p>
         </div>
         <div class="filters" role="group" aria-label={c.list.h}>
@@ -93,7 +94,7 @@ const multi = items.length > 1;
           <article class="pv" id={`pv-${n.id}`} data-id={n.id} role="tabpanel" aria-labelledby={`li-${n.id}`} hidden={i !== 0}>
             <div class="pv__cover">
               {n.poster ? (
-                <img class="pv__poster" src={n.img} alt={n.alt} loading="lazy" />
+                <img class="pv__poster" src={optimizedImage(n.img)} alt={n.alt} loading="lazy" />
               ) : (
                 <Photo label={n.title} src={n.img} color="#2F6FD0" icon="📰" ratio="16 / 9" />
               )}
@@ -102,7 +103,7 @@ const multi = items.length > 1;
 
             <div class="pv__body">
               <time datetime={n.date}>{n.dateLabel}</time>
-              <h3>{n.title}</h3>
+              <h2>{n.title}</h2>
 
               {n.body.map((p) => <p>{p}</p>)}
 
@@ -238,7 +239,7 @@ const multi = items.length > 1;
   /* ================= NEWS LIST ================= */
   .news { scroll-margin-top: 4rem; background: #fff; }
   .news__head { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 1.2rem 2rem; margin-bottom: 2.4rem; }
-  .news__head h2 { margin: 0; color: var(--brand-deep); }
+  .news__head h1 { margin: 0; color: var(--brand-deep); font-size: var(--fs-h2); }
   .news__hint { margin: 0.4rem 0 0; color: var(--muted); font-size: var(--fs-sm); }
   .filters { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.35rem; background: var(--tint); border-radius: 999px; }
   .filters__btn { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 42px; padding: 0 1.1rem; border: 0; border-radius: 999px; background: transparent; color: var(--brand-deep); font: 700 var(--fs-sm) var(--font-body); cursor: pointer; transition: background 0.25s, color 0.25s, transform 0.25s; }
@@ -263,7 +264,7 @@ const multi = items.length > 1;
   .pv__body { padding: clamp(1.3rem, 3vw, 2rem); animation: pvIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
   @keyframes pvIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
   .pv__body time { color: var(--brand); font-weight: 700; font-size: var(--fs-sm); letter-spacing: 0.06em; }
-  .pv__body h3 { margin: 0.4rem 0 1rem; color: var(--brand-deep); font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.25; text-wrap: balance; }
+  .pv__body h2 { margin: 0.4rem 0 1rem; color: var(--brand-deep); font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.25; text-wrap: balance; }
   .pv__body p { margin: 0 0 0.9rem; color: var(--muted); text-wrap: pretty; }
   .pv__meta { display: grid; gap: 0.4rem; margin: 1.2rem 0; padding: 1rem 1.2rem; background: var(--tint); border-radius: var(--radius-md); }
   .pv__meta div { display: grid; grid-template-columns: 5rem 1fr; gap: 0.8rem; }
@@ -332,7 +333,7 @@ const multi = items.length > 1;
   }
 </style>
 
-<script is:inline>
+<script>
   (function () {
     var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 

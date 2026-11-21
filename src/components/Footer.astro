@@ -1,4 +1,5 @@
 ---
+import { optimizedImage } from '../media/images';
 import { t, pages, pagePath, switchLangPath, type Lang } from '../i18n/utils';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -9,9 +10,9 @@ const langHeading = lang === 'zh' ? '語言' : 'Language';
 <div class="container grid">
 <div class="about">
 <div class="logos-row">
-<img class="logo" src="/images/neuroseedlogopackage-03.png" alt="Neuroseed 腦力試" height="66" />
+<img class="logo" src={optimizedImage("/images/neuroseedlogopackage-03.png")} alt="Neuroseed 腦力試" height="66" />
 <span class="divider" aria-hidden="true"></span>
-<img class="logo" src="/images/brainy-logo-trans.png" alt={t(lang, 'site.name')} height="98" />
+<img class="logo" src={optimizedImage("/images/brainy-logo-trans.png")} alt={t(lang, 'site.name')} height="98" />
 </div>
 <p class="foot-about">{t(lang, 'footer.about')}</p>
 </div>

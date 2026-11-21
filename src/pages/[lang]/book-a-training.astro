@@ -26,7 +26,11 @@ const mailTo = c.next.email;
       <div class="card-form rv">
         <h2>{c.form.h}</h2>
 
-        <form class="form" data-form data-endpoint={endpoint} data-mail={mailTo} novalidate
+        <noscript>
+          <p>{lang === 'zh' ? '請透過電郵查詢及預約培訓。' : 'Please contact us by email to book training.'}
+            <a href={`mailto:${mailTo}`}>{mailTo}</a></p>
+        </noscript>
+        <form class="form" method="post" inert data-form data-endpoint={endpoint} data-mail={mailTo} novalidate
           data-sending={c.form.sending} data-ok={c.form.ok} data-fail={c.form.fail} data-invalid={c.form.invalid}>
 
           <div class="field">
@@ -152,7 +156,7 @@ const mailTo = c.next.email;
   }
 </style>
 
-<script is:inline>
+<script>
   (function () {
     var form = document.querySelector('[data-form]');
     if (!form) return;
@@ -196,7 +200,7 @@ const mailTo = c.next.email;
           done.scrollIntoView({ behavior: 'smooth', block: 'center' });
         })
         .catch(function () {
-          status.innerHTML = '';
+          status.replaceChildren();
           status.append(form.dataset.fail + ' ');
           var a = document.createElement('a'); a.href = 'mailto:' + mail; a.textContent = mail; status.appendChild(a);
         })
@@ -207,5 +211,6 @@ const mailTo = c.next.email;
       done.hidden = true; form.hidden = false; show('');
       form.querySelector('input').focus();
     });
+    form.removeAttribute('inert');
   })();
 </script>
